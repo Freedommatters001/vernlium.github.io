@@ -113,7 +113,7 @@
 <meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week2/logistic_regression_computing_graph.jpg">
 <meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week2/logistic_regression_derivatives_m.jpg">
 <meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week2/learging_rate_chioce.PNG">
-<meta property="og:updated_time" content="2018-07-19T00:10:00.466Z">
+<meta property="og:updated_time" content="2018-07-19T00:22:17.321Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coursera_deeplearning.ai_c1_week2">
 <meta name="twitter:description" content="使用神经网络实现逻辑回归二分类问题给一个输入，得到一个输出，输出的结果是0或1。  逻辑回归（Logistic Regression）逻辑回归是一种学习算法，用于解决输出$y$为0或1的有监督学习问题。逻辑回归的目的是最小化预测值和训练数据值之间的差距。 示例：猫 vs 不是猫给一个用向量$x$表示的图片，逻辑回归算法来评估此图片中物体是猫的概率。 $$ Griven \,\, x, \hat{y">
@@ -435,11 +435,11 @@
 <p>下面通过矢量化提高计算速度。</p>
 <p>深度学习编程准则：</p>
 <p><strong>Whenever possible, avoid explicit for-loops.</strong></p>
-<h4 id="矢量化"><a href="#矢量化" class="headerlink" title="矢量化"></a>矢量化</h4><p>对输入中的每个实例$x^{(i)}$ 排成一行：</p>
-<p>$$<br>X =<br>        x^{(1)} \,\, x^{(2)} \cdots \, x^{(m)}<br>$$</p>
-<p>其中每个$x^{(i)}$是<br>$$<br>        \begin{pmatrix}<br>        x<em>{1} &amp;\<br>        x</em>{2} &amp;\<br>        \vdots \<br>        x_{n_x} &amp;\<br>        \end{pmatrix}<br>$$</p>
+<h4 id="矢量化"><a href="#矢量化" class="headerlink" title="矢量化"></a>矢量化</h4><p>对输入中的每个实例$X^{(i)}$ 排成一行：</p>
+<p>$$<br>X = [X^{(1)} \,\, X^{(2)} \cdots \, X^{(m)}]<br>$$</p>
+<p>其中每个$X^{(i)}$是<br>$$<br>\begin{pmatrix}<br>x<em>{1} &amp;\<br>x</em>{2} &amp;\<br>\vdots \<br>x_{n_x} &amp;\<br>\end{pmatrix}<br>$$</p>
 <p>把上面的每个权值$w_{i}$ 排成一列：</p>
-<p>$$<br>w =<br>        \begin{pmatrix}<br>        w<em>{1} &amp;\<br>        w</em>{2} &amp;\<br>        \vdots \<br>        w_{n_x} &amp;\<br>        \end{pmatrix}<br>$$</p>
+<p>$$<br>w =<br>\begin{pmatrix}<br>w<em>{1} &amp;\<br>w</em>{2} &amp;\<br>\vdots \<br>w_{n_x} &amp;\<br>\end{pmatrix}<br>$$</p>
 <p>这个就是矢量化。用一个向量或者矩阵（2维矩阵）或者张量（Tensor，3维及以上的矩阵）表示多个变量。</p>
 <h4 id="矢量化后的前向计算"><a href="#矢量化后的前向计算" class="headerlink" title="矢量化后的前向计算"></a>矢量化后的前向计算</h4><ul>
 <li>得到输入X</li>
