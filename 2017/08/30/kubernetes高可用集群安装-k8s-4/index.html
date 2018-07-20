@@ -98,19 +98,19 @@
 
 
 
-<meta name="description" content="这篇博客来讲解下k8s高可用集群的安装。 上篇博客中，已经介绍了k8s集群的基础安装，对k8s的组件和使用用了大致的了解。 一般在生产环境中，考虑到可靠性和可用性，避免单节点故障时，环境不可用，需要需要通过安装k8s master集群来提供系统可用性。本篇博客来讨论如何安装k8s master集群。 环境准备准备7台虚拟机，其用途分别如下：    IP 用途 配置     192.168.0.1">
+<meta name="description" content="这篇博客来讲解下k8s高可用集群的安装。 上篇博客中，已经介绍了k8s集群的基础安装，对k8s的组件和使用用了大致的了解。 一般在生产环境中，考虑到可靠性和可用性，避免单节点故障时，环境不可用，需要需要通过安装k8s master集群来提供系统可用性。本篇博客来讨论如何安装k8s master集群。 环境准备准备7台虚拟机，其用途分别如下：     IP 用途 配置     192.168.0.1">
 <meta name="keywords" content="docker,k8s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kubernetes高可用集群安装-k8s-4">
 <meta property="og:url" content="://vernlium.github.io/2017/08/30/kubernetes高可用集群安装-k8s-4/index.html">
 <meta property="og:site_name" content="Vernlium">
-<meta property="og:description" content="这篇博客来讲解下k8s高可用集群的安装。 上篇博客中，已经介绍了k8s集群的基础安装，对k8s的组件和使用用了大致的了解。 一般在生产环境中，考虑到可靠性和可用性，避免单节点故障时，环境不可用，需要需要通过安装k8s master集群来提供系统可用性。本篇博客来讨论如何安装k8s master集群。 环境准备准备7台虚拟机，其用途分别如下：    IP 用途 配置     192.168.0.1">
+<meta property="og:description" content="这篇博客来讲解下k8s高可用集群的安装。 上篇博客中，已经介绍了k8s集群的基础安装，对k8s的组件和使用用了大致的了解。 一般在生产环境中，考虑到可靠性和可用性，避免单节点故障时，环境不可用，需要需要通过安装k8s master集群来提供系统可用性。本篇博客来讨论如何安装k8s master集群。 环境准备准备7台虚拟机，其用途分别如下：     IP 用途 配置     192.168.0.1">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://user-images.githubusercontent.com/11350907/29849869-41e46f06-8d5c-11e7-9c05-9c8e47f43c21.jpg">
 <meta property="og:updated_time" content="2018-06-29T23:53:14.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes高可用集群安装-k8s-4">
-<meta name="twitter:description" content="这篇博客来讲解下k8s高可用集群的安装。 上篇博客中，已经介绍了k8s集群的基础安装，对k8s的组件和使用用了大致的了解。 一般在生产环境中，考虑到可靠性和可用性，避免单节点故障时，环境不可用，需要需要通过安装k8s master集群来提供系统可用性。本篇博客来讨论如何安装k8s master集群。 环境准备准备7台虚拟机，其用途分别如下：    IP 用途 配置     192.168.0.1">
+<meta name="twitter:description" content="这篇博客来讲解下k8s高可用集群的安装。 上篇博客中，已经介绍了k8s集群的基础安装，对k8s的组件和使用用了大致的了解。 一般在生产环境中，考虑到可靠性和可用性，避免单节点故障时，环境不可用，需要需要通过安装k8s master集群来提供系统可用性。本篇博客来讨论如何安装k8s master集群。 环境准备准备7台虚拟机，其用途分别如下：     IP 用途 配置     192.168.0.1">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/11350907/29849869-41e46f06-8d5c-11e7-9c05-9c8e47f43c21.jpg">
 
 
@@ -384,6 +384,7 @@
 <p>上篇博客中，已经介绍了k8s集群的基础安装，对k8s的组件和使用用了大致的了解。</p>
 <p>一般在生产环境中，考虑到可靠性和可用性，避免单节点故障时，环境不可用，需要需要通过安装k8s master集群来提供系统可用性。本篇博客来讨论如何安装k8s master集群。</p>
 <h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>准备7台虚拟机，其用途分别如下：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -430,6 +431,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h3 id="组网图"><a href="#组网图" class="headerlink" title="组网图"></a>组网图</h3><p><img src="https://user-images.githubusercontent.com/11350907/29849869-41e46f06-8d5c-11e7-9c05-9c8e47f43c21.jpg" alt="kubernetes"></p>
 <p>一般集群为了保障可用性，避免单点故障，至少需要3个节点。</p>
 <h3 id="master集群安装"><a href="#master集群安装" class="headerlink" title="master集群安装"></a>master集群安装</h3><p>从上面的组网图中可以看出， 需要使用nginx对三个master进行负载均衡。所以需要启动一个nginx。为了方便安装和使用，我们使用容器的方式启动nginx。</p>

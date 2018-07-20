@@ -379,12 +379,12 @@
 <h4 id="前向传播公式示例"><a href="#前向传播公式示例" class="headerlink" title="前向传播公式示例"></a>前向传播公式示例</h4><ul>
 <li>$ a = g^{[l]}(W_{x} x^{(i)} + b_1) = g^{[l]}(z_1)$，其中$g^{[l]}$表示第$l$层的激活函数</li>
 <li>$ \hat{y}^{(i)} = softmax(W_h h + b_2) $</li>
-<li>一般激活公式：<br>$$ a_j^{[l]} = g^{[l]}(\sum_k w_j^{[l]} a_k^{[l-1]} + b_j^{[l]}) = g^{[l]}(z_j^{[l]}) $$</li>
+<li>一般激活公式：<script type="math/tex; mode=display">a_j^{[l]} = g^{[l]}(\sum_k w_j^{[l]} a_k^{[l-1]} + b_j^{[l]}) = g^{[l]}(z_j^{[l]})</script></li>
 <li>$J(x,W,b,y)$ 或 $J(\hat{y},y)$:表示损失函数</li>
 </ul>
 <h4 id="损失函数示例"><a href="#损失函数示例" class="headerlink" title="损失函数示例"></a>损失函数示例</h4><ul>
-<li>$$ J<em>{CE}(\hat{y},y) = - \sum</em>{i=0}^m y^{(i)}log(\hat{y}^{(i)}) $$</li>
-<li>$$ J<em>{1}(\hat{y},y) = - \sum</em>{i=0}^m |y^{(i)} - \hat{y}^{(i)}| $$</li>
+<li><script type="math/tex; mode=display">J_{CE}(\hat{y},y) = - \sum_{i=0}^m y^{(i)}log(\hat{y}^{(i)})</script></li>
+<li><script type="math/tex; mode=display">J_{1}(\hat{y},y) = - \sum_{i=0}^m |y^{(i)} - \hat{y}^{(i)}|</script></li>
 </ul>
 
       

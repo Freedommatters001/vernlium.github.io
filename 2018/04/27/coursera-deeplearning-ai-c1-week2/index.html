@@ -98,13 +98,13 @@
 
 
 
-<meta name="description" content="使用神经网络实现逻辑回归二分类问题给一个输入，得到一个输出，输出的结果是0或1。  逻辑回归（Logistic Regression）逻辑回归是一种学习算法，用于解决输出$y$为0或1的有监督学习问题。逻辑回归的目的是最小化预测值和训练数据值之间的差距。 示例：猫 vs 不是猫给一个用向量$x$表示的图片，逻辑回归算法来评估此图片中物体是猫的概率。 $$ Griven \,\, x, \hat{y">
+<meta name="description" content="使用神经网络实现逻辑回归二分类问题给一个输入，得到一个输出，输出的结果是0或1。  逻辑回归（Logistic Regression）逻辑回归是一种学习算法，用于解决输出$y$为0或1的有监督学习问题。逻辑回归的目的是最小化预测值和训练数据值之间的差距。 示例：猫 vs 不是猫给一个用向量$x$表示的图片，逻辑回归算法来评估此图片中物体是猫的概率。 Griven \,\, x, \hat{y} =">
 <meta name="keywords" content="deeplearning.ai">
 <meta property="og:type" content="article">
 <meta property="og:title" content="coursera_deeplearning.ai_c1_week2">
 <meta property="og:url" content="://vernlium.github.io/2018/04/27/coursera-deeplearning-ai-c1-week2/index.html">
 <meta property="og:site_name" content="Vernlium">
-<meta property="og:description" content="使用神经网络实现逻辑回归二分类问题给一个输入，得到一个输出，输出的结果是0或1。  逻辑回归（Logistic Regression）逻辑回归是一种学习算法，用于解决输出$y$为0或1的有监督学习问题。逻辑回归的目的是最小化预测值和训练数据值之间的差距。 示例：猫 vs 不是猫给一个用向量$x$表示的图片，逻辑回归算法来评估此图片中物体是猫的概率。 $$ Griven \,\, x, \hat{y">
+<meta property="og:description" content="使用神经网络实现逻辑回归二分类问题给一个输入，得到一个输出，输出的结果是0或1。  逻辑回归（Logistic Regression）逻辑回归是一种学习算法，用于解决输出$y$为0或1的有监督学习问题。逻辑回归的目的是最小化预测值和训练数据值之间的差距。 示例：猫 vs 不是猫给一个用向量$x$表示的图片，逻辑回归算法来评估此图片中物体是猫的概率。 Griven \,\, x, \hat{y} =">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week2/binary_classifcation.jpg">
 <meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week2/sigmoid_function.jpg">
@@ -114,10 +114,10 @@
 <meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week2/logistic_regression_derivatives_m.jpg">
 <meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week2/implementing_logistic_regression.jpg">
 <meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week2/learging_rate_chioce.PNG">
-<meta property="og:updated_time" content="2018-07-19T23:26:30.369Z">
+<meta property="og:updated_time" content="2018-07-20T13:36:29.305Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coursera_deeplearning.ai_c1_week2">
-<meta name="twitter:description" content="使用神经网络实现逻辑回归二分类问题给一个输入，得到一个输出，输出的结果是0或1。  逻辑回归（Logistic Regression）逻辑回归是一种学习算法，用于解决输出$y$为0或1的有监督学习问题。逻辑回归的目的是最小化预测值和训练数据值之间的差距。 示例：猫 vs 不是猫给一个用向量$x$表示的图片，逻辑回归算法来评估此图片中物体是猫的概率。 $$ Griven \,\, x, \hat{y">
+<meta name="twitter:description" content="使用神经网络实现逻辑回归二分类问题给一个输入，得到一个输出，输出的结果是0或1。  逻辑回归（Logistic Regression）逻辑回归是一种学习算法，用于解决输出$y$为0或1的有监督学习问题。逻辑回归的目的是最小化预测值和训练数据值之间的差距。 示例：猫 vs 不是猫给一个用向量$x$表示的图片，逻辑回归算法来评估此图片中物体是猫的概率。 Griven \,\, x, \hat{y} =">
 <meta name="twitter:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week2/binary_classifcation.jpg">
 
 
@@ -369,33 +369,31 @@
 <img src="/2018/04/27/coursera-deeplearning-ai-c1-week2/binary_classifcation.jpg" alt="just the right amount" title="just the right amount">
 <h3 id="逻辑回归（Logistic-Regression）"><a href="#逻辑回归（Logistic-Regression）" class="headerlink" title="逻辑回归（Logistic Regression）"></a>逻辑回归（Logistic Regression）</h3><p>逻辑回归是一种学习算法，用于解决输出$y$为0或1的有监督学习问题。逻辑回归的目的是最小化预测值和训练数据值之间的差距。</p>
 <h4 id="示例：猫-vs-不是猫"><a href="#示例：猫-vs-不是猫" class="headerlink" title="示例：猫 vs 不是猫"></a>示例：猫 vs 不是猫</h4><p>给一个用向量$x$表示的图片，逻辑回归算法来评估此图片中物体是猫的概率。</p>
-<p>$$ Griven \,\, x, \hat{y} = P(y = 1 | x) ,\,\,\,\, where \,\, 0 \le \hat{y} \le 1 $$</p>
-<p>逻辑回归中使用到的参数有：</p>
+<script type="math/tex; mode=display">Griven \,\, x, \hat{y} = P(y = 1 | x) ,\,\,\,\, where \,\, 0 \le \hat{y} \le 1</script><p>逻辑回归中使用到的参数有：</p>
 <ul>
 <li>输入特征向量： $x \in \mathbb{R}^{n_x },\,\, where \,\, n_x \,is \, the \, number \, of \, features$ </li>
 <li>训练标签： $ y \in 0,1$</li>
 <li>权重： $w \in \mathbb{R}^{n_x },\,\, where \,\, n_x \,is \, the \, number \, of \, features$ </li>
 <li>阈值： $w \in \mathbb{R}$</li>
 <li>输出：$ \hat{y}^{(i)} =  \sigma( w^T x + b) $</li>
-<li>Sigmoid函数： $$ s =  \sigma( w^T x + b) = \sigma(z) =\frac{1}{1+e^{-z}}  $$</li>
+<li>Sigmoid函数： <script type="math/tex">s =  \sigma( w^T x + b) = \sigma(z) =\frac{1}{1+e^{-z}}</script></li>
 </ul>
 <p>sigmoid函数为：</p>
 <img src="/2018/04/27/coursera-deeplearning-ai-c1-week2/sigmoid_function.jpg" alt="just the right amount" title="just the right amount">
 <p>$ ( w^T x + b) $ 是一个线性函数 $(ax + b)$,但是我们要找的是一个在[0,1]的概率值，所以要使用sigmoid函数。这个函数会把结果约束在[0,1]。</p>
 <h3 id="逻辑回归的损失函数"><a href="#逻辑回归的损失函数" class="headerlink" title="逻辑回归的损失函数"></a>逻辑回归的损失函数</h3><p>为了训练逻辑回归中的$w$和$b$，我们需要定义一个损失函数。</p>
-<p>$$ \hat{y}^{(i)} =  \sigma( w^T x^{(i)} + b) ,where \,\, \sigma(z^{(i)}) =\frac{1}{1+e^{-z^{(i)}}}  $$</p>
-<p>$$ Given \,\, {(x^{(1)},y^{(1)}),\ldots, (x^{(m)},y^{(m)})}, we\, want \,\,\hat{y^{(i)}} \simeq  y^{(i)} $$</p>
-<h4 id="损失函数（Loss-Function）"><a href="#损失函数（Loss-Function）" class="headerlink" title="损失函数（Loss Function）"></a>损失函数（Loss Function）</h4><p>损失函数衡量了预测值（$ \hat{y}^{(i)} $）和期望值（$ y^{(i)}$）之间的差值。</p>
-<p>$$ \mathcal{L}(a^{(i)}, y^{(i)}) =  \frac{1}{2} (\hat{y}^{(i)} -y^{(i)})^2 $$</p>
-<p>$$ \mathcal{L}(\hat{y}^{(i)}, y^{(i)}) =  - (y^{(i)}  \log(\hat{y}^{(i)}) + (1-y^{(i)} )  \log(1-\hat{y}^{(i)})) $$</p>
-<ul>
+<script type="math/tex; mode=display">\hat{y}^{(i)} =  \sigma( w^T x^{(i)} + b) ,where \,\, \sigma(z^{(i)}) =\frac{1}{1+e^{-z^{(i)}}}</script><script type="math/tex; mode=display">Given \,\, {(x^{(1)},y^{(1)}),\ldots, (x^{(m)},y^{(m)})}, we\, want \,\,\hat{y^{(i)}} \simeq  y^{(i)}</script><h4 id="损失函数（Loss-Function）"><a href="#损失函数（Loss-Function）" class="headerlink" title="损失函数（Loss Function）"></a>损失函数（Loss Function）</h4><p>损失函数衡量了预测值（$ \hat{y}^{(i)} $）和期望值（$ y^{(i)}$）之间的差值。</p>
+<script type="math/tex; mode=display">\mathcal{L}(a^{(i)}, y^{(i)}) =  \frac{1}{2} (\hat{y}^{(i)} -y^{(i)})^2</script><script type="math/tex; mode=display">\mathcal{L}(\hat{y}^{(i)}, y^{(i)}) =  - (y^{(i)}  \log(\hat{y}^{(i)}) + (1-y^{(i)} )  \log(1-\hat{y}^{(i)}))</script><ul>
 <li>如果$y^{(i)} = 1$:$ \mathcal{L}(\hat{y}^{(i)}, y^{(i)}) = - \log(\hat{y}^{(i)}) $，使$ \mathcal{L}(\hat{y}^{(i)}, y^{(i)})$越小，$\hat{y}^{(i)}$应该越接近1</li>
 <li>如果$y^{(i)} = 0$:$ \mathcal{L}(\hat{y}^{(i)}, y^{(i)}) = - \log(1 - \hat{y}^{(i)}) $，使$ \mathcal{L}(\hat{y}^{(i)}, y^{(i)})$越小，$\hat{y}^{(i)}$应该越接近0</li>
 </ul>
 <h4 id="代价函数（Cast-Function）"><a href="#代价函数（Cast-Function）" class="headerlink" title="代价函数（Cast Function）"></a>代价函数（Cast Function）</h4><p>代价函数是训练集中每个实例的损失函数的平均值。我们需要找到参数$w$和$b$使得总体的代价函数最小。</p>
 <p>计算公式为：</p>
-<p>$$<br>\begin{aligned}<br>J(w,b) &amp; = -\frac{1}{m}\sum<em>{i=1}^{m}[\mathcal{L}(\hat{y}^{(i)}, y^{(i)})] \<br>&amp; = -\frac{1}{m}\sum</em>{i=1}^{m}[y^{(i)}\log(\hat{y}^{(i)})+(1-y^{(i)})\log(1-\hat{y}^{(i)})]<br>\end{aligned}<br>$$</p>
-<h3 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h3><p>课程中很了很多时间举了很多例子用极值法求导数，是针对没有经验的人。可以使用公式，这里就不记录了。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+J(w,b) & = -\frac{1}{m}\sum_{i=1}^{m}[\mathcal{L}(\hat{y}^{(i)}, y^{(i)})] \\
+& = -\frac{1}{m}\sum_{i=1}^{m}[y^{(i)}\log(\hat{y}^{(i)})+(1-y^{(i)})\log(1-\hat{y}^{(i)})] 
+\end{aligned}</script><h3 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h3><p>课程中很了很多时间举了很多例子用极值法求导数，是针对没有经验的人。可以使用公式，这里就不记录了。</p>
 <h3 id="计算图"><a href="#计算图" class="headerlink" title="计算图"></a>计算图</h3><p>计算图描述计算过程，方便清晰查看计算过程。</p>
 <img src="/2018/04/27/coursera-deeplearning-ai-c1-week2/computing_graph.jpg" alt="just the right amount" title="just the right amount">
 <h4 id="计算图计算导数"><a href="#计算图计算导数" class="headerlink" title="计算图计算导数"></a>计算图计算导数</h4><img src="/2018/04/27/coursera-deeplearning-ai-c1-week2/computing_graph_derivatives.jpg" alt="just the right amount" title="just the right amount">
@@ -406,51 +404,101 @@
 <p>$ \mathcal{L}(a, y) =  - y  \log(a) - (1-y )  \log(1-a) $</p>
 <p>我们的目的是计算$\mathcal{L}$对$w$和$b$的导数，这样才能通过梯度下降法更新参数并使损失函数$\mathcal{L}$不断降低。</p>
 <p>通过计算图，我们可以从后往前计算导数：</p>
-<p>$$<br>\begin{aligned}<br>da &amp; =  \frac{d\mathcal{L}}{da} \<br>&amp; =  -\frac{y}{a} + \frac{1-y}{1-a}<br>\end{aligned}<br>$$</p>
-<hr>
-<p>$$<br>\begin{aligned}<br>dz &amp;= \frac{d\mathcal{L}}{dz} \<br>&amp;= \frac{d\mathcal{L}}{da}\frac{da}{dz} \<br>&amp; = (-\frac{y}{a} + \frac{1-y}{1-a})(a(1-a)) \<br>&amp; = -{y}(1-a) + (1-y)a \<br>&amp; = a - y<br>\end{aligned}<br>$$</p>
-<blockquote>
+<script type="math/tex; mode=display">
+\begin{aligned}
+da & =  \frac{d\mathcal{L}}{da} \\
+& =  -\frac{y}{a} + \frac{1-y}{1-a} 
+\end{aligned}</script><hr>
+<script type="math/tex; mode=display">
+\begin{aligned}
+dz &= \frac{d\mathcal{L}}{dz} \\
+&= \frac{d\mathcal{L}}{da}\frac{da}{dz} \\
+& = (-\frac{y}{a} + \frac{1-y}{1-a})(a(1-a)) \\
+& = -{y}(1-a) + (1-y)a \\
+& = a - y
+\end{aligned}</script><blockquote>
 <p>注：使用到求导数的链式法则。</p>
-<p>注2： $$<br>\begin{aligned}<br>\frac{da}{dz} &amp;= \frac{d\sigma{(z)}}{dz}\<br>&amp; = (\frac{1}{1+e^{-z}})’ \<br>&amp; = \frac{(1)’(1+e^{-z}) - 1 ({1+e^{-z}})’}{(1+e^{-z})^2} \<br>&amp; = \frac{e^{-z}}{(1+e^{-z})^2} \<br>&amp; = \frac{1+e^{-z} - 1}{(1+e^{-z})^2} \<br>&amp; = \frac{1}{1+e^{-z}} ( \frac{1+e^{-z} - 1}{(1+e^{-z})}) \<br>&amp; = \frac{1}{1+e^{-z}} ( 1 - \frac{1}{(1+e^{-z})}) \<br>&amp; = a(1 - a)<br>\end{aligned}<br>$$</p>
-<p>注3： $$<br>\begin{aligned}<br>(\frac{u}{v})’ &amp;= \frac{u’v - uv’}{v^2}\<br>\end{aligned}<br>$$</p>
+<p>注2： </p>
 </blockquote>
-<hr>
-<p>$$<br>\begin{aligned}<br>dw_1 &amp;= \frac{d\mathcal{L}}{dw_1} \<br>&amp;= \frac{d\mathcal{L}}{dz}\frac{dz}{dw_1} \<br>&amp; = (a-y)x_1<br>\end{aligned}<br>$$</p>
-<hr>
-<p>$$<br>\begin{aligned}<br>dw_2 &amp;= \frac{d\mathcal{L}}{dw_2} \<br>&amp;= \frac{d\mathcal{L}}{dz}\frac{dz}{dw_2} \<br>&amp; = (a-y)x_2<br>\end{aligned}<br>$$</p>
-<hr>
-<p>$$<br>\begin{aligned}<br>db &amp;= \frac{d\mathcal{L}}{db} \<br>&amp;= \frac{d\mathcal{L}}{dz}\frac{dz}{db} \<br>&amp; = (a-y)<br>\end{aligned}<br>$$</p>
-<h4 id="更新参数"><a href="#更新参数" class="headerlink" title="更新参数"></a>更新参数</h4><p>$ w_1 = w_1 - \alpha * dw_1 $</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{da}{dz} &= \frac{d\sigma{(z)}}{dz}\\
+& = (\frac{1}{1+e^{-z}})' \\
+& = \frac{(1)'(1+e^{-z}) - 1 ({1+e^{-z}})'}{(1+e^{-z})^2} \\
+& = \frac{e^{-z}}{(1+e^{-z})^2} \\
+& = \frac{1+e^{-z} - 1}{(1+e^{-z})^2} \\
+& = \frac{1}{1+e^{-z}} ( \frac{1+e^{-z} - 1}{(1+e^{-z})}) \\
+& = \frac{1}{1+e^{-z}} ( 1 - \frac{1}{1+e^{-z}}) \\
+& = a(1 - a)
+\end{aligned}</script><blockquote>
+<p>注3： </p>
+</blockquote>
+<script type="math/tex; mode=display">
+\begin{aligned}
+(\frac{u}{v})' &= \frac{u'v - uv'}{v^2}\\
+\end{aligned}</script><hr>
+<script type="math/tex; mode=display">
+\begin{aligned}
+dw_1 &= \frac{d\mathcal{L}}{dw_1} \\
+&= \frac{d\mathcal{L}}{dz}\frac{dz}{dw_1} \\
+& = (a-y)x_1
+\end{aligned}</script><hr>
+<script type="math/tex; mode=display">
+\begin{aligned}
+dw_2 &= \frac{d\mathcal{L}}{dw_2} \\
+&= \frac{d\mathcal{L}}{dz}\frac{dz}{dw_2} \\
+& = (a-y)x_2
+\end{aligned}</script><hr>
+<script type="math/tex; mode=display">
+\begin{aligned}
+db &= \frac{d\mathcal{L}}{db} \\
+&= \frac{d\mathcal{L}}{dz}\frac{dz}{db} \\
+& = (a-y)
+\end{aligned}</script><h4 id="更新参数"><a href="#更新参数" class="headerlink" title="更新参数"></a>更新参数</h4><p>$ w_1 = w_1 - \alpha * dw_1 $</p>
 <p>$ w_2 = w_2 - \alpha * dw_2 $</p>
 <p>$ b = b - \alpha * db $</p>
 <h3 id="m-个实例的梯度下降法计算"><a href="#m-个实例的梯度下降法计算" class="headerlink" title="$m$个实例的梯度下降法计算"></a>$m$个实例的梯度下降法计算</h3><p>对深度学习来说，一般训练集都会有多个实例，训练时要在这多个实例上进行，那么计算时就需要在$m$个实例上都计算一次。</p>
 <p>对于每一个实例 $x^{(i)}$:</p>
-<p>$$ z^{(i)} = w^T x^{(i)} + b $$</p>
-<p>$$ \hat{y}^{(i)} = a^{(i)} = sigmoid(z^{(i)}) $$</p>
-<p>$$ \mathcal{L}(a^{(i)}, y^{(i)}) =  - y^{(i)}  \log(a^{(i)}) - (1-y^{(i)} )  \log(1-a^{(i)}) $$</p>
-<p>代价函数则是把所有实例的损失函数求和：</p>
-<p>$$ J = \frac{1}{m} \sum_{i=1}^m \mathcal{L}(a^{(i)}, y^{(i)}) $$</p>
-<h4 id="计算方法"><a href="#计算方法" class="headerlink" title="计算方法"></a>计算方法</h4><p>按照传统的计算方法，使用循环进行每个实例的计算。</p>
+<script type="math/tex; mode=display">z^{(i)} = w^T x^{(i)} + b</script><script type="math/tex; mode=display">\hat{y}^{(i)} = a^{(i)} = sigmoid(z^{(i)})</script><script type="math/tex; mode=display">\mathcal{L}(a^{(i)}, y^{(i)}) =  - y^{(i)}  \log(a^{(i)}) - (1-y^{(i)} )  \log(1-a^{(i)})</script><p>代价函数则是把所有实例的损失函数求和：</p>
+<script type="math/tex; mode=display">J = \frac{1}{m} \sum_{i=1}^m \mathcal{L}(a^{(i)}, y^{(i)})</script><h4 id="计算方法"><a href="#计算方法" class="headerlink" title="计算方法"></a>计算方法</h4><p>按照传统的计算方法，使用循环进行每个实例的计算。</p>
 <img src="/2018/04/27/coursera-deeplearning-ai-c1-week2/logistic_regression_derivatives_m.jpg" alt="just the right amount" title="just the right amount">
 <p>显然，在对运算速度要求很高的深度学习中，通过循环每次进行一个数据的计算，这种效率是非常低的。</p>
 <p>下面通过矢量化提高计算速度。</p>
 <p>深度学习编程准则：</p>
 <p><strong>Whenever possible, avoid explicit for-loops.</strong></p>
 <h4 id="矢量化"><a href="#矢量化" class="headerlink" title="矢量化"></a>矢量化</h4><p>对输入中的每个实例$X^{(i)}$ 排成一行：</p>
-<p>$$<br>X = [X^{(1)} \,\, X^{(2)} \cdots \, X^{(m)}]<br>$$</p>
-<p>其中每个$X^{(i)}$是<br>$$<br>\begin{bmatrix}<br>x<em>{1} \<br>x</em>{2} \<br>\vdots \<br>x_{n_x}<br>\end{bmatrix}<br>$$</p>
-<p>把上面的每个权值$w_{i}$ 排成一列：</p>
-<p>$$<br>w =<br>\begin{bmatrix}<br>w<em>{1} \<br>w</em>{2} \<br>\vdots \<br>w_{n_x}<br>\end{bmatrix}<br>$$</p>
-<p>这个就是矢量化。用一个向量或者矩阵（2维矩阵）或者张量（Tensor，3维及以上的矩阵）表示多个变量。</p>
+<script type="math/tex; mode=display">
+X = [X^{(1)} \,\, X^{(2)} \cdots \, X^{(m)}]</script><p>其中每个$X^{(i)}$是</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+x_{1} \\
+x_{2} \\
+\vdots \\
+x_{n_x} 
+\end{bmatrix}</script><p>把上面的每个权值$w_{i}$ 排成一列：</p>
+<script type="math/tex; mode=display">
+w = 
+\begin{bmatrix}
+w_{1} \\
+w_{2} \\
+\vdots \\
+w_{n_x} 
+\end{bmatrix}</script><p>这个就是矢量化。用一个向量或者矩阵（2维矩阵）或者张量（Tensor，3维及以上的矩阵）表示多个变量。</p>
 <h4 id="矢量化后的前向计算"><a href="#矢量化后的前向计算" class="headerlink" title="矢量化后的前向计算"></a>矢量化后的前向计算</h4><ul>
-<li>得到输入$X$，$m$个实例，每个实例的输入长度是$n<em>x$<br>$$<br>X =<br>\left[<br>\begin{matrix}<br>x</em>{1_1}      &amp; x_{2_1}       &amp; \cdots &amp; x_{m_1}       \<br>x_{1_2}      &amp; x_{2_1}    &amp; \cdots &amp; x_{m_1}       \<br>\vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>x_{1_n<em>x}      &amp; x</em>{2_n<em>x}      &amp; \cdots &amp; x</em>{m_n_x}       \<br>\end{matrix}<br>\right]<br>$$</li>
-<li>前向计算： $$ A = \sigma(w^T X + b) = (a^{(1)}, a^{(2)}, …, a^{(m)}) $$</li>
-<li>计算损失函数: $$ J = -\frac{1}{m}\sum_{i=1}^{m}y^{(i)}\log(a^{(i)})+(1-y^{(i)})\log(1-a^{(i)}) $$</li>
+<li>得到输入$X$，$m$个实例，每个实例的输入长度是$n_x$<script type="math/tex; mode=display">
+X = 
+\left[
+\begin{matrix}
+x_{1\_1}      & x_{2\_1}       & \cdots & x_{m\_1}       \\
+x_{1\_2}      & x_{2\_1}    & \cdots & x_{m\_1}       \\
+\vdots & \vdots & \ddots & \vdots \\
+x_{1\_n_x}      & x_{2\_n_x}      & \cdots & x_{m\_n_x}       \\
+\end{matrix}
+\right]</script></li>
+<li>前向计算： <script type="math/tex">A = \sigma(w^T X + b) = (a^{(1)}, a^{(2)}, ..., a^{(m)})</script></li>
+<li>计算损失函数: <script type="math/tex">J = -\frac{1}{m}\sum_{i=1}^{m}y^{(i)}\log(a^{(i)})+(1-y^{(i)})\log(1-a^{(i)})</script></li>
 </ul>
-<h4 id="矢量化后的梯度计算"><a href="#矢量化后的梯度计算" class="headerlink" title="矢量化后的梯度计算"></a>矢量化后的梯度计算</h4><p>$$ dw = \frac{\partial J}{\partial w} = \frac{1}{m}X(A-Y)^T $$<br>$$ db = \frac{\partial J}{\partial b} = \frac{1}{m} \sum_{i=1}^m (a^{(i)}-y^{(i)}) $$</p>
-<h4 id="矢量化后的参数更新"><a href="#矢量化后的参数更新" class="headerlink" title="矢量化后的参数更新"></a>矢量化后的参数更新</h4><p>$$ w = w - \alpha * dw $$</p>
-<p>$$ b = b - \alpha * db $$</p>
-<img src="/2018/04/27/coursera-deeplearning-ai-c1-week2/implementing_logistic_regression.jpg" alt="just the right amount" title="just the right amount">
+<h4 id="矢量化后的梯度计算"><a href="#矢量化后的梯度计算" class="headerlink" title="矢量化后的梯度计算"></a>矢量化后的梯度计算</h4><script type="math/tex; mode=display">dw = \frac{\partial J}{\partial w} = \frac{1}{m}X(A-Y)^T</script><script type="math/tex; mode=display">db = \frac{\partial J}{\partial b} = \frac{1}{m} \sum_{i=1}^m (a^{(i)}-y^{(i)})</script><h4 id="矢量化后的参数更新"><a href="#矢量化后的参数更新" class="headerlink" title="矢量化后的参数更新"></a>矢量化后的参数更新</h4><script type="math/tex; mode=display">w = w - \alpha * dw</script><script type="math/tex; mode=display">b = b - \alpha * db</script><img src="/2018/04/27/coursera-deeplearning-ai-c1-week2/implementing_logistic_regression.jpg" alt="just the right amount" title="just the right amount">
 <h3 id="编程练习"><a href="#编程练习" class="headerlink" title="编程练习"></a>编程练习</h3><p>本周的编程练习是实现一个简单的逻辑回归模型，输入是一副(64,64)的RGB图像，通过逻辑回归判断此图像是否是一只猫。</p>
 <h4 id="分步构建我们的算法"><a href="#分步构建我们的算法" class="headerlink" title="分步构建我们的算法"></a>分步构建我们的算法</h4><p>构建神经网络的主要步骤为:</p>
 <ul>
@@ -465,8 +513,7 @@
 </ul>
 <p>这个步骤也是大部分网络的基本计算步骤，非常常用。</p>
 <h5 id="实现辅助函数"><a href="#实现辅助函数" class="headerlink" title="实现辅助函数"></a>实现辅助函数</h5><p>使用numpy实现 <code>sigmoid()</code> 函数. 计算公式为：</p>
-<p>$$ sigmoid( z ) = \frac{1}{1 + e^{-(z)}} $$  </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># sigmoid</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(z)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    Compute the sigmoid of z</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">    Arguments:</span></div><div class="line"><span class="string">    z -- A scalar or numpy array of any size.</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">    Return:</span></div><div class="line"><span class="string">    s -- sigmoid(z)</span></div><div class="line"><span class="string">    """</span></div><div class="line">    s = <span class="number">1</span>/(<span class="number">1</span>+np.exp(-z))</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> s</div></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">sigmoid( z ) = \frac{1}{1 + e^{-(z)}}</script><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># sigmoid</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(z)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    Compute the sigmoid of z</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">    Arguments:</span></div><div class="line"><span class="string">    z -- A scalar or numpy array of any size.</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">    Return:</span></div><div class="line"><span class="string">    s -- sigmoid(z)</span></div><div class="line"><span class="string">    """</span></div><div class="line">    s = <span class="number">1</span>/(<span class="number">1</span>+np.exp(-z))</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> s</div></pre></td></tr></table></figure>
 <h5 id="初始化参数"><a href="#初始化参数" class="headerlink" title="初始化参数"></a>初始化参数</h5><p>把参数初始化为0.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># initialize_with_zeros</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">initialize_with_zeros</span><span class="params">(dim)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    This function creates a vector of zeros of shape (dim, 1) for w and initializes b to 0.</span></div><div class="line"><span class="string">    </span></div><div class="line"><span class="string">    Argument:</span></div><div class="line"><span class="string">    dim -- size of the w vector we want (or number of parameters in this case)</span></div><div class="line"><span class="string">    </span></div><div class="line"><span class="string">    Returns:</span></div><div class="line"><span class="string">    w -- initialized vector of shape (dim, 1)</span></div><div class="line"><span class="string">    b -- initialized scalar (corresponds to the bias)</span></div><div class="line"><span class="string">    """</span></div><div class="line">    </div><div class="line">    </div><div class="line">    w = np.zeros((dim,<span class="number">1</span>))</div><div class="line">    b = <span class="number">0.0</span></div><div class="line"></div><div class="line">    <span class="keyword">assert</span>(w.shape == (dim, <span class="number">1</span>))</div><div class="line">    <span class="keyword">assert</span>(isinstance(b, float) <span class="keyword">or</span> isinstance(b, int))</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> w, b</div></pre></td></tr></table></figure>
 <h5 id="实现前向传播"><a href="#实现前向传播" class="headerlink" title="实现前向传播"></a>实现前向传播</h5><p>下面要实现逻辑回归的前向传播。</p>
@@ -478,9 +525,7 @@
 <li>计算损失值： $J = -\frac{1}{m}\sum_{i=1}^{m}y^{(i)}\log(a^{(i)})+(1-y^{(i)})\log(1-a^{(i)})$</li>
 </ul>
 <p>下面是计算梯度的公式：</p>
-<p>$$ \frac{\partial J}{\partial w} = \frac{1}{m}X(A-Y)^T $$</p>
-<p>$$ \frac{\partial J}{\partial b} = \frac{1}{m} \sum_{i=1}^m (a^{(i)}-y^{(i)}) $$</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># propagate</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">propagate</span><span class="params">(w, b, X, Y)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    Implement the cost function and its gradient for the propagation explained above</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">    Arguments:</span></div><div class="line"><span class="string">    w -- weights, a numpy array of size (num_px * num_px * 3, 1)</span></div><div class="line"><span class="string">    b -- bias, a scalar</span></div><div class="line"><span class="string">    X -- data of size (num_px * num_px * 3, number of examples)</span></div><div class="line"><span class="string">    Y -- true "label" vector (containing 0 if non-cat, 1 if cat) of size (1, number of examples)</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">    Return:</span></div><div class="line"><span class="string">    cost -- negative log-likelihood cost for logistic regression</span></div><div class="line"><span class="string">    dw -- gradient of the loss with respect to w, thus same shape as w</span></div><div class="line"><span class="string">    db -- gradient of the loss with respect to b, thus same shape as b</span></div><div class="line"><span class="string">    </span></div><div class="line"><span class="string">    Tips:</span></div><div class="line"><span class="string">    - Write your code step by step for the propagation. np.log(), np.dot()</span></div><div class="line"><span class="string">    """</span></div><div class="line">    </div><div class="line">    m = X.shape[<span class="number">1</span>]</div><div class="line">    <span class="comment"># FORWARD PROPAGATION (FROM X TO COST)</span></div><div class="line">    A = sigmoid(np.dot(w.T,X)+b)                               <span class="comment"># compute activation</span></div><div class="line">    cost = <span class="number">-1</span>/m * np.sum(Y * np.log(A) + (<span class="number">1</span>-Y) * (np.log(<span class="number">1</span>-A)))  <span class="comment"># compute cost</span></div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="comment"># BACKWARD PROPAGATION (TO FIND GRAD)</span></div><div class="line">    dz= (<span class="number">1</span>/m)*(A - Y)</div><div class="line">    dw = np.dot(X,dz.T)</div><div class="line">    db = np.sum(dz)</div><div class="line">    </div><div class="line"></div><div class="line">    <span class="keyword">assert</span>(dw.shape == w.shape)</div><div class="line">    <span class="keyword">assert</span>(db.dtype == float)</div><div class="line">    cost = np.squeeze(cost)</div><div class="line">    <span class="keyword">assert</span>(cost.shape == ())</div><div class="line">    </div><div class="line">    grads = &#123;<span class="string">"dw"</span>: dw,</div><div class="line">             <span class="string">"db"</span>: db&#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> grads, cost</div></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">\frac{\partial J}{\partial w} = \frac{1}{m}X(A-Y)^T</script><script type="math/tex; mode=display">\frac{\partial J}{\partial b} = \frac{1}{m} \sum_{i=1}^m (a^{(i)}-y^{(i)})</script><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># propagate</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">propagate</span><span class="params">(w, b, X, Y)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    Implement the cost function and its gradient for the propagation explained above</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">    Arguments:</span></div><div class="line"><span class="string">    w -- weights, a numpy array of size (num_px * num_px * 3, 1)</span></div><div class="line"><span class="string">    b -- bias, a scalar</span></div><div class="line"><span class="string">    X -- data of size (num_px * num_px * 3, number of examples)</span></div><div class="line"><span class="string">    Y -- true "label" vector (containing 0 if non-cat, 1 if cat) of size (1, number of examples)</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">    Return:</span></div><div class="line"><span class="string">    cost -- negative log-likelihood cost for logistic regression</span></div><div class="line"><span class="string">    dw -- gradient of the loss with respect to w, thus same shape as w</span></div><div class="line"><span class="string">    db -- gradient of the loss with respect to b, thus same shape as b</span></div><div class="line"><span class="string">    </span></div><div class="line"><span class="string">    Tips:</span></div><div class="line"><span class="string">    - Write your code step by step for the propagation. np.log(), np.dot()</span></div><div class="line"><span class="string">    """</span></div><div class="line">    </div><div class="line">    m = X.shape[<span class="number">1</span>]</div><div class="line">    <span class="comment"># FORWARD PROPAGATION (FROM X TO COST)</span></div><div class="line">    A = sigmoid(np.dot(w.T,X)+b)                               <span class="comment"># compute activation</span></div><div class="line">    cost = <span class="number">-1</span>/m * np.sum(Y * np.log(A) + (<span class="number">1</span>-Y) * (np.log(<span class="number">1</span>-A)))  <span class="comment"># compute cost</span></div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="comment"># BACKWARD PROPAGATION (TO FIND GRAD)</span></div><div class="line">    dz= (<span class="number">1</span>/m)*(A - Y)</div><div class="line">    dw = np.dot(X,dz.T)</div><div class="line">    db = np.sum(dz)</div><div class="line">    </div><div class="line"></div><div class="line">    <span class="keyword">assert</span>(dw.shape == w.shape)</div><div class="line">    <span class="keyword">assert</span>(db.dtype == float)</div><div class="line">    cost = np.squeeze(cost)</div><div class="line">    <span class="keyword">assert</span>(cost.shape == ())</div><div class="line">    </div><div class="line">    grads = &#123;<span class="string">"dw"</span>: dw,</div><div class="line">             <span class="string">"db"</span>: db&#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> grads, cost</div></pre></td></tr></table></figure>
 <h5 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h5><p>上面已经实现了初始化参数和计算损失值及其梯度。<br>现在，要实现使用梯度下降法更新梯度。</p>
 <p>实现 <code>optimizate()</code> 函数。 目标是通过最小化损失函数 $J$ 来学习 $w$ 和 $b$ 。对于参数 $\theta$, 更新参数的规则是 $ \theta = \theta - \alpha \text{ } d\theta$, 其中 $\alpha$ 学习率。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># optimize</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">optimize</span><span class="params">(w, b, X, Y, num_iterations, learning_rate, print_cost = False)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    This function optimizes w and b by running a gradient descent algorithm</span></div><div class="line"><span class="string">    </span></div><div class="line"><span class="string">    Arguments:</span></div><div class="line"><span class="string">    w -- weights, a numpy array of size (num_px * num_px * 3, 1)</span></div><div class="line"><span class="string">    b -- bias, a scalar</span></div><div class="line"><span class="string">    X -- data of shape (num_px * num_px * 3, number of examples)</span></div><div class="line"><span class="string">    Y -- true "label" vector (containing 0 if non-cat, 1 if cat), of shape (1, number of examples)</span></div><div class="line"><span class="string">    num_iterations -- number of iterations of the optimization loop</span></div><div class="line"><span class="string">    learning_rate -- learning rate of the gradient descent update rule</span></div><div class="line"><span class="string">    print_cost -- True to print the loss every 100 steps</span></div><div class="line"><span class="string">    </span></div><div class="line"><span class="string">    Returns:</span></div><div class="line"><span class="string">    params -- dictionary containing the weights w and bias b</span></div><div class="line"><span class="string">    grads -- dictionary containing the gradients of the weights and bias with respect to the cost function</span></div><div class="line"><span class="string">    costs -- list of all the costs computed during the optimization, this will be used to plot the learning curve.</span></div><div class="line"><span class="string">    </span></div><div class="line"><span class="string">    Tips:</span></div><div class="line"><span class="string">    You basically need to write down two steps and iterate through them:</span></div><div class="line"><span class="string">        1) Calculate the cost and the gradient for the current parameters. Use propagate().</span></div><div class="line"><span class="string">        2) Update the parameters using gradient descent rule for w and b.</span></div><div class="line"><span class="string">    """</span></div><div class="line">    </div><div class="line">    costs = []</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_iterations):</div><div class="line">        <span class="comment"># Cost and gradient calculation </span></div><div class="line">        grads, cost = propagate(w, b, X, Y)</div><div class="line">        </div><div class="line">        <span class="comment"># Retrieve derivatives from grads</span></div><div class="line">        dw = grads[<span class="string">"dw"</span>]</div><div class="line">        db = grads[<span class="string">"db"</span>]</div><div class="line">        </div><div class="line">        <span class="comment"># update rule</span></div><div class="line">        w = w - (learning_rate*dw)</div><div class="line">        b = b - (learning_rate*db)</div><div class="line">        </div><div class="line">        <span class="comment"># Record the costs</span></div><div class="line">        <span class="keyword">if</span> i % <span class="number">100</span> == <span class="number">0</span>:</div><div class="line">            costs.append(cost)</div><div class="line">        </div><div class="line">        <span class="comment"># Print the cost every 100 training examples</span></div><div class="line">        <span class="keyword">if</span> print_cost <span class="keyword">and</span> i % <span class="number">100</span> == <span class="number">0</span>:</div><div class="line">            <span class="keyword">print</span> (<span class="string">"Cost after iteration %i: %f"</span> %(i, cost))</div><div class="line">    </div><div class="line">    params = &#123;<span class="string">"w"</span>: w,</div><div class="line">              <span class="string">"b"</span>: b&#125;</div><div class="line">    </div><div class="line">    grads = &#123;<span class="string">"dw"</span>: dw,</div><div class="line">             <span class="string">"db"</span>: db&#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> params, grads, costs</div></pre></td></tr></table></figure>

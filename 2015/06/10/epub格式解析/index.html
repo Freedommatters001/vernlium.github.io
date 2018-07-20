@@ -400,7 +400,8 @@
 <li>EPUB Open Container Format (OCF) 3.0：继承自OCF2.0.1。</li>
 <li>EPUB Media Overlays 3.0：定义文字和音频同步的格式和处理模式。</li>
 </ul>
-<h4 id="EPUB3和EPUB2比较"><a href="#EPUB3和EPUB2比较" class="headerlink" title="EPUB3和EPUB2比较"></a>EPUB3和EPUB2比较</h4><table>
+<h4 id="EPUB3和EPUB2比较"><a href="#EPUB3和EPUB2比较" class="headerlink" title="EPUB3和EPUB2比较"></a>EPUB3和EPUB2比较</h4><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>Area</th>
@@ -441,6 +442,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h2 id="文件组成"><a href="#文件组成" class="headerlink" title="文件组成"></a>文件组成</h2><p>一个未经加密处理的epub电子书由以下三部分组成：</p>
 <ol>
 <li>META-INF（文件夹，有一个文件container.xml）</li>
@@ -518,59 +520,59 @@
 </ul>
 <p>nvaPoint节点可以嵌套，就是书籍的目录是层级目录。</p>
 <p>下面是一个toc.ncx文件的实例。</p>
-<pre><code class="xml">&lt;?xml version="1.0" encoding="utf-8"?&gt;
-<span class="tag">&lt;<span class="name">ncx</span> <span class="attr">xmlns</span>=<span class="string">"http://www.daisy.org/z3986/2005/ncx/"</span> <span class="attr">version</span>=<span class="string">"2005-1"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">head</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"178_0"</span> <span class="attr">name</span>=<span class="string">"dtb:uid"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"2"</span> <span class="attr">name</span>=<span class="string">"dtb:depth"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"0"</span> <span class="attr">name</span>=<span class="string">"dtb:totalPageCount"</span>/&gt;</span>
-        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"0"</span> <span class="attr">name</span>=<span class="string">"dtb:maxPageNumber"</span>/&gt;</span>
-    <span class="tag">&lt;/<span class="name">head</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">docTitle</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">text</span>&gt;</span>1984<span class="tag">&lt;/<span class="name">text</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">docTitle</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">docAuthor</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">text</span>&gt;</span>[英] 乔治·奥威尔<span class="tag">&lt;/<span class="name">text</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">docAuthor</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">navMap</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">navPoint</span> <span class="attr">id</span>=<span class="string">"catalog"</span> <span class="attr">playOrder</span>=<span class="string">"0"</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">navLabel</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">text</span>&gt;</span>目录<span class="tag">&lt;/<span class="name">text</span>&gt;</span>
-            <span class="tag">&lt;/<span class="name">navLabel</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">content</span> <span class="attr">src</span>=<span class="string">"catalog.xhtml"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="name">navPoint</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">navPoint</span> <span class="attr">id</span>=<span class="string">"chap0"</span> <span class="attr">playOrder</span>=<span class="string">"1"</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">navLabel</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">text</span>&gt;</span>前言<span class="tag">&lt;/<span class="name">text</span>&gt;</span>
-            <span class="tag">&lt;/<span class="name">navLabel</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">content</span> <span class="attr">src</span>=<span class="string">"chap0.xhtml"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="name">navPoint</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">navPoint</span> <span class="attr">id</span>=<span class="string">"chap1"</span> <span class="attr">playOrder</span>=<span class="string">"2"</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">navLabel</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">text</span>&gt;</span>　　第一部<span class="tag">&lt;/<span class="name">text</span>&gt;</span>
-            <span class="tag">&lt;/<span class="name">navLabel</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">content</span> <span class="attr">src</span>=<span class="string">"chap1.xhtml"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="name">navPoint</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">navPoint</span> <span class="attr">id</span>=<span class="string">"chap2"</span> <span class="attr">playOrder</span>=<span class="string">"3"</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">navLabel</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">text</span>&gt;</span>　　第1节<span class="tag">&lt;/<span class="name">text</span>&gt;</span>
-            <span class="tag">&lt;/<span class="name">navLabel</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">content</span> <span class="attr">src</span>=<span class="string">"chap2.xhtml"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="name">navPoint</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">navPoint</span> <span class="attr">id</span>=<span class="string">"chap3"</span> <span class="attr">playOrder</span>=<span class="string">"4"</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">navLabel</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">text</span>&gt;</span>　　第2节<span class="tag">&lt;/<span class="name">text</span>&gt;</span>
-            <span class="tag">&lt;/<span class="name">navLabel</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">content</span> <span class="attr">src</span>=<span class="string">"chap3.xhtml"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="name">navPoint</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">navPoint</span> <span class="attr">id</span>=<span class="string">"chap4"</span> <span class="attr">playOrder</span>=<span class="string">"5"</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">navLabel</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">text</span>&gt;</span>　　第3节<span class="tag">&lt;/<span class="name">text</span>&gt;</span>
-            <span class="tag">&lt;/<span class="name">navLabel</span>&gt;</span>
-            <span class="tag">&lt;<span class="name">content</span> <span class="attr">src</span>=<span class="string">"chap4.xhtml"</span>/&gt;</span>
-        <span class="tag">&lt;/<span class="name">navPoint</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">navMap</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">ncx</span>&gt;</span>
+<pre><code class="lang-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;ncx xmlns=&quot;http://www.daisy.org/z3986/2005/ncx/&quot; version=&quot;2005-1&quot;&gt;
+    &lt;head&gt;
+        &lt;meta content=&quot;178_0&quot; name=&quot;dtb:uid&quot;/&gt;
+        &lt;meta content=&quot;2&quot; name=&quot;dtb:depth&quot;/&gt;
+        &lt;meta content=&quot;0&quot; name=&quot;dtb:totalPageCount&quot;/&gt;
+        &lt;meta content=&quot;0&quot; name=&quot;dtb:maxPageNumber&quot;/&gt;
+    &lt;/head&gt;
+    &lt;docTitle&gt;
+        &lt;text&gt;1984&lt;/text&gt;
+    &lt;/docTitle&gt;
+    &lt;docAuthor&gt;
+        &lt;text&gt;[英] 乔治·奥威尔&lt;/text&gt;
+    &lt;/docAuthor&gt;
+    &lt;navMap&gt;
+        &lt;navPoint id=&quot;catalog&quot; playOrder=&quot;0&quot;&gt;
+            &lt;navLabel&gt;
+                &lt;text&gt;目录&lt;/text&gt;
+            &lt;/navLabel&gt;
+            &lt;content src=&quot;catalog.xhtml&quot;/&gt;
+        &lt;/navPoint&gt;
+        &lt;navPoint id=&quot;chap0&quot; playOrder=&quot;1&quot;&gt;
+            &lt;navLabel&gt;
+                &lt;text&gt;前言&lt;/text&gt;
+            &lt;/navLabel&gt;
+            &lt;content src=&quot;chap0.xhtml&quot;/&gt;
+        &lt;/navPoint&gt;
+        &lt;navPoint id=&quot;chap1&quot; playOrder=&quot;2&quot;&gt;
+            &lt;navLabel&gt;
+                &lt;text&gt;　　第一部&lt;/text&gt;
+            &lt;/navLabel&gt;
+            &lt;content src=&quot;chap1.xhtml&quot;/&gt;
+        &lt;/navPoint&gt;
+        &lt;navPoint id=&quot;chap2&quot; playOrder=&quot;3&quot;&gt;
+            &lt;navLabel&gt;
+                &lt;text&gt;　　第1节&lt;/text&gt;
+            &lt;/navLabel&gt;
+            &lt;content src=&quot;chap2.xhtml&quot;/&gt;
+        &lt;/navPoint&gt;
+        &lt;navPoint id=&quot;chap3&quot; playOrder=&quot;4&quot;&gt;
+            &lt;navLabel&gt;
+                &lt;text&gt;　　第2节&lt;/text&gt;
+            &lt;/navLabel&gt;
+            &lt;content src=&quot;chap3.xhtml&quot;/&gt;
+        &lt;/navPoint&gt;
+        &lt;navPoint id=&quot;chap4&quot; playOrder=&quot;5&quot;&gt;
+            &lt;navLabel&gt;
+                &lt;text&gt;　　第3节&lt;/text&gt;
+            &lt;/navLabel&gt;
+            &lt;content src=&quot;chap4.xhtml&quot;/&gt;
+        &lt;/navPoint&gt;
+    &lt;/navMap&gt;
+&lt;/ncx&gt;
 </code></pre>
 <p>看到这里，可能会有有人觉得.opf文件与.ncx文件有一点重复：.opf文件的item节点中的href属性描述了各个章节文件的位置与顺序，.ncx文件中的conten节点中的src属性也描述了各个章节文件的位置与顺序。其实他们还是有区别的，区别就在于，.opf文件定义的是读者在顺序阅读时会用到的章节文件与它们的顺序，.ncx文件则定义的是目录中会用到的章节文件与它们的顺序。如果存在某些附件性质的内容被希望在目录中出现，但却不希望在读者顺序阅读的时候出现时，那么就可以通过对.opf文件和.ncx文件进行不同的设置来达到这个目的。当然，大部分的时候，.opf与.ncx这两个文件的内容基本是重合的。</p>
 

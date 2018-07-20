@@ -438,9 +438,9 @@
 <p>docker0网桥和宿主机的eth0网卡连接，所有数据最终还是从真实网卡转发出去。</p>
 <p>Docker提供了如下参数可以帮助用户自定义docker0的设置。</p>
 <ul>
-<li>–bip-CIDR：设置docker0的IP地址和子网范围，使用CIDR格式，如192.168.100.1/24。注意这个参数仅仅是配置docker0的，对其他自定义的网桥无效。并且在指定这个参数的时候，宿主机是不存在docker0的或者docker0已存在且docker0的IP和参数指定的IP一致才行。（下一篇博客中安装flannel要用到这个参数）</li>
-<li>–fixed-cidr=CIDR：限制Docker容器获取IP的范围。Docker容器默认获取的IP范围为Docker网桥（docker0网桥或者–bridge指定的网桥）的整个子网范围，此参数可将其缩小到某个子网范围内，所以这个参数必须在Docker网桥的子网范围内。如docker0的IP为172.17.0.1/16，可将–fixedid了设为172.17.1.1/24，那么Docker容器的IP范围将为172.17.1.1~172.17.1.254。</li>
-<li>–mtu=BYTES：指定docker0的最大传输单元（MTU）。</li>
+<li>—bip-CIDR：设置docker0的IP地址和子网范围，使用CIDR格式，如192.168.100.1/24。注意这个参数仅仅是配置docker0的，对其他自定义的网桥无效。并且在指定这个参数的时候，宿主机是不存在docker0的或者docker0已存在且docker0的IP和参数指定的IP一致才行。（下一篇博客中安装flannel要用到这个参数）</li>
+<li>—fixed-cidr=CIDR：限制Docker容器获取IP的范围。Docker容器默认获取的IP范围为Docker网桥（docker0网桥或者—bridge指定的网桥）的整个子网范围，此参数可将其缩小到某个子网范围内，所以这个参数必须在Docker网桥的子网范围内。如docker0的IP为172.17.0.1/16，可将—fixedid了设为172.17.1.1/24，那么Docker容器的IP范围将为172.17.1.1~172.17.1.254。</li>
+<li>—mtu=BYTES：指定docker0的最大传输单元（MTU）。</li>
 </ul>
 <h4 id="iptables规则"><a href="#iptables规则" class="headerlink" title="iptables规则"></a>iptables规则</h4><p>Docker安装完成后，将默认在宿主机系统上增加一些iptables规则，以用于Docker容器和容器之间以及和外界的通信，可以使用iptables-save命令查看其中nat表上的POSTROUTING链有这么一条规则：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">-A POSTROUTING -s 172.17.0.0/16 ! -o docker0 -j MASQUERADE</div></pre></td></tr></table></figure>

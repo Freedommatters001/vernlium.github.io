@@ -470,19 +470,19 @@
 <p>kubectl常用命令如下：</p>
 <ul>
 <li>获取节点信息<ul>
-<li>kubectl get nodes –show-lables</li>
+<li>kubectl get nodes —show-lables</li>
 <li>这个命令获取到的节点只有节点的hostname，没有ip，如果需要ip可以使用如下命令：</li>
 <li>kubectl get nodes -o=custom-columns=NAME:.metadata.name,IP=.metadata.Addresses[0],LABELS=.metadata.Labels</li>
 </ul>
 </li>
 <li>获取service列表<ul>
-<li>kubectl get services –namespace=xxxx</li>
+<li>kubectl get services —namespace=xxxx</li>
 <li>namespace需要指定，否则在default namespace下查找</li>
-<li>不知道namespace可以使用–all-namespaces</li>
+<li>不知道namespace可以使用—all-namespaces</li>
 </ul>
 </li>
 <li>获取pod列表<ul>
-<li>kubectl get pod –namespace=xxxx</li>
+<li>kubectl get pod —namespace=xxxx</li>
 <li>namespace需要指定，否则在default namespace下查找</li>
 </ul>
 </li>
@@ -492,7 +492,7 @@
 </ul>
 </li>
 <li>获取资源详细信息（node、service、pod、deployment、endpoint等）<ul>
-<li>kubectl describe pod xxx –namespace=xxx</li>
+<li>kubectl describe pod xxx —namespace=xxx</li>
 <li>这里以pod为例，其他类似，node不需要指定namespace</li>
 </ul>
 </li>
@@ -501,11 +501,11 @@
 </ul>
 </li>
 <li>修改资源label<ul>
-<li>kubectl label node –voer-wirte xxxx=aaaa</li>
+<li>kubectl label node —voer-wirte xxxx=aaaa</li>
 </ul>
 </li>
 </ul>
-<p>kubectl的使用可以参考kubectl帮助文档，使用kubectl help查看，每个子命令都可以使用kubectl xxx –help查看帮助，有很详细的解释和示例。</p>
+<p>kubectl的使用可以参考kubectl帮助文档，使用kubectl help查看，每个子命令都可以使用kubectl xxx —help查看帮助，有很详细的解释和示例。</p>
 <h4 id="k8s-api"><a href="#k8s-api" class="headerlink" title="k8s api"></a>k8s api</h4><p>k8s集群搭建完成后，在浏览器或者其他restapi工具如postman，输入<a href="http://master_ip:8080/api/v1，可以看到如下信息：" target="_blank" rel="external">http://master_ip:8080/api/v1，可以看到如下信息：</a></p>
 <p>这里给出了v1版本有哪些接口可以使用，加到url后面就可以使用了，读者自己可以进行尝试。</p>
 <p>详细的k8s api介绍，可以参考：<a href="https://kubernetes.io/docs/api-reference/v1.7/" target="_blank" rel="external">https://kubernetes.io/docs/api-reference/v1.7/</a></p>

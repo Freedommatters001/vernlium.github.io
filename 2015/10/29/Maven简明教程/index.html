@@ -609,6 +609,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 </ul>
 <p>Maven 的 clean 目标（clean:clean）绑定到了 clean 生命周期的 clean 阶段。它的 clean:clean 目标通过删除构建目录删除了构建输出。所以当 mvn clean 命令执行时，Maven 删除了构建目录。</p>
 <h4 id="6-1-2-Default-or-Build-生命周期"><a href="#6-1-2-Default-or-Build-生命周期" class="headerlink" title="6.1.2 Default (or Build) 生命周期"></a>6.1.2 Default (or Build) 生命周期</h4><p>这是 Maven 的主要生命周期，被用于构建应用。包括下面的 23 个阶段。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -703,6 +704,7 @@ Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
 </tr>
 </tbody>
 </table>
+</div>
 <p>有一些与Maven生命周期相关的重要概念需要说明：</p>
 <p>当一个阶段通过 Maven 命令调用时，例如 mvn compile，只有该阶段之前以及包括该阶段在内的所有阶段会被执行。</p>
 <p>不同的 maven 目标将根据打包的类型（JAR / WAR / EAR），被绑定到不同的 Maven 生命周期阶段。</p>

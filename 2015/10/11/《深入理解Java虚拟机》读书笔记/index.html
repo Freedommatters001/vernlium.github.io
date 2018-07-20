@@ -613,7 +613,28 @@ public class SimpleJVMArg {
 <p>设置虚拟机执行参数如下：</p>
 <pre><code>-verbose:gc -Xms200M -Xmx200M -Xmn100M -XX:+PrintGCDetails -XX:SurvivorRatio=8 -XX:+PrintTenuringDistribution
 </code></pre><p>其中，<strong>-Xms200M -Xmx200M</strong>设置Java堆大小为200M，不可扩展，<br>    <strong>-Xmn100M</strong>设置其中100M分配给新生代，则剩下的100M分配给老年代。<br>    <strong>-XX:SurvivorRatio=8</strong>设置了新生代中eden与survivor的空间比例是1：8。</p>
-<table><br>   <tr><br>      <td>GC 命令行选项 </td><br>      <td>描述</td><br>   </tr><br>   <tr><br>      <td>-Xms</td><br>      <td>设置Java堆大小的初始值/最小值。例如：-Xms512m (请注意这里没有”=”).</td><br>   </tr><br>   <tr><br>      <td>-Xmx</td><br>      <td>设置Java堆大小的最大值</td><br>   </tr><br>   <tr><br>      <td>-Xmn</td><br>      <td>设置新生代对空间的初始值，最小值和最大值。请注意，年老代堆空间大小是依赖于新生代堆空间大小的</td><br>   </tr><br>   <tr><br>      <td>-XX:PermSize=<n>[g|m|k]</n></td><br>      <td>设置持久代堆空间的初始值和最小值</td><br>   </tr><br></table>
+<table>
+   <tr>
+      <td>GC 命令行选项 </td>
+      <td>描述</td>
+   </tr>
+   <tr>
+      <td>-Xms</td>
+      <td>设置Java堆大小的初始值/最小值。例如：-Xms512m (请注意这里没有”=”).</td>
+   </tr>
+   <tr>
+      <td>-Xmx</td>
+      <td>设置Java堆大小的最大值</td>
+   </tr>
+   <tr>
+      <td>-Xmn</td>
+      <td>设置新生代对空间的初始值，最小值和最大值。请注意，年老代堆空间大小是依赖于新生代堆空间大小的</td>
+   </tr>
+   <tr>
+      <td>-XX:PermSize=<n>[g|m|k]</n></td>
+      <td>设置持久代堆空间的初始值和最小值</td>
+   </tr>
+</table>
 
 <p>执行结果如下：</p>
 <pre><code>[GC (Allocation Failure) [DefNew
