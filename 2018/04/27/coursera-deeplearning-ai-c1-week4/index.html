@@ -98,18 +98,21 @@
 
 
 
-<meta name="description" content="Regularization(正则化) Dropout regularizetion(随机失活正则法（丢弃法）) dropout的实现： Inverted dropout:反向随机失活， 123456789layer l = 3keep-prob = 0.8  # 保留网络中某一节点的概率值，0.8意味着layer中的节点有20%的概率被丢弃d3 = np.random.rand(a3.shape">
+<meta name="description" content="课程笔记Deep L-layer neural network  神经网络中的一些符号：  $L$: 网络中层的个数 $n^{[l]}$: 网络中第$l$层单元的数量 上图中：$n^{[1]}=5$，$n^{[2]}=5$，$n^{[3]}=3$，$n^{[4]}=1$   $a^{[l]}$: 网络中第$l$层的激活函数 输入层为$a^{[0]}$   $W^{[l]}$: $z^l$的权重 $">
 <meta name="keywords" content="deeplearning.ai">
 <meta property="og:type" content="article">
 <meta property="og:title" content="coursera_deeplearning.ai_c1_week4">
 <meta property="og:url" content="://vernlium.github.io/2018/04/27/coursera-deeplearning-ai-c1-week4/index.html">
 <meta property="og:site_name" content="Vernlium">
-<meta property="og:description" content="Regularization(正则化) Dropout regularizetion(随机失活正则法（丢弃法）) dropout的实现： Inverted dropout:反向随机失活， 123456789layer l = 3keep-prob = 0.8  # 保留网络中某一节点的概率值，0.8意味着layer中的节点有20%的概率被丢弃d3 = np.random.rand(a3.shape">
+<meta property="og:description" content="课程笔记Deep L-layer neural network  神经网络中的一些符号：  $L$: 网络中层的个数 $n^{[l]}$: 网络中第$l$层单元的数量 上图中：$n^{[1]}=5$，$n^{[2]}=5$，$n^{[3]}=3$，$n^{[4]}=1$   $a^{[l]}$: 网络中第$l$层的激活函数 输入层为$a^{[0]}$   $W^{[l]}$: $z^l$的权重 $">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-04T23:42:59.176Z">
+<meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/deep_neural_network.jpg">
+<meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/deep_neural_network_notation.jpg">
+<meta property="og:updated_time" content="2018-07-24T23:11:57.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coursera_deeplearning.ai_c1_week4">
-<meta name="twitter:description" content="Regularization(正则化) Dropout regularizetion(随机失活正则法（丢弃法）) dropout的实现： Inverted dropout:反向随机失活， 123456789layer l = 3keep-prob = 0.8  # 保留网络中某一节点的概率值，0.8意味着layer中的节点有20%的概率被丢弃d3 = np.random.rand(a3.shape">
+<meta name="twitter:description" content="课程笔记Deep L-layer neural network  神经网络中的一些符号：  $L$: 网络中层的个数 $n^{[l]}$: 网络中第$l$层单元的数量 上图中：$n^{[1]}=5$，$n^{[2]}=5$，$n^{[3]}=3$，$n^{[4]}=1$   $a^{[l]}$: 网络中第$l$层的激活函数 输入层为$a^{[0]}$   $W^{[l]}$: $z^l$的权重 $">
+<meta name="twitter:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/deep_neural_network.jpg">
 
 
 
@@ -356,7 +359,23 @@
       
 
       
-        <p>Regularization(正则化)</p>
+        <h2 id="课程笔记"><a href="#课程笔记" class="headerlink" title="课程笔记"></a>课程笔记</h2><h3 id="Deep-L-layer-neural-network"><a href="#Deep-L-layer-neural-network" class="headerlink" title="Deep L-layer neural network"></a>Deep L-layer neural network</h3><img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/deep_neural_network.jpg" alt="just the right amount" title="just the right amount">
+<img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/deep_neural_network_notation.jpg" alt="just the right amount" title="just the right amount">
+<p>神经网络中的一些符号：</p>
+<ul>
+<li>$L$: 网络中层的个数</li>
+<li>$n^{[l]}$: 网络中第$l$层单元的数量<ul>
+<li>上图中：$n^{[1]}=5$，$n^{[2]}=5$，$n^{[3]}=3$，$n^{[4]}=1$</li>
+</ul>
+</li>
+<li>$a^{[l]}$: 网络中第$l$层的激活函数<ul>
+<li>输入层为$a^{[0]}$</li>
+</ul>
+</li>
+<li>$W^{[l]}$: $z^l$的权重</li>
+<li>$b^{[l]}$: $z^l$的偏置</li>
+</ul>
+<h3 id="Forward-Propagation-in-a-Deep-Network"><a href="#Forward-Propagation-in-a-Deep-Network" class="headerlink" title="Forward Propagation in a Deep Network"></a>Forward Propagation in a Deep Network</h3><h3 id="Getting-your-matrix-dimensions-right"><a href="#Getting-your-matrix-dimensions-right" class="headerlink" title="Getting your matrix dimensions right"></a>Getting your matrix dimensions right</h3><h3 id="Why-deep-representations"><a href="#Why-deep-representations" class="headerlink" title="Why deep representations?"></a>Why deep representations?</h3><h3 id="Building-blocks-of-deep-neural-networks"><a href="#Building-blocks-of-deep-neural-networks" class="headerlink" title="Building blocks of deep neural networks"></a>Building blocks of deep neural networks</h3><h3 id="Forward-and-Backward-Propagation"><a href="#Forward-and-Backward-Propagation" class="headerlink" title="Forward and Backward Propagation"></a>Forward and Backward Propagation</h3><h3 id="Parameters-vs-Hyperparameters"><a href="#Parameters-vs-Hyperparameters" class="headerlink" title="Parameters vs Hyperparameters"></a>Parameters vs Hyperparameters</h3><h3 id="What-does-this-have-to-do-with-the-brain"><a href="#What-does-this-have-to-do-with-the-brain" class="headerlink" title="What does this have to do with the brain?"></a>What does this have to do with the brain?</h3><p>Regularization(正则化)</p>
 <p>Dropout regularizetion(随机失活正则法（丢弃法）)</p>
 <p>dropout的实现：</p>
 <p>Inverted dropout:反向随机失活，</p>
@@ -369,7 +388,7 @@
 <p>normalizing归一化</p>
 <ol>
 <li>均值归零：<script type="math/tex; mode=display">\mu = \frac{1}{m} \sum_{i=1}^m x^{(i)} \,\,\,\,\,\,\,\,\,  x= x - \mu</script></li>
-<li>方差归一化： <script type="math/tex; mode=display">\sigma ^ {2} = \frac{1}{m} \sum_{i=1}^m (x^{(i)})^2  \,\,\,\,  x=   \frac{x}{\sigma ^ {2}}</script></li>
+<li>方差归一化： <script type="math/tex; mode=display">\sigma ^ {2} = \frac{1}{m} \sum_{i=1}^m (x^{(i)})^2  \,\,\,\,  x=   \frac{x}{\sigma ^2}</script></li>
 </ol>
 <p>Mini-batch gradient descent 小批量梯度下降法</p>
 <p>如果训练集非常大，比如m = 5,000,000 ，则训练会非常慢。</p>
@@ -389,7 +408,7 @@
 <li>1.Shuffle：洗牌：把原输入随机打乱，当然要保持X和Y对应一致</li>
 <li>2.Partition: 分区：按batch_size分区，前面t-1个分区的大小都是batch_size,最后一个可能不足batch_size</li>
 </ul>
-
+<h2 id="编程练习"><a href="#编程练习" class="headerlink" title="编程练习"></a>编程练习</h2>
       
     </div>
     
@@ -485,8 +504,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/wukong.png"
@@ -501,7 +529,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-count">53</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -572,6 +600,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#课程笔记"><span class="nav-number">1.</span> <span class="nav-text">课程笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Deep-L-layer-neural-network"><span class="nav-number">1.1.</span> <span class="nav-text">Deep L-layer neural network</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Forward-Propagation-in-a-Deep-Network"><span class="nav-number">1.2.</span> <span class="nav-text">Forward Propagation in a Deep Network</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Getting-your-matrix-dimensions-right"><span class="nav-number">1.3.</span> <span class="nav-text">Getting your matrix dimensions right</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-deep-representations"><span class="nav-number">1.4.</span> <span class="nav-text">Why deep representations?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Building-blocks-of-deep-neural-networks"><span class="nav-number">1.5.</span> <span class="nav-text">Building blocks of deep neural networks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Forward-and-Backward-Propagation"><span class="nav-number">1.6.</span> <span class="nav-text">Forward and Backward Propagation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameters-vs-Hyperparameters"><span class="nav-number">1.7.</span> <span class="nav-text">Parameters vs Hyperparameters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#What-does-this-have-to-do-with-the-brain"><span class="nav-number">1.8.</span> <span class="nav-text">What does this have to do with the brain?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编程练习"><span class="nav-number">2.</span> <span class="nav-text">编程练习</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
