@@ -108,7 +108,8 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/deep_neural_network.jpg">
 <meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/deep_neural_network_notation.jpg">
-<meta property="og:updated_time" content="2018-07-24T23:11:57.225Z">
+<meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/forward_propagation_in_deep_network.jpg">
+<meta property="og:updated_time" content="2018-07-24T23:54:32.336Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coursera_deeplearning.ai_c1_week4">
 <meta name="twitter:description" content="课程笔记Deep L-layer neural network  神经网络中的一些符号：  $L$: 网络中层的个数 $n^{[l]}$: 网络中第$l$层单元的数量 上图中：$n^{[1]}=5$，$n^{[2]}=5$，$n^{[3]}=3$，$n^{[4]}=1$   $a^{[l]}$: 网络中第$l$层的激活函数 输入层为$a^{[0]}$   $W^{[l]}$: $z^l$的权重 $">
@@ -375,40 +376,8 @@
 <li>$W^{[l]}$: $z^l$的权重</li>
 <li>$b^{[l]}$: $z^l$的偏置</li>
 </ul>
-<h3 id="Forward-Propagation-in-a-Deep-Network"><a href="#Forward-Propagation-in-a-Deep-Network" class="headerlink" title="Forward Propagation in a Deep Network"></a>Forward Propagation in a Deep Network</h3><h3 id="Getting-your-matrix-dimensions-right"><a href="#Getting-your-matrix-dimensions-right" class="headerlink" title="Getting your matrix dimensions right"></a>Getting your matrix dimensions right</h3><h3 id="Why-deep-representations"><a href="#Why-deep-representations" class="headerlink" title="Why deep representations?"></a>Why deep representations?</h3><h3 id="Building-blocks-of-deep-neural-networks"><a href="#Building-blocks-of-deep-neural-networks" class="headerlink" title="Building blocks of deep neural networks"></a>Building blocks of deep neural networks</h3><h3 id="Forward-and-Backward-Propagation"><a href="#Forward-and-Backward-Propagation" class="headerlink" title="Forward and Backward Propagation"></a>Forward and Backward Propagation</h3><h3 id="Parameters-vs-Hyperparameters"><a href="#Parameters-vs-Hyperparameters" class="headerlink" title="Parameters vs Hyperparameters"></a>Parameters vs Hyperparameters</h3><h3 id="What-does-this-have-to-do-with-the-brain"><a href="#What-does-this-have-to-do-with-the-brain" class="headerlink" title="What does this have to do with the brain?"></a>What does this have to do with the brain?</h3><p>Regularization(正则化)</p>
-<p>Dropout regularizetion(随机失活正则法（丢弃法）)</p>
-<p>dropout的实现：</p>
-<p>Inverted dropout:反向随机失活，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">layer l = 3</div><div class="line"></div><div class="line">keep-prob = 0.8  # 保留网络中某一节点的概率值，0.8意味着layer中的节点有20%的概率被丢弃</div><div class="line"></div><div class="line">d3 = np.random.rand(a3.shape[0],a3.shape[1] ) &lt; keep-prob) ? 1 : 0</div><div class="line"></div><div class="line">a3 = np.multiply(a3,d3)  # 把某些元素置为0，表示此节点被隐藏</div><div class="line"></div><div class="line">a3 /= keep-prob</div></pre></td></tr></table></figure>
-<p>最后一步的作用是”保证下一层 $Z^{[4]} = W^{[4]}  a^{[3]} + b^{[4]}$ 的期望值不会降低。</p>
-<p><strong>如果觉得某一层比其他层更容易发生过拟合，给这一层设置更低的保留率（keep-prop）</strong></p>
-<p>测试阶段：No dropout</p>
-<p>为什么dropout有效： <strong>Can’t rely on any one feature,so have to spread out weights.</strong></p>
-<p>shrink weights 压缩权重的平方范数。</p>
-<p>normalizing归一化</p>
-<ol>
-<li>均值归零：<script type="math/tex; mode=display">\mu = \frac{1}{m} \sum_{i=1}^m x^{(i)} \,\,\,\,\,\,\,\,\,  x= x - \mu</script></li>
-<li>方差归一化： <script type="math/tex; mode=display">\sigma ^ {2} = \frac{1}{m} \sum_{i=1}^m (x^{(i)})^2  \,\,\,\,  x=   \frac{x}{\sigma ^2}</script></li>
-</ol>
-<p>Mini-batch gradient descent 小批量梯度下降法</p>
-<p>如果训练集非常大，比如m = 5,000,000 ，则训练会非常慢。</p>
-<p>mini_batch</p>
-<p>batch_size = 1 : 随机梯度下降（SDG，stochasit gradient descent）<br>batch_size = m : Batch gradient descent</p>
-<p>如何选Batch_size:</p>
-<ul>
-<li>1.训练集小( &lt;= 2000)： Batch gradient descent</li>
-<li>2.typical batch_size: 64-512之间的2^n</li>
-</ul>
-<p>Batch Gradient Descent:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">X = daty_input</div><div class="line">Y = labels</div><div class="line"></div><div class="line">parameters = initialize_parameters(layers,dims)</div><div class="line"></div><div class="line">for i in range(0,num_iterations):</div><div class="line">    a,caches = forword_propagation(X, parameters)</div><div class="line">    cost = compute_cost(a,Y)</div><div class="line">    grads = backword_propagation(a,caches,parameters)</div><div class="line">    parameters = update_parameters(parameters,grads)</div></pre></td></tr></table></figure>
-<p>Stochastic Gradient Descent:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">X = daty_input</div><div class="line">Y = labels</div><div class="line"></div><div class="line">parameters = initialize_parameters(layers,dims)</div><div class="line"></div><div class="line">for i in range(0,num_iterations):</div><div class="line">    for j in range(0,m):</div><div class="line">        a,caches = forword_propagation(X[:,j], parameters)</div><div class="line">        cost = compute_cost(a,Y[:,Y])</div><div class="line">        grads = backword_propagation(a,caches,parameters)</div><div class="line">        parameters = update_parameters(parameters,grads)</div></pre></td></tr></table></figure>
-<p>Mini Batch Gradient descent 准备数据的两个步骤;</p>
-<ul>
-<li>1.Shuffle：洗牌：把原输入随机打乱，当然要保持X和Y对应一致</li>
-<li>2.Partition: 分区：按batch_size分区，前面t-1个分区的大小都是batch_size,最后一个可能不足batch_size</li>
-</ul>
-<h2 id="编程练习"><a href="#编程练习" class="headerlink" title="编程练习"></a>编程练习</h2>
+<h3 id="Forward-Propagation-in-a-Deep-Network"><a href="#Forward-Propagation-in-a-Deep-Network" class="headerlink" title="Forward Propagation in a Deep Network"></a>Forward Propagation in a Deep Network</h3><img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/forward_propagation_in_deep_network.jpg" alt="just the right amount" title="just the right amount">
+<h3 id="Getting-your-matrix-dimensions-right"><a href="#Getting-your-matrix-dimensions-right" class="headerlink" title="Getting your matrix dimensions right"></a>Getting your matrix dimensions right</h3><h3 id="Why-deep-representations"><a href="#Why-deep-representations" class="headerlink" title="Why deep representations?"></a>Why deep representations?</h3><h3 id="Building-blocks-of-deep-neural-networks"><a href="#Building-blocks-of-deep-neural-networks" class="headerlink" title="Building blocks of deep neural networks"></a>Building blocks of deep neural networks</h3><h3 id="Forward-and-Backward-Propagation"><a href="#Forward-and-Backward-Propagation" class="headerlink" title="Forward and Backward Propagation"></a>Forward and Backward Propagation</h3><h3 id="Parameters-vs-Hyperparameters"><a href="#Parameters-vs-Hyperparameters" class="headerlink" title="Parameters vs Hyperparameters"></a>Parameters vs Hyperparameters</h3><h3 id="What-does-this-have-to-do-with-the-brain"><a href="#What-does-this-have-to-do-with-the-brain" class="headerlink" title="What does this have to do with the brain?"></a>What does this have to do with the brain?</h3><h2 id="编程练习"><a href="#编程练习" class="headerlink" title="编程练习"></a>编程练习</h2>
       
     </div>
     
