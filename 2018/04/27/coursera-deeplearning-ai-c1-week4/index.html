@@ -117,18 +117,18 @@
 <meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/forward_propagation_for_layer_l.jpg">
 <meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/backward_propagation_for_layer_l.jpg">
 <meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/hyperparameters.jpg">
-<meta property="og:image" content="://vernlium.github.io/2018/04/27/coursera-deeplearning-ai-c1-week4/images/final%20outline.png">
-<meta property="og:image" content="://vernlium.github.io/2018/04/27/coursera-deeplearning-ai-c1-week4/images/model_architecture_kiank.png">
-<meta property="og:image" content="://vernlium.github.io/2018/04/27/coursera-deeplearning-ai-c1-week4/images/backprop_kiank.png">
-<meta property="og:image" content="://vernlium.github.io/2018/04/27/coursera-deeplearning-ai-c1-week4/images/linearback_kiank.png">
-<meta property="og:image" content="://vernlium.github.io/2018/04/27/coursera-deeplearning-ai-c1-week4/images/mn_backward.png">
+<meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/final_outline.png">
+<meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/model_architecture_kiank.png">
+<meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/backprop_kiank.png">
+<meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/linearback_kiank.png">
+<meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/mn_backward.png">
 <meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/cat_50.png">
-<meta property="og:image" content="://vernlium.github.io/2018/04/27/coursera-deeplearning-ai-c1-week4/images/imvectorkiank.png">
-<meta property="og:image" content="://vernlium.github.io/2018/04/27/coursera-deeplearning-ai-c1-week4/images/2layerNN_kiank.png">
-<meta property="og:image" content="://vernlium.github.io/2018/04/27/coursera-deeplearning-ai-c1-week4/images/LlayerNN_kiank.png">
+<meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/imvectorkiank.png">
+<meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/2layerNN_kiank.png">
+<meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/LlayerNN_kiank.png">
 <meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/two_layer_model_out.png">
 <meta property="og:image" content="/2018/04/27/coursera-deeplearning-ai-c1-week4/l_layer_model_out.png">
-<meta property="og:updated_time" content="2018-08-01T14:47:30.430Z">
+<meta property="og:updated_time" content="2018-08-01T23:50:20.098Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coursera_deeplearning.ai_c1_week4">
 <meta name="twitter:description" content="课程笔记Deep L-layer neural network  神经网络中的一些符号：  $L$: 网络中层的个数 $n^{[l]}$: 网络中第$l$层单元的数量 上图中：$n^{[1]}=5$，$n^{[2]}=5$，$n^{[3]}=3$，$n^{[4]}=1$   $a^{[l]}$: 网络中第$l$层的激活函数 输入层为$a^{[0]}$   $W^{[l]}$: $z^l$的权重 $">
@@ -379,8 +379,8 @@
       
 
       
-        <h2 id="课程笔记"><a href="#课程笔记" class="headerlink" title="课程笔记"></a>课程笔记</h2><h3 id="Deep-L-layer-neural-network"><a href="#Deep-L-layer-neural-network" class="headerlink" title="Deep L-layer neural network"></a>Deep L-layer neural network</h3><img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/deep_neural_network.jpg" alt="just the right amount" title="just the right amount">
-<img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/deep_neural_network_notation.jpg" alt="just the right amount" title="just the right amount">
+        <h2 id="课程笔记"><a href="#课程笔记" class="headerlink" title="课程笔记"></a>课程笔记</h2><h3 id="Deep-L-layer-neural-network"><a href="#Deep-L-layer-neural-network" class="headerlink" title="Deep L-layer neural network"></a>Deep L-layer neural network</h3><img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/deep_neural_network.jpg" alt="deep neural network" title="deep neural network">
+<img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/deep_neural_network_notation.jpg" alt="deep neural network notation" title="deep neural network notation">
 <p>神经网络中的一些符号：</p>
 <ul>
 <li>$L$: 网络中层的个数</li>
@@ -395,11 +395,11 @@
 <li>$W^{[l]}$: $z^l$的权重</li>
 <li>$b^{[l]}$: $z^l$的偏置</li>
 </ul>
-<h3 id="Forward-Propagation-in-a-Deep-Network"><a href="#Forward-Propagation-in-a-Deep-Network" class="headerlink" title="Forward Propagation in a Deep Network"></a>Forward Propagation in a Deep Network</h3><img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/forward_propagation_in_deep_network.jpg" alt="just the right amount" title="just the right amount">
+<h3 id="Forward-Propagation-in-a-Deep-Network"><a href="#Forward-Propagation-in-a-Deep-Network" class="headerlink" title="Forward Propagation in a Deep Network"></a>Forward Propagation in a Deep Network</h3><img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/forward_propagation_in_deep_network.jpg" alt="forward_propagation_in_deep_network" title="forward_propagation_in_deep_network">
 <h3 id="Getting-your-matrix-dimensions-right"><a href="#Getting-your-matrix-dimensions-right" class="headerlink" title="Getting your matrix dimensions right"></a>Getting your matrix dimensions right</h3><p>如何计算深度学习中各层参数的维度？</p>
-<img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/parameters_w_and_b.jpg" alt="just the right amount" title="just the right amount">
+<img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/parameters_w_and_b.jpg" alt="parameters_w_and_b" title="parameters_w_and_b">
 <p>对于单个输入：</p>
-<script type="math/tex; mode=display">W^{[l]}: (n^{[l]},n^{[l-1]})</script><script type="math/tex; mode=display">b^{[l]}: (n^{[l]},1)</script><script type="math/tex; mode=display">dW^{[l]}: (n^{[l]},n^{[l-1]})</script><script type="math/tex; mode=display">db^{[l]}: (n^{[l]},1)</script><img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/vectorized_parameters_w_and_b.jpg" alt="just the right amount" title="just the right amount">
+<script type="math/tex; mode=display">W^{[l]}: (n^{[l]},n^{[l-1]})</script><script type="math/tex; mode=display">b^{[l]}: (n^{[l]},1)</script><script type="math/tex; mode=display">dW^{[l]}: (n^{[l]},n^{[l-1]})</script><script type="math/tex; mode=display">db^{[l]}: (n^{[l]},1)</script><img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/vectorized_parameters_w_and_b.jpg" alt="vectorized_parameters_w_and_b" title="vectorized_parameters_w_and_b">
 <p>对于$m$个输入：</p>
 <p>$ W^{[l]}, dW^{[l]}, b^{[l]}, db^{[l]} $ 的维度和上面是一样的。</p>
 <p>$ Z^{[l]},A^{[l]}: (n^{[l]},m) $</p>
@@ -409,10 +409,10 @@
 <p>如果我们搭建一个系统用于“面部识别 ”或者“面部检测”，输入一张面部图片，那么神经网络的第一层 可以被认为是一个<strong>特征检测器</strong>或<strong>边缘检测器</strong>。在这个例子中，具有 20个隐藏神经元的神经网络，且这20个隐藏神经元通过这些小方块可视化。这个微型可视化图，表示一个隐藏神经元正在试图找出在DMH (Depth-MHI-HOG)中该方向的边缘位置。 形式上，神经网络的第一层就好比，看一张图片，并尝试找出这张图片的边缘。找出这张图片的边缘，通过将像素分组来形成边缘的方法。然后，可以取消检测边缘，并将边缘组合在一起，以形成面部的一部分。例如，可能有一个低神经元试图看看它是否发现了一个眼睛，或者一个不同的神经元试图找到鼻子的一部分。通过把大量的边缘放置在一起 ，可以开始检测面部的不同部位。最后，通过将面部的不同部位，如眼睛、鼻子、耳朵或下巴组合在一起，可以尝试识别或检测不同类型的面部。</p>
 <p>直观地，可以将神经网络的浅层，看作是简单的检测函数，如 (检测) 边缘，然后，在神经网络的后一层，将它们组合在一起，以便它可以学习，更多和更复杂的功能。这种可视化的一个技术细节，边缘检测器检测图像中相对较小的区域，也许是像这样的非常小的区域，然后面部检测器可能会看到更大的图像区域。从中获取的进一步的关键信息，仅仅是找到像边缘这样的简单事物。然后构建它们，将它们组合在一起，以检测更复杂的事物。然后 (再次) 将它们组合在一起，以找到更复杂的事物。这种由简单到复杂的“分层表示”或“组合表示”不仅适用于图像和面部识别，也适用于其它类型的数据。</p>
 <h4 id="Circuit-theory-and-deep-learning"><a href="#Circuit-theory-and-deep-learning" class="headerlink" title="Circuit theory and deep learning"></a>Circuit theory and deep learning</h4><p>Informally: There are functions you can compute with a “small” L-layer deep neural network that shallower networks require exponentially more hidden units to compute.  </p>
-<h3 id="Building-blocks-of-deep-neural-networks"><a href="#Building-blocks-of-deep-neural-networks" class="headerlink" title="Building blocks of deep neural networks"></a>Building blocks of deep neural networks</h3><img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/forward_and_backwark_functions.jpg" alt="Why deep representations" title="Why deep representations">
-<img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/forward_and_backwark_functions_graph.jpg" alt="Why deep representations" title="Why deep representations">
-<h3 id="Forward-and-Backward-Propagation"><a href="#Forward-and-Backward-Propagation" class="headerlink" title="Forward and Backward Propagation"></a>Forward and Backward Propagation</h3><img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/forward_propagation_for_layer_l.jpg" alt="Why deep representations" title="Why deep representations">
-<img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/backward_propagation_for_layer_l.jpg" alt="Why deep representations" title="Why deep representations">
+<h3 id="Building-blocks-of-deep-neural-networks"><a href="#Building-blocks-of-deep-neural-networks" class="headerlink" title="Building blocks of deep neural networks"></a>Building blocks of deep neural networks</h3><img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/forward_and_backwark_functions.jpg" alt="forward_and_backwark_functions" title="forward_and_backwark_functions">
+<img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/forward_and_backwark_functions_graph.jpg" alt="forward_and_backwark_functions_graph" title="forward_and_backwark_functions_graph">
+<h3 id="Forward-and-Backward-Propagation"><a href="#Forward-and-Backward-Propagation" class="headerlink" title="Forward and Backward Propagation"></a>Forward and Backward Propagation</h3><img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/forward_propagation_for_layer_l.jpg" alt="forward_propagation_for_layer_l" title="forward_propagation_for_layer_l">
+<img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/backward_propagation_for_layer_l.jpg" alt="backward_propagation_for_layer_l" title="backward_propagation_for_layer_l">
 <p>上面这个图，包含了神经网络前向计算和后向计算所需的全部变量。</p>
 <h3 id="Parameters-vs-Hyperparameters"><a href="#Parameters-vs-Hyperparameters" class="headerlink" title="Parameters vs Hyperparameters"></a>Parameters vs Hyperparameters</h3><img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/hyperparameters.jpg" alt="hyperparameters" title="hyperparameters">
 <p>参数parameters: $ W^{[1]},b^{[1]},W^{[2]},b^{[2]},W^{[3]},b^{[3]}, \dots $</p>
@@ -486,9 +486,8 @@
 </li>
 <li>Finally update the parameters.</li>
 </ul>
-<p><img src="images/final outline.png" style="width:800px;height:500px;"></p>
+<img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/final_outline.png" alt="final_outline.png" title="">
 <caption><center> **Figure 1**</center></caption><br>
-
 
 **Note** that for every forward function, there is a corresponding backward function. That is why at every step of your forward module you will be storing some values in a cache. The cached values are useful for computing gradients. In the backpropagation module you will then use the cache to calculate the gradients. This assignment will show you exactly how to carry out each of these steps. 
 
@@ -618,12 +617,13 @@ The mathematical representation of this unit is $Z^{[l]} = W^{[l]}A^{[l-1]} +b^{
 
 ##### 4.2 - Linear-Activation Forward
 
+
 In this notebook, you will use two activation functions:
+
 
 - **Sigmoid**: $\sigma(Z) = \sigma(W A + b) = \frac{1}{ 1 + e^{-(W A + b)}}$. We have provided you with the `sigmoid` function. This function returns **two** items: the activation value "`a`" and a "`cache`" that contains "`Z`" (it's what we will feed in to the corresponding backward function). To use it you could just call: 
 
         A, activation_cache = sigmoid(Z)
-
 
 - **ReLU**: The mathematical formula for ReLu is $A = RELU(Z) = max(0, Z)$. We have provided you with the `relu` function. This function returns **two** items: the activation value "`A`" and a "`cache`" that contains "`Z`" (it's what we will feed in to the corresponding backward function). To use it you could just call:
 
@@ -642,7 +642,8 @@ For more convenience, you are going to group two functions (Linear and Activatio
 
 For even more convenience when implementing the $L$-layer Neural Net, you will need a function that replicates the previous one (`linear_activation_forward` with RELU) $L-1$ times, then follows that with one `linear_activation_forward` with SIGMOID.
 
-<img src="images/model_architecture_kiank.png" style="width:600px;height:300px;">
+<img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/model_architecture_kiank.png" alt="model_architecture_kiank.png" title="">
+
 <caption><center> **Figure 2** : *[LINEAR -> RELU] $\times$ (L-1) -> LINEAR -> SIGMOID* model</center></caption><br>
 
 **Exercise**: Implement the forward propagation of the above model.
@@ -669,12 +670,12 @@ Now you will implement forward and backward propagation. You need to compute the
 
 #### 6 - Backward propagation module
 
+
 Just like with forward propagation, you will implement helper functions for backpropagation. Remember that back propagation is used to calculate the gradient of the loss function with respect to the parameters. 
 
 **Reminder**: 
 
-<img src="images/backprop_kiank.png" style="width:650px;height:250px;">
-
+<img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/backprop_kiank.png" alt="backprop_kiank.png" title="">
 <caption><center> **Figure 3** : Forward and Backward propagation for *LINEAR->RELU->LINEAR->SIGMOID* <br> *The purple blocks represent the forward propagation, and the red blocks represent the backward propagation.*  </center></caption>
 
 <p>For those of you who are expert in calculus (you don’t need to be to do this assignment), the chain rule of calculus can be used to derive the derivative of the loss $\mathcal{L}$ with respect to $z^{[1]}$ in a 2-layer network as follows:</p>
@@ -689,7 +690,7 @@ Just like with forward propagation, you will implement helper functions for back
 </ul>
 <h3 id="6-1-Linear-backward"><a href="#6-1-Linear-backward" class="headerlink" title="6.1 - Linear backward"></a>6.1 - Linear backward</h3><p>For layer $l$, the linear part is: $Z^{[l]} = W^{[l]} A^{[l-1]} + b^{[l]}$ (followed by an activation).</p>
 <p>Suppose you have already calculated the derivative $dZ^{[l]} = \frac{\partial \mathcal{L} }{\partial Z^{[l]}}$. You want to get $(dW^{[l]}, db^{[l]} dA^{[l-1]})$.</p>
-<p><img src="images/linearback_kiank.png" style="width:250px;height:300px;"></p>
+<img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/linearback_kiank.png" alt="linearback_kiank.png" title="">
 <caption><center> **Figure 4** </center></caption>
 
 <p>The three outputs $(dW^{[l]}, db^{[l]}, dA^{[l]})$ are computed using the input $dZ^{[l]}$.Here are the formulas you need:</p>
@@ -709,7 +710,7 @@ Just like with forward propagation, you will implement helper functions for back
 <p><strong>Exercise</strong>: Implement the backpropagation for the <em>LINEAR-&gt;ACTIVATION</em> layer.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#In[16]:</span></div><div class="line"></div><div class="line"><span class="comment">#GRADED FUNCTION: linear_activation_backward</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">linear_activation_backward</span><span class="params">(dA, cache, activation)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    Implement the backward propagation for the LINEAR-&gt;ACTIVATION layer.</span></div><div class="line"><span class="string">    </span></div><div class="line"><span class="string">    Arguments:</span></div><div class="line"><span class="string">    dA -- post-activation gradient for current layer l </span></div><div class="line"><span class="string">    cache -- tuple of values (linear_cache, activation_cache) we store for computing backward propagation efficiently</span></div><div class="line"><span class="string">    activation -- the activation to be used in this layer, stored as a text string: "sigmoid" or "relu"</span></div><div class="line"><span class="string">    </span></div><div class="line"><span class="string">    Returns:</span></div><div class="line"><span class="string">    dA_prev -- Gradient of the cost with respect to the activation (of the previous layer l-1), same shape as A_prev</span></div><div class="line"><span class="string">    dW -- Gradient of the cost with respect to W (current layer l), same shape as W</span></div><div class="line"><span class="string">    db -- Gradient of the cost with respect to b (current layer l), same shape as b</span></div><div class="line"><span class="string">    """</span></div><div class="line">    linear_cache, activation_cache = cache</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> activation == <span class="string">"relu"</span>:</div><div class="line">        <span class="comment">### START CODE HERE ### (≈ 2 lines of code)</span></div><div class="line">        dZ = relu_backward(dA, activation_cache)</div><div class="line">        dA_prev, dW, db = linear_backward(dZ, linear_cache)</div><div class="line">        <span class="comment">### END CODE HERE ###</span></div><div class="line">        </div><div class="line">    <span class="keyword">elif</span> activation == <span class="string">"sigmoid"</span>:</div><div class="line">        <span class="comment">### START CODE HERE ### (≈ 2 lines of code)</span></div><div class="line">        dZ = sigmoid_backward(dA, activation_cache)</div><div class="line">        dA_prev, dW, db = linear_backward(dZ, linear_cache)</div><div class="line">        <span class="comment">### END CODE HERE ###</span></div><div class="line">    </div><div class="line">    <span class="keyword">return</span> dA_prev, dW, db</div></pre></td></tr></table></figure>
 <h5 id="6-3-L-Model-Backward"><a href="#6-3-L-Model-Backward" class="headerlink" title="6.3 - L-Model Backward"></a>6.3 - L-Model Backward</h5><p>Now you will implement the backward function for the whole network. Recall that when you implemented the <code>L_model_forward</code> function, at each iteration, you stored a cache which contains (X,W,b, and z). In the back propagation module, you will use those variables to compute the gradients. Therefore, in the <code>L_model_backward</code> function, you will iterate through all the hidden layers backward, starting from layer $L$. On each step, you will use the cached values for layer $l$ to backpropagate through layer $l$. Figure 5 below shows the backward pass. </p>
-<p><img src="images/mn_backward.png" style="width:450px;height:300px;"></p>
+<img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/mn_backward.png" alt="mn_backward.png" title="">
 <caption><center>  **Figure 5** : Backward pass  </center></caption>
 
 <p><strong> Initializing backpropagation</strong>:<br>To backpropagate through this network, we know that the output is,<br>$A^{[L]} = \sigma(Z^{[L]})$. Your code thus needs to compute <code>dAL</code> $= \frac{\partial \mathcal{L}}{\partial A^{[L]}}$.<br>To do so, use this formula (derived using calculus which you don’t need in-depth knowledge of):<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dAL = - (np.divide(Y, AL) - np.divide(<span class="number">1</span> - Y, <span class="number">1</span> - AL)) <span class="comment"># derivative of cost with respect to AL</span></div></pre></td></tr></table></figure></p>
@@ -767,7 +768,7 @@ train_y shape: (1, 209)
 test_x_orig shape: (50, 64, 64, 3) 
 test_y shape: (1, 50)
 </code></pre><p>As usual, you reshape and standardize the images before feeding them to the network. The code is given in the cell below.</p>
-<p><img src="images/imvectorkiank.png" style="width:450px;height:300px;"></p>
+<img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/imvectorkiank.png" alt="imvectorkiank.png" title="">
 <caption><center> <u>Figure 1</u>: Image to vector conversion. <br> </center></caption>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Reshape the training and test examples </span></div><div class="line">train_x_flatten = train_x_orig.reshape(train_x_orig.shape[<span class="number">0</span>], <span class="number">-1</span>).T   <span class="comment"># The "-1" makes reshape flatten the remaining dimensions</span></div><div class="line">test_x_flatten = test_x_orig.reshape(test_x_orig.shape[<span class="number">0</span>], <span class="number">-1</span>).T</div><div class="line"></div><div class="line"><span class="comment"># Standardize data to have feature values between 0 and 1.</span></div><div class="line">train_x = train_x_flatten/<span class="number">255.</span></div><div class="line">test_x = test_x_flatten/<span class="number">255.</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> (<span class="string">"train_x's shape: "</span> + str(train_x.shape))</div><div class="line"><span class="keyword">print</span> (<span class="string">"test_x's shape: "</span> + str(test_x.shape))</div></pre></td></tr></table></figure>
@@ -782,7 +783,7 @@ test_x&#39;s shape: (12288, 50)
 </ul>
 <p>You will then compare the performance of these models, and also try out different values for $L$. </p>
 <p>Let’s look at the two architectures.</p>
-<h5 id="3-1-2-layer-neural-network"><a href="#3-1-2-layer-neural-network" class="headerlink" title="3.1 - 2-layer neural network"></a>3.1 - 2-layer neural network</h5><p><img src="images/2layerNN_kiank.png" style="width:650px;height:400px;"></p>
+<h5 id="3-1-2-layer-neural-network"><a href="#3-1-2-layer-neural-network" class="headerlink" title="3.1 - 2-layer neural network"></a>3.1 - 2-layer neural network</h5><img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/2layerNN_kiank.png" alt="2layerNN_kiank.png" title="">
 <caption><center> <u>Figure 2</u>: 2-layer neural network. <br> The model can be summarized as: ***INPUT -> LINEAR -> RELU -> LINEAR -> SIGMOID -> OUTPUT***. </center></caption>
 
 <p><u>Detailed Architecture of figure 2</u>:</p>
@@ -795,7 +796,7 @@ test_x&#39;s shape: (12288, 50)
 <li>Finally, you take the sigmoid of the result. If it is greater than 0.5, you classify it to be a cat.</li>
 </ul>
 <h5 id="3-2-L-layer-deep-neural-network"><a href="#3-2-L-layer-deep-neural-network" class="headerlink" title="3.2 - L-layer deep neural network"></a>3.2 - L-layer deep neural network</h5><p>It is hard to represent an L-layer deep neural network with the above representation. However, here is a simplified network representation:</p>
-<p><img src="images/LlayerNN_kiank.png" style="width:650px;height:400px;"></p>
+<img src="/2018/04/27/coursera-deeplearning-ai-c1-week4/LlayerNN_kiank.png" alt="LlayerNN_kiank.png" title="">
 <caption><center> <u>Figure 3</u>: L-layer neural network. <br> The model can be summarized as: ***[LINEAR -> RELU] $\times$ (L-1) -> LINEAR -> SIGMOID***</center></caption>
 
 <p><u>Detailed Architecture of figure 3</u>:</p>
@@ -908,11 +909,25 @@ Cost after iteration 2400: 0.092878
 <li>Scale variation (cat is very large or small in image) </li>
 </ul>
 <h4 id="7-Test-with-your-own-image-optional-ungraded-exercise"><a href="#7-Test-with-your-own-image-optional-ungraded-exercise" class="headerlink" title="7) Test with your own image (optional/ungraded exercise)"></a>7) Test with your own image (optional/ungraded exercise)</h4><p>Congratulations on finishing this assignment. You can use your own image and see the output of your model. To do that:</p>
-<pre><code>1. Click on &quot;File&quot; in the upper bar of this notebook, then click &quot;Open&quot; to go on your Coursera Hub.
-2. Add your image to this Jupyter Notebook&#39;s directory, in the &quot;images&quot; folder
-3. Change your image&#39;s name in the following code
-4. Run the code and check if the algorithm is right (1 = cat, 0 = non-cat)!
-</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## START CODE HERE ##</span></div><div class="line">my_image = <span class="string">"dog1.jpg"</span> <span class="comment"># change this to the name of your image file </span></div><div class="line">my_label_y = [<span class="number">1</span>] <span class="comment"># the true class of your image (1 -&gt; cat, 0 -&gt; non-cat)</span></div><div class="line"><span class="comment">## END CODE HERE ##</span></div><div class="line"></div><div class="line">fname = <span class="string">"images/"</span> + my_image</div><div class="line">image = np.array(ndimage.imread(fname, flatten=<span class="keyword">False</span>))</div><div class="line">my_image = scipy.misc.imresize(image, size=(num_px,num_px)).reshape((num_px*num_px*<span class="number">3</span>,<span class="number">1</span>))</div><div class="line">my_image = my_image/<span class="number">255.</span></div><div class="line">my_predicted_image = predict(my_image, my_label_y, parameters)</div><div class="line"></div><div class="line">plt.imshow(image)</div><div class="line"><span class="keyword">print</span> (<span class="string">"y = "</span> + str(np.squeeze(my_predicted_image)) + <span class="string">", your L-layer model predicts a \""</span> + classes[int(np.squeeze(my_predicted_image)),].decode(<span class="string">"utf-8"</span>) +  <span class="string">"\" picture."</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li><ol>
+<li>Click on “File” in the upper bar of this notebook, then click “Open” to go on your Coursera Hub.</li>
+</ol>
+</li>
+<li><ol>
+<li>Add your image to this Jupyter Notebook’s directory, in the “images” folder</li>
+</ol>
+</li>
+<li><ol>
+<li>Change your image’s name in the following code</li>
+</ol>
+</li>
+<li><ol>
+<li>Run the code and check if the algorithm is right (1 = cat, 0 = non-cat)!</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## START CODE HERE ##</span></div><div class="line">my_image = <span class="string">"dog1.jpg"</span> <span class="comment"># change this to the name of your image file </span></div><div class="line">my_label_y = [<span class="number">1</span>] <span class="comment"># the true class of your image (1 -&gt; cat, 0 -&gt; non-cat)</span></div><div class="line"><span class="comment">## END CODE HERE ##</span></div><div class="line"></div><div class="line">fname = <span class="string">"images/"</span> + my_image</div><div class="line">image = np.array(ndimage.imread(fname, flatten=<span class="keyword">False</span>))</div><div class="line">my_image = scipy.misc.imresize(image, size=(num_px,num_px)).reshape((num_px*num_px*<span class="number">3</span>,<span class="number">1</span>))</div><div class="line">my_image = my_image/<span class="number">255.</span></div><div class="line">my_predicted_image = predict(my_image, my_label_y, parameters)</div><div class="line"></div><div class="line">plt.imshow(image)</div><div class="line"><span class="keyword">print</span> (<span class="string">"y = "</span> + str(np.squeeze(my_predicted_image)) + <span class="string">", your L-layer model predicts a \""</span> + classes[int(np.squeeze(my_predicted_image)),].decode(<span class="string">"utf-8"</span>) +  <span class="string">"\" picture."</span>)</div></pre></td></tr></table></figure>
 <p><strong>References</strong>:</p>
 <ul>
 <li>for auto-reloading external module: <a href="http://stackoverflow.com/questions/1907993/autoreload-of-modules-in-ipython" target="_blank" rel="external">http://stackoverflow.com/questions/1907993/autoreload-of-modules-in-ipython</a></li>
