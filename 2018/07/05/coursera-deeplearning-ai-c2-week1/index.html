@@ -98,17 +98,17 @@
 
 
 
-<meta name="description" content="Regularization(正则化) Dropout regularizetion(随机失活正则法（丢弃法）) dropout的实现： Inverted dropout:反向随机失活， 123456789layer l = 3keep-prob = 0.8  # 保留网络中某一节点的概率值，0.8意味着layer中的节点有20%的概率被丢弃d3 = np.random.rand(a3.shape">
+<meta name="description" content="Setting up your Machine Learning Application课程视频Train / Dev / Test sets课程视频Bias / Variance课程视频Basic Recipe for Machine LearningRegularizing your neural network课程视频Regularization课程视频Why regularization">
 <meta property="og:type" content="article">
 <meta property="og:title" content="coursera-deeplearning-ai-c2-week1">
 <meta property="og:url" content="://vernlium.github.io/2018/07/05/coursera-deeplearning-ai-c2-week1/index.html">
 <meta property="og:site_name" content="Vernlium">
-<meta property="og:description" content="Regularization(正则化) Dropout regularizetion(随机失活正则法（丢弃法）) dropout的实现： Inverted dropout:反向随机失活， 123456789layer l = 3keep-prob = 0.8  # 保留网络中某一节点的概率值，0.8意味着layer中的节点有20%的概率被丢弃d3 = np.random.rand(a3.shape">
+<meta property="og:description" content="Setting up your Machine Learning Application课程视频Train / Dev / Test sets课程视频Bias / Variance课程视频Basic Recipe for Machine LearningRegularizing your neural network课程视频Regularization课程视频Why regularization">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-24T23:48:11.704Z">
+<meta property="og:updated_time" content="2018-08-01T23:54:13.417Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coursera-deeplearning-ai-c2-week1">
-<meta name="twitter:description" content="Regularization(正则化) Dropout regularizetion(随机失活正则法（丢弃法）) dropout的实现： Inverted dropout:反向随机失活， 123456789layer l = 3keep-prob = 0.8  # 保留网络中某一节点的概率值，0.8意味着layer中的节点有20%的概率被丢弃d3 = np.random.rand(a3.shape">
+<meta name="twitter:description" content="Setting up your Machine Learning Application课程视频Train / Dev / Test sets课程视频Bias / Variance课程视频Basic Recipe for Machine LearningRegularizing your neural network课程视频Regularization课程视频Why regularization">
 
 
 
@@ -355,7 +355,7 @@
       
 
       
-        <p>Regularization(正则化)</p>
+        <h4 id="Setting-up-your-Machine-Learning-Application"><a href="#Setting-up-your-Machine-Learning-Application" class="headerlink" title="Setting up your Machine Learning Application"></a>Setting up your Machine Learning Application</h4><h5 id="课程视频Train-Dev-Test-sets"><a href="#课程视频Train-Dev-Test-sets" class="headerlink" title="课程视频Train / Dev / Test sets"></a>课程视频Train / Dev / Test sets</h5><h5 id="课程视频Bias-Variance"><a href="#课程视频Bias-Variance" class="headerlink" title="课程视频Bias / Variance"></a>课程视频Bias / Variance</h5><h5 id="课程视频Basic-Recipe-for-Machine-Learning"><a href="#课程视频Basic-Recipe-for-Machine-Learning" class="headerlink" title="课程视频Basic Recipe for Machine Learning"></a>课程视频Basic Recipe for Machine Learning</h5><h4 id="Regularizing-your-neural-network"><a href="#Regularizing-your-neural-network" class="headerlink" title="Regularizing your neural network"></a>Regularizing your neural network</h4><h5 id="课程视频Regularization"><a href="#课程视频Regularization" class="headerlink" title="课程视频Regularization"></a>课程视频Regularization</h5><h5 id="课程视频Why-regularization-reduces-overfitting"><a href="#课程视频Why-regularization-reduces-overfitting" class="headerlink" title="课程视频Why regularization reduces overfitting?"></a>课程视频Why regularization reduces overfitting?</h5><h5 id="课程视频Dropout-Regularization"><a href="#课程视频Dropout-Regularization" class="headerlink" title="课程视频Dropout Regularization"></a>课程视频Dropout Regularization</h5><h5 id="课程视频Understanding-Dropout"><a href="#课程视频Understanding-Dropout" class="headerlink" title="课程视频Understanding Dropout"></a>课程视频Understanding Dropout</h5><h5 id="课程视频Other-regularization-methods"><a href="#课程视频Other-regularization-methods" class="headerlink" title="课程视频Other regularization methods"></a>课程视频Other regularization methods</h5><h4 id="Setting-up-your-optimization-problem"><a href="#Setting-up-your-optimization-problem" class="headerlink" title="Setting up your optimization problem"></a>Setting up your optimization problem</h4><h5 id="课程视频Normalizing-inputs"><a href="#课程视频Normalizing-inputs" class="headerlink" title="课程视频Normalizing inputs"></a>课程视频Normalizing inputs</h5><h5 id="课程视频Vanishing-Exploding-gradients"><a href="#课程视频Vanishing-Exploding-gradients" class="headerlink" title="课程视频Vanishing / Exploding gradients"></a>课程视频Vanishing / Exploding gradients</h5><h5 id="课程视频Weight-Initialization-for-Deep-Networks"><a href="#课程视频Weight-Initialization-for-Deep-Networks" class="headerlink" title="课程视频Weight Initialization for Deep Networks"></a>课程视频Weight Initialization for Deep Networks</h5><h5 id="课程视频Numerical-approximation-of-gradients"><a href="#课程视频Numerical-approximation-of-gradients" class="headerlink" title="课程视频Numerical approximation of gradients"></a>课程视频Numerical approximation of gradients</h5><h5 id="课程视频Gradient-checking"><a href="#课程视频Gradient-checking" class="headerlink" title="课程视频Gradient checking"></a>课程视频Gradient checking</h5><h5 id="课程视频Gradient-Checking-Implementation-Notes"><a href="#课程视频Gradient-Checking-Implementation-Notes" class="headerlink" title="课程视频Gradient Checking Implementation Notes"></a>课程视频Gradient Checking Implementation Notes</h5><h4 id="Programming-assignments"><a href="#Programming-assignments" class="headerlink" title="Programming assignments"></a>Programming assignments</h4><h5 id="编程作业-Initialization"><a href="#编程作业-Initialization" class="headerlink" title="编程作业: Initialization"></a>编程作业: Initialization</h5><h5 id="编程作业-Regularization"><a href="#编程作业-Regularization" class="headerlink" title="编程作业: Regularization"></a>编程作业: Regularization</h5><h5 id="编程作业-Gradient-Checking"><a href="#编程作业-Gradient-Checking" class="headerlink" title="编程作业: Gradient Checking"></a>编程作业: Gradient Checking</h5><p>Regularization(正则化)</p>
 <p>Dropout regularizetion(随机失活正则法（丢弃法）)</p>
 <p>dropout的实现：</p>
 <p>Inverted dropout:反向随机失活，</p>
@@ -412,8 +412,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/27/coursera-deeplearning-ai-c1-week4/" rel="next" title="coursera_deeplearning.ai_c1_week4">
-                <i class="fa fa-chevron-left"></i> coursera_deeplearning.ai_c1_week4
+              <a href="/2018/04/24/coursera中无法播放视频解决方法/" rel="next" title="coursera中无法播放视频解决方法">
+                <i class="fa fa-chevron-left"></i> coursera中无法播放视频解决方法
               </a>
             
           </div>
@@ -478,8 +478,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/wukong.png"
@@ -565,6 +574,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Setting-up-your-Machine-Learning-Application"><span class="nav-number">1.</span> <span class="nav-text">Setting up your Machine Learning Application</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Train-Dev-Test-sets"><span class="nav-number">1.1.</span> <span class="nav-text">课程视频Train / Dev / Test sets</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Bias-Variance"><span class="nav-number">1.2.</span> <span class="nav-text">课程视频Bias / Variance</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Basic-Recipe-for-Machine-Learning"><span class="nav-number">1.3.</span> <span class="nav-text">课程视频Basic Recipe for Machine Learning</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Regularizing-your-neural-network"><span class="nav-number">2.</span> <span class="nav-text">Regularizing your neural network</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Regularization"><span class="nav-number">2.1.</span> <span class="nav-text">课程视频Regularization</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Why-regularization-reduces-overfitting"><span class="nav-number">2.2.</span> <span class="nav-text">课程视频Why regularization reduces overfitting?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Dropout-Regularization"><span class="nav-number">2.3.</span> <span class="nav-text">课程视频Dropout Regularization</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Understanding-Dropout"><span class="nav-number">2.4.</span> <span class="nav-text">课程视频Understanding Dropout</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Other-regularization-methods"><span class="nav-number">2.5.</span> <span class="nav-text">课程视频Other regularization methods</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Setting-up-your-optimization-problem"><span class="nav-number">3.</span> <span class="nav-text">Setting up your optimization problem</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Normalizing-inputs"><span class="nav-number">3.1.</span> <span class="nav-text">课程视频Normalizing inputs</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Vanishing-Exploding-gradients"><span class="nav-number">3.2.</span> <span class="nav-text">课程视频Vanishing / Exploding gradients</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Weight-Initialization-for-Deep-Networks"><span class="nav-number">3.3.</span> <span class="nav-text">课程视频Weight Initialization for Deep Networks</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Numerical-approximation-of-gradients"><span class="nav-number">3.4.</span> <span class="nav-text">课程视频Numerical approximation of gradients</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Gradient-checking"><span class="nav-number">3.5.</span> <span class="nav-text">课程视频Gradient checking</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Gradient-Checking-Implementation-Notes"><span class="nav-number">3.6.</span> <span class="nav-text">课程视频Gradient Checking Implementation Notes</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Programming-assignments"><span class="nav-number">4.</span> <span class="nav-text">Programming assignments</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#编程作业-Initialization"><span class="nav-number">4.1.</span> <span class="nav-text">编程作业: Initialization</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#编程作业-Regularization"><span class="nav-number">4.2.</span> <span class="nav-text">编程作业: Regularization</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#编程作业-Gradient-Checking"><span class="nav-number">4.3.</span> <span class="nav-text">编程作业: Gradient Checking</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
