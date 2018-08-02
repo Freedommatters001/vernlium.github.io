@@ -98,17 +98,17 @@
 
 
 
-<meta name="description" content="Keep codeing and thinking!">
+<meta name="description" content="Optimization algorithms课程视频Mini-batch gradient descentMini-batch gradient descent 小批量梯度下降法 如果训练集非常大，比如m = 5,000,000 ，则训练会非常慢。 mini_batch batch_size = 1 : 随机梯度下降（SDG，stochasit gradient descent）batch_si">
 <meta property="og:type" content="article">
 <meta property="og:title" content="coursera-deeplearning-ai-c2-week2">
 <meta property="og:url" content="://vernlium.github.io/2018/07/05/coursera-deeplearning-ai-c2-week2/index.html">
 <meta property="og:site_name" content="Vernlium">
-<meta property="og:description" content="Keep codeing and thinking!">
+<meta property="og:description" content="Optimization algorithms课程视频Mini-batch gradient descentMini-batch gradient descent 小批量梯度下降法 如果训练集非常大，比如m = 5,000,000 ，则训练会非常慢。 mini_batch batch_size = 1 : 随机梯度下降（SDG，stochasit gradient descent）batch_si">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-04T23:16:02.965Z">
+<meta property="og:updated_time" content="2018-08-01T23:58:04.030Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coursera-deeplearning-ai-c2-week2">
-<meta name="twitter:description" content="Keep codeing and thinking!">
+<meta name="twitter:description" content="Optimization algorithms课程视频Mini-batch gradient descentMini-batch gradient descent 小批量梯度下降法 如果训练集非常大，比如m = 5,000,000 ，则训练会非常慢。 mini_batch batch_size = 1 : 随机梯度下降（SDG，stochasit gradient descent）batch_si">
 
 
 
@@ -355,7 +355,25 @@
       
 
       
-        
+        <h4 id="Optimization-algorithms"><a href="#Optimization-algorithms" class="headerlink" title="Optimization algorithms"></a>Optimization algorithms</h4><h5 id="课程视频Mini-batch-gradient-descent"><a href="#课程视频Mini-batch-gradient-descent" class="headerlink" title="课程视频Mini-batch gradient descent"></a>课程视频Mini-batch gradient descent</h5><p>Mini-batch gradient descent 小批量梯度下降法</p>
+<p>如果训练集非常大，比如m = 5,000,000 ，则训练会非常慢。</p>
+<p>mini_batch</p>
+<p>batch_size = 1 : 随机梯度下降（SDG，stochasit gradient descent）<br>batch_size = m : Batch gradient descent</p>
+<p>如何选Batch_size:</p>
+<ul>
+<li>1.训练集小( &lt;= 2000)： Batch gradient descent</li>
+<li>2.typical batch_size: 64-512之间的2^n</li>
+</ul>
+<p>Batch Gradient Descent:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">X = daty_input</div><div class="line">Y = labels</div><div class="line"></div><div class="line">parameters = initialize_parameters(layers,dims)</div><div class="line"></div><div class="line">for i in range(0,num_iterations):</div><div class="line">    a,caches = forword_propagation(X, parameters)</div><div class="line">    cost = compute_cost(a,Y)</div><div class="line">    grads = backword_propagation(a,caches,parameters)</div><div class="line">    parameters = update_parameters(parameters,grads)</div></pre></td></tr></table></figure>
+<p>Stochastic Gradient Descent:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">X = daty_input</div><div class="line">Y = labels</div><div class="line"></div><div class="line">parameters = initialize_parameters(layers,dims)</div><div class="line"></div><div class="line">for i in range(0,num_iterations):</div><div class="line">    for j in range(0,m):</div><div class="line">        a,caches = forword_propagation(X[:,j], parameters)</div><div class="line">        cost = compute_cost(a,Y[:,Y])</div><div class="line">        grads = backword_propagation(a,caches,parameters)</div><div class="line">        parameters = update_parameters(parameters,grads)</div></pre></td></tr></table></figure>
+<p>Mini Batch Gradient descent 准备数据的两个步骤;</p>
+<ul>
+<li>1.Shuffle：洗牌：把原输入随机打乱，当然要保持X和Y对应一致</li>
+<li>2.Partition: 分区：按batch_size分区，前面t-1个分区的大小都是batch_size,最后一个可能不足batch_size</li>
+</ul>
+<h5 id="课程视频Understanding-mini-batch-gradient-descent"><a href="#课程视频Understanding-mini-batch-gradient-descent" class="headerlink" title="课程视频Understanding mini-batch gradient descent"></a>课程视频Understanding mini-batch gradient descent</h5><h5 id="课程视频Exponentially-weighted-averages"><a href="#课程视频Exponentially-weighted-averages" class="headerlink" title="课程视频Exponentially weighted averages"></a>课程视频Exponentially weighted averages</h5><h5 id="课程视频Understanding-exponentially-weighted-averages"><a href="#课程视频Understanding-exponentially-weighted-averages" class="headerlink" title="课程视频Understanding exponentially weighted averages"></a>课程视频Understanding exponentially weighted averages</h5><h5 id="课程视频Bias-correction-in-exponentially-weighted-averages"><a href="#课程视频Bias-correction-in-exponentially-weighted-averages" class="headerlink" title="课程视频Bias correction in exponentially weighted averages"></a>课程视频Bias correction in exponentially weighted averages</h5><h5 id="课程视频Gradient-descent-with-momentum"><a href="#课程视频Gradient-descent-with-momentum" class="headerlink" title="课程视频Gradient descent with momentum"></a>课程视频Gradient descent with momentum</h5><h5 id="课程视频RMSprop"><a href="#课程视频RMSprop" class="headerlink" title="课程视频RMSprop"></a>课程视频RMSprop</h5><h5 id="课程视频Adam-optimization-algorithm"><a href="#课程视频Adam-optimization-algorithm" class="headerlink" title="课程视频Adam optimization algorithm"></a>课程视频Adam optimization algorithm</h5><h5 id="课程视频Learning-rate-decay"><a href="#课程视频Learning-rate-decay" class="headerlink" title="课程视频Learning rate decay"></a>课程视频Learning rate decay</h5><h5 id="课程视频The-problem-of-local-optima"><a href="#课程视频The-problem-of-local-optima" class="headerlink" title="课程视频The problem of local optima"></a>课程视频The problem of local optima</h5><h4 id="Programming-assignment"><a href="#Programming-assignment" class="headerlink" title="Programming assignment"></a>Programming assignment</h4><h5 id="编程作业-Optimization"><a href="#编程作业-Optimization" class="headerlink" title="编程作业: Optimization"></a>编程作业: Optimization</h5>
       
     </div>
     
@@ -445,8 +463,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/wukong.png"
@@ -532,6 +559,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Optimization-algorithms"><span class="nav-number">1.</span> <span class="nav-text">Optimization algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Mini-batch-gradient-descent"><span class="nav-number">1.1.</span> <span class="nav-text">课程视频Mini-batch gradient descent</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Understanding-mini-batch-gradient-descent"><span class="nav-number">1.2.</span> <span class="nav-text">课程视频Understanding mini-batch gradient descent</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Exponentially-weighted-averages"><span class="nav-number">1.3.</span> <span class="nav-text">课程视频Exponentially weighted averages</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Understanding-exponentially-weighted-averages"><span class="nav-number">1.4.</span> <span class="nav-text">课程视频Understanding exponentially weighted averages</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Bias-correction-in-exponentially-weighted-averages"><span class="nav-number">1.5.</span> <span class="nav-text">课程视频Bias correction in exponentially weighted averages</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Gradient-descent-with-momentum"><span class="nav-number">1.6.</span> <span class="nav-text">课程视频Gradient descent with momentum</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频RMSprop"><span class="nav-number">1.7.</span> <span class="nav-text">课程视频RMSprop</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Adam-optimization-algorithm"><span class="nav-number">1.8.</span> <span class="nav-text">课程视频Adam optimization algorithm</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Learning-rate-decay"><span class="nav-number">1.9.</span> <span class="nav-text">课程视频Learning rate decay</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频The-problem-of-local-optima"><span class="nav-number">1.10.</span> <span class="nav-text">课程视频The problem of local optima</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Programming-assignment"><span class="nav-number">2.</span> <span class="nav-text">Programming assignment</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#编程作业-Optimization"><span class="nav-number">2.1.</span> <span class="nav-text">编程作业: Optimization</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
