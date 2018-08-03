@@ -98,13 +98,13 @@
 
 
 
-<meta name="description" content="课程笔记Neural Network Overview Neural Network Represention Neural Network Computing and Vectorizing 对于一层的神经网络，每个网络节点都会进行如下两个运算： $ z = w^T x + b $ $ \hat{y} = a = \sigma(z) $   上图中的手写部分，是把输入和参数矢量化。  上图中是一">
+<meta name="description" content="本周课程要点：  含有单独隐藏层的神经网络 参数初始化 使用前向传播进行预测 以及在梯度下降时使用反向传播中  涉及的导数计算   课程笔记Neural Network Overview Neural Network Represention Neural Network Computing and Vectorizing 对于一层的神经网络，每个网络节点都会进行如下两个运算： $ z = w^T">
 <meta name="keywords" content="deeplearning.ai">
 <meta property="og:type" content="article">
 <meta property="og:title" content="coursera_deeplearning.ai_c1_week3">
 <meta property="og:url" content="://vernlium.github.io/2018/07/25/coursera-deeplearning-ai-c1-week3/index.html">
 <meta property="og:site_name" content="Vernlium">
-<meta property="og:description" content="课程笔记Neural Network Overview Neural Network Represention Neural Network Computing and Vectorizing 对于一层的神经网络，每个网络节点都会进行如下两个运算： $ z = w^T x + b $ $ \hat{y} = a = \sigma(z) $   上图中的手写部分，是把输入和参数矢量化。  上图中是一">
+<meta property="og:description" content="本周课程要点：  含有单独隐藏层的神经网络 参数初始化 使用前向传播进行预测 以及在梯度下降时使用反向传播中  涉及的导数计算   课程笔记Neural Network Overview Neural Network Represention Neural Network Computing and Vectorizing 对于一层的神经网络，每个网络节点都会进行如下两个运算： $ z = w^T">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="/2018/07/25/coursera-deeplearning-ai-c1-week3/neural_networks_overview.jpg">
 <meta property="og:image" content="/2018/07/25/coursera-deeplearning-ai-c1-week3/neural_networks_representation.jpg">
@@ -124,10 +124,10 @@
 <meta property="og:image" content="/2018/07/25/coursera-deeplearning-ai-c1-week3/output_50_2.png">
 <meta property="og:image" content="/2018/07/25/coursera-deeplearning-ai-c1-week3/output_56_1.png">
 <meta property="og:image" content="/2018/07/25/coursera-deeplearning-ai-c1-week3/output_63_0.png">
-<meta property="og:updated_time" content="2018-08-01T23:55:44.909Z">
+<meta property="og:updated_time" content="2018-08-02T23:51:09.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coursera_deeplearning.ai_c1_week3">
-<meta name="twitter:description" content="课程笔记Neural Network Overview Neural Network Represention Neural Network Computing and Vectorizing 对于一层的神经网络，每个网络节点都会进行如下两个运算： $ z = w^T x + b $ $ \hat{y} = a = \sigma(z) $   上图中的手写部分，是把输入和参数矢量化。  上图中是一">
+<meta name="twitter:description" content="本周课程要点：  含有单独隐藏层的神经网络 参数初始化 使用前向传播进行预测 以及在梯度下降时使用反向传播中  涉及的导数计算   课程笔记Neural Network Overview Neural Network Represention Neural Network Computing and Vectorizing 对于一层的神经网络，每个网络节点都会进行如下两个运算： $ z = w^T">
 <meta name="twitter:image" content="/2018/07/25/coursera-deeplearning-ai-c1-week3/neural_networks_overview.jpg">
 
 
@@ -375,7 +375,15 @@
       
 
       
-        <h2 id="课程笔记"><a href="#课程笔记" class="headerlink" title="课程笔记"></a>课程笔记</h2><h3 id="Neural-Network-Overview"><a href="#Neural-Network-Overview" class="headerlink" title="Neural Network Overview"></a>Neural Network Overview</h3><img src="/2018/07/25/coursera-deeplearning-ai-c1-week3/neural_networks_overview.jpg" alt="just the right amount" title="just the right amount">
+        <p>本周课程要点：</p>
+<ul>
+<li>含有单独隐藏层的神经网络</li>
+<li>参数初始化</li>
+<li>使用前向传播进行预测</li>
+<li>以及在梯度下降时使用反向传播中 </li>
+<li>涉及的导数计算 </li>
+</ul>
+<h2 id="课程笔记"><a href="#课程笔记" class="headerlink" title="课程笔记"></a>课程笔记</h2><h3 id="Neural-Network-Overview"><a href="#Neural-Network-Overview" class="headerlink" title="Neural Network Overview"></a>Neural Network Overview</h3><img src="/2018/07/25/coursera-deeplearning-ai-c1-week3/neural_networks_overview.jpg" alt="just the right amount" title="just the right amount">
 <h3 id="Neural-Network-Represention"><a href="#Neural-Network-Represention" class="headerlink" title="Neural Network Represention"></a>Neural Network Represention</h3><img src="/2018/07/25/coursera-deeplearning-ai-c1-week3/neural_networks_representation.jpg" alt="just the right amount" title="just the right amount">
 <h3 id="Neural-Network-Computing-and-Vectorizing"><a href="#Neural-Network-Computing-and-Vectorizing" class="headerlink" title="Neural Network Computing and Vectorizing"></a>Neural Network Computing and Vectorizing</h3><img src="/2018/07/25/coursera-deeplearning-ai-c1-week3/neural_networks_computing.jpg" alt="just the right amount" title="just the right amount">
 <p>对于一层的神经网络，每个网络节点都会进行如下两个运算：</p>
@@ -708,8 +716,8 @@ Accuracy for 50 hidden units: 90.25 %
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/31/coursera-deeplearning-ai-c1-week4/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/02/coursera-deeplearning-ai-c1-week4/" rel="prev" title="coursera_deeplearning.ai_c1_week4">
+                coursera_deeplearning.ai_c1_week4 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -789,7 +797,7 @@ Accuracy for 50 hidden units: 90.25 %
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">54</span>
+                <span class="site-state-item-count">53</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
