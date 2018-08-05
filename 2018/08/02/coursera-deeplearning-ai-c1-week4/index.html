@@ -114,6 +114,7 @@
 <meta property="og:image" content="/2018/08/02/coursera-deeplearning-ai-c1-week4/why_eep_representations.jpg">
 <meta property="og:image" content="/2018/08/02/coursera-deeplearning-ai-c1-week4/forward_and_backwark_functions.jpg">
 <meta property="og:image" content="/2018/08/02/coursera-deeplearning-ai-c1-week4/forward_and_backwark_functions_graph.jpg">
+<meta property="og:image" content="/2018/08/02/coursera-deeplearning-ai-c1-week4/forward_and_backwark_functions_graph_2.jpg">
 <meta property="og:image" content="/2018/08/02/coursera-deeplearning-ai-c1-week4/forward_propagation_for_layer_l.jpg">
 <meta property="og:image" content="/2018/08/02/coursera-deeplearning-ai-c1-week4/backward_propagation_for_layer_l.jpg">
 <meta property="og:image" content="/2018/08/02/coursera-deeplearning-ai-c1-week4/hyperparameters.jpg">
@@ -128,7 +129,7 @@
 <meta property="og:image" content="/2018/08/02/coursera-deeplearning-ai-c1-week4/LlayerNN_kiank.png">
 <meta property="og:image" content="/2018/08/02/coursera-deeplearning-ai-c1-week4/two_layer_model_out.png">
 <meta property="og:image" content="/2018/08/02/coursera-deeplearning-ai-c1-week4/l_layer_model_out.png">
-<meta property="og:updated_time" content="2018-08-03T00:16:31.189Z">
+<meta property="og:updated_time" content="2018-08-05T02:59:32.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coursera_deeplearning.ai_c1_week4">
 <meta name="twitter:description" content="本周课程要点：  多层神经网络结构 多层神经的前向及后向运算 构建多层神经网络 神经网络中的参数和超参数  学习目标  See deep neural networks as successive blocks put one after each other Build and train a deep L-layer Neural Network Analyze matrix and vect">
@@ -426,9 +427,11 @@
 <h4 id="Circuit-theory-and-deep-learning"><a href="#Circuit-theory-and-deep-learning" class="headerlink" title="Circuit theory and deep learning"></a>Circuit theory and deep learning</h4><p>Informally: There are functions you can compute with a “small” L-layer deep neural network that shallower networks require exponentially more hidden units to compute.  </p>
 <h3 id="Building-blocks-of-deep-neural-networks"><a href="#Building-blocks-of-deep-neural-networks" class="headerlink" title="Building blocks of deep neural networks"></a>Building blocks of deep neural networks</h3><img src="/2018/08/02/coursera-deeplearning-ai-c1-week4/forward_and_backwark_functions.jpg" alt="forward_and_backwark_functions" title="forward_and_backwark_functions">
 <img src="/2018/08/02/coursera-deeplearning-ai-c1-week4/forward_and_backwark_functions_graph.jpg" alt="forward_and_backwark_functions_graph" title="forward_and_backwark_functions_graph">
+<p>下面是清晰版。</p>
+<img src="/2018/08/02/coursera-deeplearning-ai-c1-week4/forward_and_backwark_functions_graph_2.jpg" alt="forward_and_backwark_functions_graph" title="forward_and_backwark_functions_graph">
+<p>上面这个图，包含了神经网络前向计算和后向计算所需的全部变量。</p>
 <h3 id="Forward-and-Backward-Propagation"><a href="#Forward-and-Backward-Propagation" class="headerlink" title="Forward and Backward Propagation"></a>Forward and Backward Propagation</h3><img src="/2018/08/02/coursera-deeplearning-ai-c1-week4/forward_propagation_for_layer_l.jpg" alt="forward_propagation_for_layer_l" title="forward_propagation_for_layer_l">
 <img src="/2018/08/02/coursera-deeplearning-ai-c1-week4/backward_propagation_for_layer_l.jpg" alt="backward_propagation_for_layer_l" title="backward_propagation_for_layer_l">
-<p>上面这个图，包含了神经网络前向计算和后向计算所需的全部变量。</p>
 <h3 id="Parameters-vs-Hyperparameters"><a href="#Parameters-vs-Hyperparameters" class="headerlink" title="Parameters vs Hyperparameters"></a>Parameters vs Hyperparameters</h3><img src="/2018/08/02/coursera-deeplearning-ai-c1-week4/hyperparameters.jpg" alt="hyperparameters" title="hyperparameters">
 <p>参数parameters: $ W^{[1]},b^{[1]},W^{[2]},b^{[2]},W^{[3]},b^{[3]}, \dots $</p>
 <p>超参数Hyperparameters:</p>
