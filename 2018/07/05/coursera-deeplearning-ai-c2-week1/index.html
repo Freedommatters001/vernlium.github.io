@@ -105,12 +105,13 @@
 <meta property="og:site_name" content="Vernlium">
 <meta property="og:description" content="本周课程主要讲解了神经网络中的优化的一些方法，要点：  Train/Dev/Test（训练/开发/测试数据集） 偏差和方差 欠拟合和过拟合 Regularization正则化 Dropout随机失活 Normalizing归一化 梯度消失和梯度爆炸 梯度检查  本周课程将从实际应用的角度介绍深度学习，上周课程已经学会了如何实现一个神经网络，本周将学习，实际应用中如何使神经网络高效工作。本周将学习在">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="/2018/07/05/coursera-deeplearning-ai-c2-week1/bias_and_variance.jpg">
 <meta property="og:image" content="/2018/07/05/coursera-deeplearning-ai-c2-week1/basic_recipe_for_machine_learning.jpg">
-<meta property="og:updated_time" content="2018-08-07T00:37:23.852Z">
+<meta property="og:updated_time" content="2018-08-10T00:28:11.032Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coursera-deeplearning-ai-c2-week1">
 <meta name="twitter:description" content="本周课程主要讲解了神经网络中的优化的一些方法，要点：  Train/Dev/Test（训练/开发/测试数据集） 偏差和方差 欠拟合和过拟合 Regularization正则化 Dropout随机失活 Normalizing归一化 梯度消失和梯度爆炸 梯度检查  本周课程将从实际应用的角度介绍深度学习，上周课程已经学会了如何实现一个神经网络，本周将学习，实际应用中如何使神经网络高效工作。本周将学习在">
-<meta name="twitter:image" content="/2018/07/05/coursera-deeplearning-ai-c2-week1/basic_recipe_for_machine_learning.jpg">
+<meta name="twitter:image" content="/2018/07/05/coursera-deeplearning-ai-c2-week1/bias_and_variance.jpg">
 
 
 
@@ -399,7 +400,7 @@
 <li>Bias，偏差，描述偏离度。</li>
 <li>Variance，方差，描述集中度。</li>
 </ul>
-
+<img src="/2018/07/05/coursera-deeplearning-ai-c2-week1/bias_and_variance.jpg" alt="bias and variance" title="bias and variance">
 <p>坐标中的⭕和×表示训练集。</p>
 <p>左侧是用一条直线来区分样本数据，用逻辑回归可能画出图上的这条直线，这和训练数据的拟合度并不高，这样的分类我们称之为<strong>高偏差</strong>。或者换一种说法，称为<strong>欠拟合</strong>。</p>
 <p>相对的，右侧的曲线，如果使用一个极为复杂的分类器，或许可以像图上画的这样完美区分训练数据，但看上去也并不是一个非常好的分类算法 这个<strong>高方差</strong>的分类器，我们也称之为<strong>过拟合</strong> 。</p>
@@ -409,7 +410,8 @@
 <p>高偏差高方差的例子如下：</p>
 
 <p>通过观察算法，在训练集和开发集的误差来诊断，它是否有高偏差或者高方差的问题，或许两者都有，或许都没有，基于算法遇到高偏差或高方差问题的不同情况，可以尝试不同的方法来进行改进。</p>
-<h4 id="Basic-Recipe-for-Machine-Learning"><a href="#Basic-Recipe-for-Machine-Learning" class="headerlink" title="Basic Recipe for Machine Learning"></a>Basic Recipe for Machine Learning</h4><img src="/2018/07/05/coursera-deeplearning-ai-c2-week1/basic_recipe_for_machine_learning.jpg" alt="basic recipe for machine learning" title="basic recipe for machine learning">
+<h4 id="Basic-Recipe-for-Machine-Learning"><a href="#Basic-Recipe-for-Machine-Learning" class="headerlink" title="Basic Recipe for Machine Learning"></a>Basic Recipe for Machine Learning</h4><p>机器学习的基本准则如下图所示：</p>
+<img src="/2018/07/05/coursera-deeplearning-ai-c2-week1/basic_recipe_for_machine_learning.jpg" alt="basic recipe for machine learning" title="basic recipe for machine learning">
 <p>图中，找到一个新的神经网络结构，这个办法可能有效，也可能无效。把它写在括号里，是因为它是一种需要你亲自尝试的方法，也许最终能使它有效，也许不能。</p>
 <p>但在当前这个深度学习和大数据的时代,只要能不断扩大所训练的网络的规模,只要能不断获得更多数据,虽然这两点都不是永远成立的,但如果这两点是可能的,那扩大网络几乎总是能够,减小偏差而不增大方差。只要用恰当的方式正则化的话，而获得更多数据几乎总是能够，减小方差而不增大偏差。</p>
 <p>所以归根结底，有了这两步以后，再加上能够选取不同的网络来训练，以及获取更多数据的能力，就有了能够且只单独削减偏差或者能够并且单独削减方差，同时不会过多影响另一个指标的能力。这就是诸多原因中的一个，能够解释为何深度学习在监督学习中如此有用，以及为何在深度学习中，偏差与方差的权衡要不明显得多。这样你就不需小心地平衡两者，而是因为有了更多选择，可以单独削减偏差或单独削减方差，而不会同时增加方差或偏差。而且事实上当有了一个良好地正则化的网络时，训练一个更大的网络几乎从来没有坏处，当训练的神经网络太大时主要的代价只是计算时间。</p>
