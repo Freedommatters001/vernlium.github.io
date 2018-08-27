@@ -98,18 +98,18 @@
 
 
 
-<meta name="description" content="确定如何安装 TensorFlow您必须选择安装 TensorFlow 的方式。目前可支持如下几种方式：  “原生”pip Anaconda  原生 pip 会直接在您的系统上安装 TensorFlow，而不是通过虚拟环境。原生 pip 安装并未隔离在单独的容器中进行，因此可能会干扰系统中其他基于 Python 的安装。但是，如果您熟悉 pip 和您的 Python 环境，通常只需一条命令即可进行">
+<meta name="description" content="确定如何安装 TensorFlow您必须选择安装 TensorFlow 的方式。目前可支持如下几种方式：  “原生”pip Anaconda  pip方式安装Tensorflow需要额外安装其依赖的其他python包（而且需要python 3.6及以下的版本，我安装的是python 3.7，不想重新安装一次折腾了），所以使用Anacoda来安装。 使用 Anaconda 进行安装按照以下步骤在 A">
 <meta name="keywords" content="tools,install">
 <meta property="og:type" content="article">
 <meta property="og:title" content="install_tensorflow_in_win10">
 <meta property="og:url" content="://vernlium.github.io/2018/08/26/install-tensorflow-in-win10/index.html">
 <meta property="og:site_name" content="Vernlium">
-<meta property="og:description" content="确定如何安装 TensorFlow您必须选择安装 TensorFlow 的方式。目前可支持如下几种方式：  “原生”pip Anaconda  原生 pip 会直接在您的系统上安装 TensorFlow，而不是通过虚拟环境。原生 pip 安装并未隔离在单独的容器中进行，因此可能会干扰系统中其他基于 Python 的安装。但是，如果您熟悉 pip 和您的 Python 环境，通常只需一条命令即可进行">
+<meta property="og:description" content="确定如何安装 TensorFlow您必须选择安装 TensorFlow 的方式。目前可支持如下几种方式：  “原生”pip Anaconda  pip方式安装Tensorflow需要额外安装其依赖的其他python包（而且需要python 3.6及以下的版本，我安装的是python 3.7，不想重新安装一次折腾了），所以使用Anacoda来安装。 使用 Anaconda 进行安装按照以下步骤在 A">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-26T09:26:07.692Z">
+<meta property="og:updated_time" content="2018-08-27T23:53:52.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="install_tensorflow_in_win10">
-<meta name="twitter:description" content="确定如何安装 TensorFlow您必须选择安装 TensorFlow 的方式。目前可支持如下几种方式：  “原生”pip Anaconda  原生 pip 会直接在您的系统上安装 TensorFlow，而不是通过虚拟环境。原生 pip 安装并未隔离在单独的容器中进行，因此可能会干扰系统中其他基于 Python 的安装。但是，如果您熟悉 pip 和您的 Python 环境，通常只需一条命令即可进行">
+<meta name="twitter:description" content="确定如何安装 TensorFlow您必须选择安装 TensorFlow 的方式。目前可支持如下几种方式：  “原生”pip Anaconda  pip方式安装Tensorflow需要额外安装其依赖的其他python包（而且需要python 3.6及以下的版本，我安装的是python 3.7，不想重新安装一次折腾了），所以使用Anacoda来安装。 使用 Anaconda 进行安装按照以下步骤在 A">
 
 
 
@@ -361,27 +361,36 @@
 <li>“原生”pip</li>
 <li>Anaconda</li>
 </ul>
-<p>原生 pip 会直接在您的系统上安装 TensorFlow，而不是通过虚拟环境。原生 pip 安装并未隔离在单独的容器中进行，因此可能会干扰系统中其他基于 Python 的安装。但是，如果您熟悉 pip 和您的 Python 环境，通常只需一条命令即可进行原生 pip 安装。此外，如果使用原生 pip 安装，用户可以从系统上的任何目录运行 TensorFlow 程序。</p>
-<p>在 Anaconda 中，您可以使用 conda 来创建一个虚拟环境。但是，在 Anaconda 内部，我们建议使用 pip install 命令来安装 TensorFlow，而不要使用 conda install 命令。</p>
-<h3 id="使用-Anaconda-进行安装"><a href="#使用-Anaconda-进行安装" class="headerlink" title="使用 Anaconda 进行安装"></a>使用 Anaconda 进行安装</h3><p>Anaconda 安装是由社区提供支持的，并没有任何官方支持。</p>
-<p>按照以下步骤在 Anaconda 环境中安装 TensorFlow：</p>
-<p>按照 Anaconda 下载网站上的说明下载并安装 Anaconda。</p>
-<p>通过调用以下命令创建名为 tensorflow 的 conda 环境：</p>
-<p>C:&gt; conda create -n tensorflow pip python=3.5<br>通过发出以下命令激活 conda 环境：</p>
-<p>C:&gt; activate tensorflow<br> (tensorflow)C:&gt;  # Your prompt should change<br>发出相应命令以在 conda 环境中安装 TensorFlow。要安装仅支持 CPU 的 TensorFlow 版本，请输入以下命令：</p>
-<p>(tensorflow)C:&gt; pip install —ignore-installed —upgrade tensorflow<br>要安装 GPU 版本的 TensorFlow，请输入以下命令（在同一行）：</p>
-<p>(tensorflow)C:&gt; pip install —ignore-installed —upgrade tensorflow-gpu<br>验证您的安装<br>启动终端。</p>
-<p>如果您是通过 Anaconda 进行安装，请激活您的 Anaconda 环境。</p>
-<p>从 shell 中调用 Python，如下所示：</p>
-<p>$ python<br>在 Python 交互式 shell 中输入以下几行简短的程序代码：</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>import tensorflow as tf<br>hello = tf.constant(‘Hello, TensorFlow!’)<br>sess = tf.Session()<br>print(sess.run(hello))<br>如果系统输出以下内容，说明您可以开始编写 TensorFlow 程序了：</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>Hello, TensorFlow!<br>如果系统输出一条错误消息而不是问候语，请参阅常见的安装问题。</p>
+<p>pip方式安装Tensorflow需要额外安装其依赖的其他python包（而且需要python 3.6及以下的版本，我安装的是python 3.7，不想重新安装一次折腾了），所以使用Anacoda来安装。</p>
+<h3 id="使用-Anaconda-进行安装"><a href="#使用-Anaconda-进行安装" class="headerlink" title="使用 Anaconda 进行安装"></a>使用 Anaconda 进行安装</h3><p>按照以下步骤在 Anaconda 环境中安装 TensorFlow：</p>
+<ul>
+<li>1.按照 Anaconda 下载网站上的说明下载并安装 Anaconda。</li>
+<li><p>2.通过调用以下命令创建名为 tensorflow 的 conda 环境：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C:&gt; conda create -n tensorflow pip python=3.5</div></pre></td></tr></table></figure>
+</li>
+<li><p>3.通过发出以下命令激活 conda 环境：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">C:&gt; activate tensorflow</div><div class="line">(tensorflow)C:&gt;  # Your prompt should change</div></pre></td></tr></table></figure>
+</li>
+<li><p>4.发出相应命令以在 conda 环境中安装 TensorFlow。要安装仅支持 CPU 的 TensorFlow 版本，请输入以下命令：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(tensorflow)C:&gt; pip install --ignore-installed --upgrade tensorflow</div></pre></td></tr></table></figure>
+</li>
+<li><p>5.要安装 GPU 版本的 TensorFlow，请输入以下命令（在同一行）：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(tensorflow)C:&gt; pip install --ignore-installed --upgrade tensorflow-gpu</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="验证安装"><a href="#验证安装" class="headerlink" title="验证安装"></a>验证安装</h4><ul>
+<li>1.启动终端，激活 Anaconda 环境。</li>
+<li>2.从 shell 中调用 Python，如下所示：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ python</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在 Python 交互式 shell 中输入以下几行简短的程序代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import tensorflow as tf</div><div class="line">&gt;&gt;&gt; hello = tf.constant(&apos;Hello, TensorFlow!&apos;)</div><div class="line">&gt;&gt;&gt; sess = tf.Session()</div><div class="line">&gt;&gt;&gt; print(sess.run(hello))</div></pre></td></tr></table></figure></p>
+<p>如果系统输出以下内容，说明您可以开始编写 TensorFlow 程序了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Hello, TensorFlow!</div></pre></td></tr></table></figure></p>
+<p>如果系统输出一条错误消息而不是问候语，请参阅常见的安装问题。</p>
+<h3 id="通过jupyter使用tensorflow"><a href="#通过jupyter使用tensorflow" class="headerlink" title="通过jupyter使用tensorflow"></a>通过jupyter使用tensorflow</h3><p>启动终端，并激活 Anaconda 环境后，再启动jupyter notebook。在jupyter中就可以使用tensorflow了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">(base) e:\jupyter&gt;activate tensorflow</div><div class="line"></div><div class="line">(tensorflow) e:\jupyter&gt;</div><div class="line">(tensorflow) e:\jupyter&gt;jupyter notebook --config=./jupyter_notebook_config.json</div><div class="line">[I 17:17:42.556 NotebookApp] Serving notebooks from local directory: e:\jupyter</div><div class="line">[I 17:17:42.556 NotebookApp] The Jupyter Notebook is running at:</div><div class="line">[I 17:17:42.557 NotebookApp] http://localhost:8888/</div></pre></td></tr></table></figure>
+<p>在页面上新建python3文件，通过如代码查看tensorflow是否可用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"></div><div class="line">print(tf.__version__)</div></pre></td></tr></table></figure>
+<p>运行cell，正常情况下会打印出tf的版本号。</p>
 
       
     </div>
@@ -586,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Anaconda-进行安装"><span class="nav-number">1.</span> <span class="nav-text">使用 Anaconda 进行安装</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Anaconda-进行安装"><span class="nav-number">1.</span> <span class="nav-text">使用 Anaconda 进行安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#验证安装"><span class="nav-number">1.1.</span> <span class="nav-text">验证安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过jupyter使用tensorflow"><span class="nav-number">2.</span> <span class="nav-text">通过jupyter使用tensorflow</span></a></li></ol></div>
             
 
           </div>
