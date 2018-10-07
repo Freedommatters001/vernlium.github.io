@@ -116,11 +116,12 @@
 <meta property="og:image" content="/2018/09/10/coursera-deeplearning-ai-c2-week2/adam_optimization_algorithm.jpg">
 <meta property="og:image" content="/2018/09/10/coursera-deeplearning-ai-c2-week2/learning_rage_decay.jpg">
 <meta property="og:image" content="/2018/09/10/coursera-deeplearning-ai-c2-week2/local_optima_in_nn.jpg">
+<meta property="og:image" content="/2018/09/10/coursera-deeplearning-ai-c2-week2/cost.jpg">
 <meta property="og:image" content="/2018/09/10/coursera-deeplearning-ai-c2-week2/kiank_sgd.png">
 <meta property="og:image" content="/2018/09/10/coursera-deeplearning-ai-c2-week2/kiank_minibatch.png">
 <meta property="og:image" content="/2018/09/10/coursera-deeplearning-ai-c2-week2/kiank_shuffle.png">
 <meta property="og:image" content="/2018/09/10/coursera-deeplearning-ai-c2-week2/kiank_partition.png">
-<meta property="og:updated_time" content="2018-10-07T23:33:12.526Z">
+<meta property="og:updated_time" content="2018-10-07T23:42:39.967Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coursera-deeplearning-ai-c2-week2">
 <meta name="twitter:description" content="本周课程主要讲解了神经网络的一些优化算法，要点：  随机梯度下降 Momentum（动量）优化算法 RMSProp优化算法 Adam优化算法  学习目标  Remember different optimization methods such as (Stochastic) Gradient Descent, Momentum, RMSProp and Adam Use random minib">
@@ -391,7 +392,7 @@
 <p>这是小批量梯度下降算法处理训练集一轮的过程,也叫做训练集的一次遍历(epoch)。遍历是指过一遍训练集，只不过在批量梯度下降法中，对训练集的一轮处理只能得到一步逼近，而小批量梯度下降法中对训练集的一轮处理，也就是一次遍历，可以得到5000步梯度逼近。当有一个大型训练集时，小批量梯度下降法比梯度下降法要快得多。</p>
 <h4 id="Understanding-mini-batch-gradient-descent"><a href="#Understanding-mini-batch-gradient-descent" class="headerlink" title="Understanding mini-batch gradient descent"></a>Understanding mini-batch gradient descent</h4><img src="/2018/09/10/coursera-deeplearning-ai-c2-week2/batch_grandient_descent_vs_mini-batch_gradient_descent.jpg" alt="batch grandient descent VS mini-batch gradient descent" title="batch grandient descent VS mini-batch gradient descent">
 <p>对梯度下降算法，损失函数是随着迭代次数单调递减的。如果某一次迭代它的值增加了那么一定是哪里错了，也许是学习率太大。</p>
-<p>而在小批量梯度下降中，同样画图就会发现，并不是每一次迭代代价函数的值都会变小。它的趋势是向下的，但是也会有许多噪声。<br>如果使用小批量梯度下降算法，经过几轮训练后，对 $J^ $作图,它并不一定每次迭代都会下降,但是整体趋势必须是向下的,而它之所以有噪声,可能和计算代价函数时使用的那个批次$X^,Y^$有关。</p>
+<p>而在小批量梯度下降中，同样画图就会发现，并不是每一次迭代代价函数的值都会变小。它的趋势是向下的，但是也会有许多噪声。<br>如果使用小批量梯度下降算法，经过几轮训练后，对 $ J^ $作图,它并不一定每次迭代都会下降,但是整体趋势必须是向下的,而它之所以有噪声,可能和计算代价函数时使用的那个批次$ X ^ , Y ^ $有关。</p>
 <h5 id="mini-batch大小"><a href="#mini-batch大小" class="headerlink" title="mini_batch大小"></a>mini_batch大小</h5><p>batch_size = 1 : 随机梯度下降（SDG，stochasit gradient descent）<br>batch_size = m : 批量梯度下降Batch gradient descent</p>
 <p>批量梯度下降最大的缺点是,如果训练集非常大，就将在每一次迭代上花费太长的时间。如果你的训练集比较小，它还是一个不错的选择。</p>
 <p>随机梯度下降有一个很大的缺点是:失去了可以利用向量加速运算的机会。</p>
@@ -420,8 +421,10 @@
 <h4 id="Gradient-descent-with-momentum"><a href="#Gradient-descent-with-momentum" class="headerlink" title="Gradient descent with momentum"></a>Gradient descent with momentum</h4><p>有一种算法叫做动量(Momentum)或者叫<strong>动量梯度下降算法</strong>,它几乎总会比标准的梯度下降算法更快。一言以蔽之，算法的主要思想是：计算梯度的指数加权平均，然后使用这个梯度来更新权重。</p>
 <img src="/2018/09/10/coursera-deeplearning-ai-c2-week2/gradient_descent_example.jpg" alt="gradient_descent_example.jpg" title="">
 <img src="/2018/09/10/coursera-deeplearning-ai-c2-week2/gradient_descent_with_momentum.jpg" alt="Gradient descent with momentum" title="Gradient descent with momentum">
-<h4 id="RMSprop"><a href="#RMSprop" class="headerlink" title="RMSprop"></a>RMSprop</h4><img src="/2018/09/10/coursera-deeplearning-ai-c2-week2/rmsprop.jpg" alt="rmsprop.jpg" title="">
-<h4 id="Adam-optimization-algorithm"><a href="#Adam-optimization-algorithm" class="headerlink" title="Adam optimization algorithm"></a>Adam optimization algorithm</h4><p>有些人尝试把梯度下降与动量算法结合起来，结果非常有效。而至今也并没有出现效果比它好很多的优化算法。这个视频将会提到的，关于RMSProp和Adam优化算法，属于其中极少数真正有效的算法，适用于很多不同的深度学习网络结构。</p>
+<h4 id="RMSprop"><a href="#RMSprop" class="headerlink" title="RMSprop"></a>RMSprop</h4><p>上面已经学习了如何用动量来加速梯度下降，还有一个叫做<strong>RMSprop</strong>的算法，全称为<strong>均方根传递(Root Mean Square prop)</strong>。它也可以加速梯度下降。我们来看看它是如何工作的。</p>
+<p>之前的例子中，在实现梯度下降时，可能会在垂直方向上出现巨大的振荡，即使它试图在水平方向上前进。为了说明这个例子，假设，纵轴代表参数b，横轴代表参数W，当然这里也可以是W1和W2等其他参数。使用b和W是为了便于理解，我们希望减慢b方向的学习，也就是垂直方向，同时加速或至少不减慢水平方向的学习，这就是RMSprop算法要做的。 </p>
+<img src="/2018/09/10/coursera-deeplearning-ai-c2-week2/rmsprop.jpg" alt="rmsprop.jpg" title="">
+<h4 id="Adam-optimization-algorithm"><a href="#Adam-optimization-algorithm" class="headerlink" title="Adam optimization algorithm"></a>Adam optimization algorithm</h4><p>有些人尝试把梯度下降与动量算法结合起来，结果非常有效。而至今也并没有出现效果比它好很多的优化算法。关于RMSProp和Adam优化算法，属于其中极少数真正有效的算法，适用于很多不同的深度学习网络结构。</p>
 <p>Adam优化算法本质上是将动量算法和RMSprop结合起来。</p>
 <img src="/2018/09/10/coursera-deeplearning-ai-c2-week2/adam_optimization_algorithm.jpg" alt="Adam optimization algorithm" title="Adam optimization algorithm">
 <h4 id="Learning-rate-decay"><a href="#Learning-rate-decay" class="headerlink" title="Learning rate decay"></a>Learning rate decay</h4><p>有一种方法或许能学习算法运行更快，那就是渐渐地减小学习率，称之为<strong>学习率衰减</strong>。</p>
@@ -433,7 +436,7 @@
 <p>像动量(Momentum)算法或RmsProp算法或Adam算法能改善学习算法的地方，就是在这些场景下，可以加快沿停滞区向下移动。然后离开停滞区的速度。</p>
 <h2 id="Programming-assignment"><a href="#Programming-assignment" class="headerlink" title="Programming assignment"></a>Programming assignment</h2><h3 id="编程作业-Optimization"><a href="#编程作业-Optimization" class="headerlink" title="编程作业: Optimization"></a>编程作业: Optimization</h3><h3 id="Optimization-Methods"><a href="#Optimization-Methods" class="headerlink" title="Optimization Methods"></a>Optimization Methods</h3><p>Until now, you’ve always used Gradient Descent to update the parameters and minimize the cost. In this notebook, you will learn more advanced optimization methods that can speed up learning and perhaps even get you to a better final value for the cost function. Having a good optimization algorithm can be the difference between waiting days vs. just a few hours to get a good result. </p>
 <p>Gradient descent goes “downhill” on a cost function $J$. Think of it as trying to do this: </p>
-
+<img src="/2018/09/10/coursera-deeplearning-ai-c2-week2/cost.jpg" alt="Figure 1: Minimizing the cost is like finding the lowest point in a hilly landscape. At each step of the training, you update your parameters following a certain direction to try to get to the lowest possible point." title="Figure 1: Minimizing the cost is like finding the lowest point in a hilly landscape. At each step of the training, you update your parameters following a certain direction to try to get to the lowest possible point.">
 <p><strong>Notations</strong>: As usual, $\frac{\partial J}{\partial a } = $ <code>da</code> for any variable <code>a</code>.</p>
 <p>To get started, run the following code to import the libraries you will need.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">import</span> scipy.io</div><div class="line"><span class="keyword">import</span> math</div><div class="line"><span class="keyword">import</span> sklearn</div><div class="line"><span class="keyword">import</span> sklearn.datasets</div><div class="line"></div><div class="line"><span class="keyword">from</span> opt_utils <span class="keyword">import</span> load_params_and_grads, initialize_parameters, forward_propagation, backward_propagation</div><div class="line"><span class="keyword">from</span> opt_utils <span class="keyword">import</span> compute_cost, predict, predict_dec, plot_decision_boundary, load_dataset</div><div class="line"><span class="keyword">from</span> testCases <span class="keyword">import</span> *</div></pre></td></tr></table></figure>
