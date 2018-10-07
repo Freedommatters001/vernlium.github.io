@@ -121,7 +121,7 @@
 <meta property="og:image" content="/2018/09/10/coursera-deeplearning-ai-c2-week2/kiank_minibatch.png">
 <meta property="og:image" content="/2018/09/10/coursera-deeplearning-ai-c2-week2/kiank_shuffle.png">
 <meta property="og:image" content="/2018/09/10/coursera-deeplearning-ai-c2-week2/kiank_partition.png">
-<meta property="og:updated_time" content="2018-10-07T23:42:39.967Z">
+<meta property="og:updated_time" content="2018-10-07T23:44:46.166Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coursera-deeplearning-ai-c2-week2">
 <meta name="twitter:description" content="本周课程主要讲解了神经网络的一些优化算法，要点：  随机梯度下降 Momentum（动量）优化算法 RMSProp优化算法 Adam优化算法  学习目标  Remember different optimization methods such as (Stochastic) Gradient Descent, Momentum, RMSProp and Adam Use random minib">
@@ -392,7 +392,7 @@
 <p>这是小批量梯度下降算法处理训练集一轮的过程,也叫做训练集的一次遍历(epoch)。遍历是指过一遍训练集，只不过在批量梯度下降法中，对训练集的一轮处理只能得到一步逼近，而小批量梯度下降法中对训练集的一轮处理，也就是一次遍历，可以得到5000步梯度逼近。当有一个大型训练集时，小批量梯度下降法比梯度下降法要快得多。</p>
 <h4 id="Understanding-mini-batch-gradient-descent"><a href="#Understanding-mini-batch-gradient-descent" class="headerlink" title="Understanding mini-batch gradient descent"></a>Understanding mini-batch gradient descent</h4><img src="/2018/09/10/coursera-deeplearning-ai-c2-week2/batch_grandient_descent_vs_mini-batch_gradient_descent.jpg" alt="batch grandient descent VS mini-batch gradient descent" title="batch grandient descent VS mini-batch gradient descent">
 <p>对梯度下降算法，损失函数是随着迭代次数单调递减的。如果某一次迭代它的值增加了那么一定是哪里错了，也许是学习率太大。</p>
-<p>而在小批量梯度下降中，同样画图就会发现，并不是每一次迭代代价函数的值都会变小。它的趋势是向下的，但是也会有许多噪声。<br>如果使用小批量梯度下降算法，经过几轮训练后，对 $ J^ $作图,它并不一定每次迭代都会下降,但是整体趋势必须是向下的,而它之所以有噪声,可能和计算代价函数时使用的那个批次$ X ^ , Y ^ $有关。</p>
+<p>而在小批量梯度下降中，同样画图就会发现，并不是每一次迭代代价函数的值都会变小。它的趋势是向下的，但是也会有许多噪声。<br>如果使用小批量梯度下降算法，经过几轮训练后，对 $ J^{t} $作图,它并不一定每次迭代都会下降,但是整体趋势必须是向下的,而它之所以有噪声,可能和计算代价函数时使用的那个批次$ X ^ {t}, Y ^ {t}$有关。</p>
 <h5 id="mini-batch大小"><a href="#mini-batch大小" class="headerlink" title="mini_batch大小"></a>mini_batch大小</h5><p>batch_size = 1 : 随机梯度下降（SDG，stochasit gradient descent）<br>batch_size = m : 批量梯度下降Batch gradient descent</p>
 <p>批量梯度下降最大的缺点是,如果训练集非常大，就将在每一次迭代上花费太长的时间。如果你的训练集比较小，它还是一个不错的选择。</p>
 <p>随机梯度下降有一个很大的缺点是:失去了可以利用向量加速运算的机会。</p>
@@ -402,7 +402,7 @@
 <li>2.typical batch_size: 64-512之间的2^n</li>
 </ul>
 <blockquote>
-<p>确保mini-batch 所有的$X^  Y^$ 是可以放进CPU/GPU 内存的 。</p>
+<p>确保mini-batch 所有的$X^{t}  Y^{t}$ 是可以放进CPU/GPU 内存的 。</p>
 </blockquote>
 <h5 id="Batch-Gradient-Descent"><a href="#Batch-Gradient-Descent" class="headerlink" title="Batch Gradient Descent"></a>Batch Gradient Descent</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">X = daty_input</div><div class="line">Y = labels</div><div class="line"></div><div class="line">parameters = initialize_parameters(layers,dims)</div><div class="line"></div><div class="line">for i in range(0,num_iterations):</div><div class="line">    a,caches = forword_propagation(X, parameters)</div><div class="line">    cost = compute_cost(a,Y)</div><div class="line">    grads = backword_propagation(a,caches,parameters)</div><div class="line">    parameters = update_parameters(parameters,grads)</div></pre></td></tr></table></figure>
 <p>Stochastic Gradient Descent:</p>
