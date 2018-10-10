@@ -98,17 +98,19 @@
 
 
 
-<meta name="description" content="Hyperparameter tuning课程视频Tuning process课程视频Using an appropriate scale to pick hyperparameters课程视频Hyperparameters tuning in practice: Pandas vs. CaviarBatch Normalization课程视频Normalizing activations in">
+<meta name="description" content="课程笔记Hyperparameter tuning, Batch Normalization and Programming FrameworksTuning processHyperparameters，常见的超参数：  learning rate $ \alpha $ 动量超参数 $ \beta $ 默认值 0.9   hidden units mini_batch size layers l">
 <meta property="og:type" content="article">
 <meta property="og:title" content="coursera-deeplearning-ai-c2-week3">
-<meta property="og:url" content="://vernlium.github.io/2018/07/05/coursera-deeplearning-ai-c2-week3/index.html">
+<meta property="og:url" content="://vernlium.github.io/2018/10/05/coursera-deeplearning-ai-c2-week3/index.html">
 <meta property="og:site_name" content="Vernlium">
-<meta property="og:description" content="Hyperparameter tuning课程视频Tuning process课程视频Using an appropriate scale to pick hyperparameters课程视频Hyperparameters tuning in practice: Pandas vs. CaviarBatch Normalization课程视频Normalizing activations in">
+<meta property="og:description" content="课程笔记Hyperparameter tuning, Batch Normalization and Programming FrameworksTuning processHyperparameters，常见的超参数：  learning rate $ \alpha $ 动量超参数 $ \beta $ 默认值 0.9   hidden units mini_batch size layers l">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-01T23:59:38.909Z">
+<meta property="og:image" content="/2018/10/05/coursera-deeplearning-ai-c2-week3/try_random_values.jpg">
+<meta property="og:updated_time" content="2018-10-10T23:55:09.727Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coursera-deeplearning-ai-c2-week3">
-<meta name="twitter:description" content="Hyperparameter tuning课程视频Tuning process课程视频Using an appropriate scale to pick hyperparameters课程视频Hyperparameters tuning in practice: Pandas vs. CaviarBatch Normalization课程视频Normalizing activations in">
+<meta name="twitter:description" content="课程笔记Hyperparameter tuning, Batch Normalization and Programming FrameworksTuning processHyperparameters，常见的超参数：  learning rate $ \alpha $ 动量超参数 $ \beta $ 默认值 0.9   hidden units mini_batch size layers l">
+<meta name="twitter:image" content="/2018/10/05/coursera-deeplearning-ai-c2-week3/try_random_values.jpg">
 
 
 
@@ -137,7 +139,7 @@
 
 
 
-  <link rel="canonical" href="://vernlium.github.io/2018/07/05/coursera-deeplearning-ai-c2-week3/"/>
+  <link rel="canonical" href="://vernlium.github.io/2018/10/05/coursera-deeplearning-ai-c2-week3/"/>
 
 
 
@@ -276,7 +278,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="://vernlium.github.io/2018/07/05/coursera-deeplearning-ai-c2-week3/">
+    <link itemprop="mainEntityOfPage" href="://vernlium.github.io/2018/10/05/coursera-deeplearning-ai-c2-week3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="张阿楠">
@@ -305,8 +307,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-05T07:16:06+08:00">
-                2018-07-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-05T07:16:06+08:00">
+                2018-10-05
               </time>
             
 
@@ -325,8 +327,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/07/05/coursera-deeplearning-ai-c2-week3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count hc-comment-count" data-xid="2018/07/05/coursera-deeplearning-ai-c2-week3/" itemprop="commentsCount"></span>
+                <a href="/2018/10/05/coursera-deeplearning-ai-c2-week3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2018/10/05/coursera-deeplearning-ai-c2-week3/" itemprop="commentsCount"></span>
                 </a>
               </span>
               <!--/noindex-->
@@ -355,7 +357,60 @@
       
 
       
-        <h4 id="Hyperparameter-tuning"><a href="#Hyperparameter-tuning" class="headerlink" title="Hyperparameter tuning"></a>Hyperparameter tuning</h4><h5 id="课程视频Tuning-process"><a href="#课程视频Tuning-process" class="headerlink" title="课程视频Tuning process"></a>课程视频Tuning process</h5><h5 id="课程视频Using-an-appropriate-scale-to-pick-hyperparameters"><a href="#课程视频Using-an-appropriate-scale-to-pick-hyperparameters" class="headerlink" title="课程视频Using an appropriate scale to pick hyperparameters"></a>课程视频Using an appropriate scale to pick hyperparameters</h5><h5 id="课程视频Hyperparameters-tuning-in-practice-Pandas-vs-Caviar"><a href="#课程视频Hyperparameters-tuning-in-practice-Pandas-vs-Caviar" class="headerlink" title="课程视频Hyperparameters tuning in practice: Pandas vs. Caviar"></a>课程视频Hyperparameters tuning in practice: Pandas vs. Caviar</h5><h4 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h4><h5 id="课程视频Normalizing-activations-in-a-network"><a href="#课程视频Normalizing-activations-in-a-network" class="headerlink" title="课程视频Normalizing activations in a network"></a>课程视频Normalizing activations in a network</h5><h5 id="课程视频Fitting-Batch-Norm-into-a-neural-network"><a href="#课程视频Fitting-Batch-Norm-into-a-neural-network" class="headerlink" title="课程视频Fitting Batch Norm into a neural network"></a>课程视频Fitting Batch Norm into a neural network</h5><h5 id="课程视频Why-does-Batch-Norm-work"><a href="#课程视频Why-does-Batch-Norm-work" class="headerlink" title="课程视频Why does Batch Norm work?"></a>课程视频Why does Batch Norm work?</h5><h5 id="课程视频Batch-Norm-at-test-time"><a href="#课程视频Batch-Norm-at-test-time" class="headerlink" title="课程视频Batch Norm at test time"></a>课程视频Batch Norm at test time</h5><h4 id="Multi-class-classification"><a href="#Multi-class-classification" class="headerlink" title="Multi-class classification"></a>Multi-class classification</h4><h5 id="课程视频Softmax-Regression"><a href="#课程视频Softmax-Regression" class="headerlink" title="课程视频Softmax Regression"></a>课程视频Softmax Regression</h5><h5 id="课程视频Training-a-softmax-classifier"><a href="#课程视频Training-a-softmax-classifier" class="headerlink" title="课程视频Training a softmax classifier"></a>课程视频Training a softmax classifier</h5><h4 id="Introduction-to-programming-frameworks"><a href="#Introduction-to-programming-frameworks" class="headerlink" title="Introduction to programming frameworks"></a>Introduction to programming frameworks</h4><h5 id="课程视频Deep-learning-frameworks"><a href="#课程视频Deep-learning-frameworks" class="headerlink" title="课程视频Deep learning frameworks"></a>课程视频Deep learning frameworks</h5><h5 id="课程视频TensorFlow"><a href="#课程视频TensorFlow" class="headerlink" title="课程视频TensorFlow"></a>课程视频TensorFlow</h5><h4 id="Programming-assignment"><a href="#Programming-assignment" class="headerlink" title="Programming assignment"></a>Programming assignment</h4><h5 id="编程作业-Tensorflow"><a href="#编程作业-Tensorflow" class="headerlink" title="编程作业: Tensorflow"></a>编程作业: Tensorflow</h5>
+        <h2 id="课程笔记"><a href="#课程笔记" class="headerlink" title="课程笔记"></a>课程笔记</h2><h3 id="Hyperparameter-tuning-Batch-Normalization-and-Programming-Frameworks"><a href="#Hyperparameter-tuning-Batch-Normalization-and-Programming-Frameworks" class="headerlink" title="Hyperparameter tuning, Batch Normalization and Programming Frameworks"></a>Hyperparameter tuning, Batch Normalization and Programming Frameworks</h3><h4 id="Tuning-process"><a href="#Tuning-process" class="headerlink" title="Tuning process"></a>Tuning process</h4><p><strong>Hyperparameters</strong>，常见的超参数：</p>
+<ul>
+<li>learning rate $ \alpha $</li>
+<li>动量超参数 $ \beta $<ul>
+<li>默认值 0.9</li>
+</ul>
+</li>
+<li><h1 id="hidden-units"><a href="#hidden-units" class="headerlink" title="hidden units"></a>hidden units</h1></li>
+<li>mini_batch size</li>
+<li><h1 id="layers"><a href="#layers" class="headerlink" title="layers"></a>layers</h1></li>
+<li>learning rate decay</li>
+<li>Adam优化算法 $ \beta_1,\beta_2,\epsilon $<ul>
+<li>一般取默认值</li>
+<li>$ \beta_1 = 0.9 $</li>
+<li>$ \beta_2 = 0.999 $</li>
+<li>$ \epsilon = 10^{-8} $</li>
+</ul>
+</li>
+</ul>
+<p><strong>两个原则：</strong></p>
+<ul>
+<li>Try random values: Don’t use a grid<ul>
+<li>随机取值，而不是按规律取值</li>
+<li><img src="/2018/10/05/coursera-deeplearning-ai-c2-week3/try_random_values.jpg" alt="try_random_values.jpg" title=""></li>
+</ul>
+</li>
+<li>Coarse to fine： 从粗到细<ul>
+<li>先在大范围内取随机值，然后在表现较好的小区域内取更多的值</li>
+<li>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Using-an-appropriate-scale-to-pick-hyperparameters"><a href="#Using-an-appropriate-scale-to-pick-hyperparameters" class="headerlink" title="Using an appropriate scale to pick hyperparameters"></a>Using an appropriate scale to pick hyperparameters</h4><p>随机抽样并不意味着在有效值范围内的均匀随机抽样(sampleing uniformly at random)。相反,更重要的是选取适当的尺度(scale)，用以研究这些超参数。</p>
+<p>比如，取$\alpha$，选定范围$[0.0001,1]$。<br>如果直接随机选取，则90%的概率落在$[0.1,1]$之间，显然是不合理的。<br>我们需要在$[0.0001,0.001],[0.001,0.01],[0.01,0.1],[0.1,1]$这4个区间是均匀的。</p>
+<p>可以通过取$ r = -4 * np.random.rand()$，r的取值在[-4,0]上随机分布。<br>然后再取 $\alpha = 10^r$，取值范围就是$[0.0001,1]$。</p>
+<p>这种是对然尺度，$10^a - 10^b$。</p>
+<p>再比如$ \beta $，取[0.9,0.999]，随机也不太好取。</p>
+<p>而$ 1 - \beta $的范围在[0.001,0.1]上，可以转换为上面的方式。</p>
+<p>解释：</p>
+<p>$ \beta ，0.9000 -&gt; 0.9005$对结果影响非常小。<br>$ \beta ，0.999 -&gt; 0.9995$对结果影响非常大。</p>
+<h4 id="Hyperparameters-tuning-in-practice-Pandas-vs-Caviar"><a href="#Hyperparameters-tuning-in-practice-Pandas-vs-Caviar" class="headerlink" title="Hyperparameters tuning in practice: Pandas vs. Caviar"></a>Hyperparameters tuning in practice: Pandas vs. Caviar</h4><p>原则：</p>
+<ul>
+<li>Baby sitting one model:精心照料某个单一模型。类似 Panda，一胎一个，计算资源稀少</li>
+<li>Training many modes inparallel: 并行训练多个模型。像Caviar，鱼卵，计算资源多</li>
+</ul>
+<h4 id="Batch-Normalization-批量归一化"><a href="#Batch-Normalization-批量归一化" class="headerlink" title="Batch Normalization 批量归一化"></a>Batch Normalization 批量归一化</h4><p>在深度学习不断兴起的过程中，最重要的创新之一是一种叫<strong>批量归一化 (Batch Normalization)</strong>的算法，它由Sergey Ioffe 和 Christian Szegedy提出。</p>
+<ul>
+<li>可以让你的超参搜索变得很简单</li>
+<li>让你的神经网络变得更加具有鲁棒性</li>
+<li>可以让你的神经网络对于超参数的选择上不再那么敏感 </li>
+<li>可以让你更容易地训练非常深的网络 </li>
+</ul>
+<h4 id="Normalizing-activations-in-a-network"><a href="#Normalizing-activations-in-a-network" class="headerlink" title="Normalizing activations in a network"></a>Normalizing activations in a network</h4><h4 id="Fitting-Batch-Norm-into-a-neural-network"><a href="#Fitting-Batch-Norm-into-a-neural-network" class="headerlink" title="Fitting Batch Norm into a neural network"></a>Fitting Batch Norm into a neural network</h4><h4 id="Why-does-Batch-Norm-work"><a href="#Why-does-Batch-Norm-work" class="headerlink" title="Why does Batch Norm work?"></a>Why does Batch Norm work?</h4><h4 id="Batch-Norm-at-test-time"><a href="#Batch-Norm-at-test-time" class="headerlink" title="Batch Norm at test time"></a>Batch Norm at test time</h4><h4 id="Multi-class-classification"><a href="#Multi-class-classification" class="headerlink" title="Multi-class classification"></a>Multi-class classification</h4><h4 id="Softmax-Regression"><a href="#Softmax-Regression" class="headerlink" title="Softmax Regression"></a>Softmax Regression</h4><h4 id="Training-a-softmax-classifier"><a href="#Training-a-softmax-classifier" class="headerlink" title="Training a softmax classifier"></a>Training a softmax classifier</h4><h4 id="Introduction-to-programming-frameworks"><a href="#Introduction-to-programming-frameworks" class="headerlink" title="Introduction to programming frameworks"></a>Introduction to programming frameworks</h4><h4 id="Deep-learning-frameworks"><a href="#Deep-learning-frameworks" class="headerlink" title="Deep learning frameworks"></a>Deep learning frameworks</h4><h4 id="TensorFlow"><a href="#TensorFlow" class="headerlink" title="TensorFlow"></a>TensorFlow</h4><h4 id="Programming-assignment"><a href="#Programming-assignment" class="headerlink" title="Programming assignment"></a>Programming assignment</h4><h5 id="编程作业-Tensorflow"><a href="#编程作业-Tensorflow" class="headerlink" title="编程作业: Tensorflow"></a>编程作业: Tensorflow</h5>
       
     </div>
     
@@ -379,8 +434,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/24/coursera中无法播放视频解决方法/" rel="next" title="coursera中无法播放视频解决方法">
-                <i class="fa fa-chevron-left"></i> coursera中无法播放视频解决方法
+              <a href="/2018/09/10/coursera-deeplearning-ai-c2-week2/" rel="next" title="coursera-deeplearning-ai-c2-week2">
+                <i class="fa fa-chevron-left"></i> coursera-deeplearning-ai-c2-week2
               </a>
             
           </div>
@@ -388,10 +443,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/05/coursera-deeplearning-ai-c3-week1/" rel="prev" title="coursera-deeplearning-ai-c3-week1">
-                coursera-deeplearning-ai-c3-week1 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -551,7 +602,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hyperparameter-tuning"><span class="nav-number">1.</span> <span class="nav-text">Hyperparameter tuning</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Tuning-process"><span class="nav-number">1.1.</span> <span class="nav-text">课程视频Tuning process</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Using-an-appropriate-scale-to-pick-hyperparameters"><span class="nav-number">1.2.</span> <span class="nav-text">课程视频Using an appropriate scale to pick hyperparameters</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Hyperparameters-tuning-in-practice-Pandas-vs-Caviar"><span class="nav-number">1.3.</span> <span class="nav-text">课程视频Hyperparameters tuning in practice: Pandas vs. Caviar</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Batch-Normalization"><span class="nav-number">2.</span> <span class="nav-text">Batch Normalization</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Normalizing-activations-in-a-network"><span class="nav-number">2.1.</span> <span class="nav-text">课程视频Normalizing activations in a network</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Fitting-Batch-Norm-into-a-neural-network"><span class="nav-number">2.2.</span> <span class="nav-text">课程视频Fitting Batch Norm into a neural network</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Why-does-Batch-Norm-work"><span class="nav-number">2.3.</span> <span class="nav-text">课程视频Why does Batch Norm work?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Batch-Norm-at-test-time"><span class="nav-number">2.4.</span> <span class="nav-text">课程视频Batch Norm at test time</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Multi-class-classification"><span class="nav-number">3.</span> <span class="nav-text">Multi-class classification</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Softmax-Regression"><span class="nav-number">3.1.</span> <span class="nav-text">课程视频Softmax Regression</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Training-a-softmax-classifier"><span class="nav-number">3.2.</span> <span class="nav-text">课程视频Training a softmax classifier</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Introduction-to-programming-frameworks"><span class="nav-number">4.</span> <span class="nav-text">Introduction to programming frameworks</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频Deep-learning-frameworks"><span class="nav-number">4.1.</span> <span class="nav-text">课程视频Deep learning frameworks</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#课程视频TensorFlow"><span class="nav-number">4.2.</span> <span class="nav-text">课程视频TensorFlow</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Programming-assignment"><span class="nav-number">5.</span> <span class="nav-text">Programming assignment</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#编程作业-Tensorflow"><span class="nav-number">5.1.</span> <span class="nav-text">编程作业: Tensorflow</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#课程笔记"><span class="nav-number">1.</span> <span class="nav-text">课程笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hyperparameter-tuning-Batch-Normalization-and-Programming-Frameworks"><span class="nav-number">1.1.</span> <span class="nav-text">Hyperparameter tuning, Batch Normalization and Programming Frameworks</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Tuning-process"><span class="nav-number">1.1.1.</span> <span class="nav-text">Tuning process</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hidden-units"><span class="nav-number"></span> <span class="nav-text">hidden units</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#layers"><span class="nav-number"></span> <span class="nav-text">layers</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Using-an-appropriate-scale-to-pick-hyperparameters"><span class="nav-number">0.0.1.</span> <span class="nav-text">Using an appropriate scale to pick hyperparameters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hyperparameters-tuning-in-practice-Pandas-vs-Caviar"><span class="nav-number">0.0.2.</span> <span class="nav-text">Hyperparameters tuning in practice: Pandas vs. Caviar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Batch-Normalization-批量归一化"><span class="nav-number">0.0.3.</span> <span class="nav-text">Batch Normalization 批量归一化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Normalizing-activations-in-a-network"><span class="nav-number">0.0.4.</span> <span class="nav-text">Normalizing activations in a network</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Fitting-Batch-Norm-into-a-neural-network"><span class="nav-number">0.0.5.</span> <span class="nav-text">Fitting Batch Norm into a neural network</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Why-does-Batch-Norm-work"><span class="nav-number">0.0.6.</span> <span class="nav-text">Why does Batch Norm work?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Batch-Norm-at-test-time"><span class="nav-number">0.0.7.</span> <span class="nav-text">Batch Norm at test time</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Multi-class-classification"><span class="nav-number">0.0.8.</span> <span class="nav-text">Multi-class classification</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Softmax-Regression"><span class="nav-number">0.0.9.</span> <span class="nav-text">Softmax Regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Training-a-softmax-classifier"><span class="nav-number">0.0.10.</span> <span class="nav-text">Training a softmax classifier</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Introduction-to-programming-frameworks"><span class="nav-number">0.0.11.</span> <span class="nav-text">Introduction to programming frameworks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deep-learning-frameworks"><span class="nav-number">0.0.12.</span> <span class="nav-text">Deep learning frameworks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TensorFlow"><span class="nav-number">0.0.13.</span> <span class="nav-text">TensorFlow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Programming-assignment"><span class="nav-number">0.0.14.</span> <span class="nav-text">Programming assignment</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#编程作业-Tensorflow"><span class="nav-number">0.0.14.1.</span> <span class="nav-text">编程作业: Tensorflow</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -710,7 +761,7 @@
 		_hcwp.push({widget:"Bloggerstream", widget_id: 95829, selector:".hc-comment-count", label: "{\%COUNT%\}" });
 
 		
-		_hcwp.push({widget:"Stream", widget_id: 95829, xid: "2018/07/05/coursera-deeplearning-ai-c2-week3/"});
+		_hcwp.push({widget:"Stream", widget_id: 95829, xid: "2018/10/05/coursera-deeplearning-ai-c2-week3/"});
 		
 
 		(function() {
