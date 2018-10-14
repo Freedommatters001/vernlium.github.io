@@ -111,7 +111,8 @@
 <meta property="og:image" content="/2018/10/05/coursera-deeplearning-ai-c2-week3/implementing_batch_norm_gradient_descent.jpg">
 <meta property="og:image" content="/2018/10/05/coursera-deeplearning-ai-c2-week3/batch_norm_at_test_time.jpg">
 <meta property="og:image" content="/2018/10/05/coursera-deeplearning-ai-c2-week3/onehot.png">
-<meta property="og:updated_time" content="2018-10-14T04:37:55.153Z">
+<meta property="og:image" content="/2018/10/05/coursera-deeplearning-ai-c2-week3/hands.png">
+<meta property="og:updated_time" content="2018-10-14T04:52:04.182Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coursera-deeplearning-ai-c2-week3">
 <meta name="twitter:description" content="课程笔记本周课程主要讲解了如何调参以及batch-norm算法，要点：  如何调参 batch norm 深度学习框架  学习目标：  Master the process of hyperparameter tuning  Hyperparameter tuning, Batch Normalization and Programming FrameworksTuning processHype">
@@ -560,7 +561,7 @@ J(\theta) = - \left[ \sum_{i=1}^{m} \sum_{k=1}^{K}  1\left\{y^{(i)} = k\right\} 
 </ul>
 <p>Note that this is a subset of the SIGNS dataset. The complete dataset contains many more signs.</p>
 <p>Here are examples for each number, and how an explanation of how we represent the labels. These are the original pictures, before we lowered the image resolutoion to 64 by 64 pixels.</p>
-
+<img src="/2018/10/05/coursera-deeplearning-ai-c2-week3/hands.png" alt="Figure 1: SIGNS dataset" title="Figure 1: SIGNS dataset">
 <p>Run the following code to load the dataset.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#Loading the dataset</span></div><div class="line">X_train_orig, Y_train_orig, X_test_orig, Y_test_orig, classes = load_dataset()</div></pre></td></tr></table></figure>
 <p>Change the index below and run the cell to visualize some examples in the dataset.</p>
@@ -619,18 +620,21 @@ J(\theta) = - \left[ \sum_{i=1}^{m} \sum_{k=1}^{K}  1\left\{y^{(i)} = k\right\} 
 4. Run the code and check if the algorithm is right!
 </code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">import scipy</div><div class="line">from PIL import Image</div><div class="line">from scipy import ndimage</div><div class="line"></div><div class="line">## START CODE HERE ## (PUT YOUR IMAGE NAME) </div><div class="line">my_image = &quot;thumbs_up.jpg&quot;</div><div class="line">## END CODE HERE ##</div><div class="line"></div><div class="line"># We preprocess your image to fit your algorithm.</div><div class="line">fname = &quot;images/&quot; + my_image</div><div class="line">image = np.array(ndimage.imread(fname, flatten=False))</div><div class="line">my_image = scipy.misc.imresize(image, size=(64,64)).reshape((1, 64*64*3)).T</div><div class="line">my_image_prediction = predict(my_image, parameters)</div><div class="line"></div><div class="line">plt.imshow(image)</div><div class="line">print(&quot;Your algorithm predicts: y = &quot; + str(np.squeeze(my_image_prediction)))</div></pre></td></tr></table></figure>
 <p>You indeed deserved a “thumbs-up” although as you can see the algorithm seems to classify it incorrectly. The reason is that the training set doesn’t contain any “thumbs-up”, so the model doesn’t know how to deal with it! We call that a “mismatched data distribution” and it is one of the various of the next course on “Structuring Machine Learning Projects”.</p>
-<font color="blue">
-**What you should remember**:
-- Tensorflow is a programming framework used in deep learning
-- The two main object classes in tensorflow are Tensors and Operators. 
-- When you code in tensorflow you have to take the following steps:
-    - Create a graph containing Tensors (Variables, Placeholders ...) and Operations (tf.matmul, tf.add, ...)
-    - Create a session
-    - Initialize the session
-    - Run the session to execute the graph
-- You can execute the graph multiple times as you've seen in model()
-- The backpropagation and optimization is automatically done when running the session on the "optimizer" object.
-</font>
+<p><strong>What you should remember</strong>:</p>
+<ul>
+<li>Tensorflow is a programming framework used in deep learning</li>
+<li>The two main object classes in tensorflow are Tensors and Operators. </li>
+<li>When you code in tensorflow you have to take the following steps:<ul>
+<li>Create a graph containing Tensors (Variables, Placeholders …) and Operations (tf.matmul, tf.add, …)</li>
+<li>Create a session</li>
+<li>Initialize the session</li>
+<li>Run the session to execute the graph</li>
+</ul>
+</li>
+<li>You can execute the graph multiple times as you’ve seen in model()</li>
+<li>The backpropagation and optimization is automatically done when running the session on the “optimizer” object.</li>
+</ul>
+
       
     </div>
     
