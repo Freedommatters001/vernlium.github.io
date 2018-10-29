@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next pisces" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Consolas:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="课程笔记本周课程从边缘检测讲起，引出卷积的概念，并讲到了卷积中的padding、pooling等操作，要点：  边缘检测 卷积的实现 padding pooling stride  学习目标：  Understand the convolution operation Understand the pooling operation Remember the vocabulary used in">
+<meta property="og:type" content="article">
+<meta property="og:title" content="coursera-deeplearning-ai-c4-week1">
+<meta property="og:url" content="://vernlium.github.io/2018/10/15/coursera-deeplearning-ai-c4-week1/index.html">
+<meta property="og:site_name" content="Vernlium">
+<meta property="og:description" content="课程笔记本周课程从边缘检测讲起，引出卷积的概念，并讲到了卷积中的padding、pooling等操作，要点：  边缘检测 卷积的实现 padding pooling stride  学习目标：  Understand the convolution operation Understand the pooling operation Remember the vocabulary used in">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="/2018/10/15/coursera-deeplearning-ai-c4-week1/vertical_edge_detection.jpg">
+<meta property="og:image" content="/2018/10/15/coursera-deeplearning-ai-c4-week1/vertical_and_horizontal_edge_detection.jpg">
+<meta property="og:image" content="/2018/10/15/coursera-deeplearning-ai-c4-week1/stride2.gif">
+<meta property="og:image" content="/2018/10/15/coursera-deeplearning-ai-c4-week1/summary_of_convolution.jpg">
+<meta property="og:image" content="/2018/10/15/coursera-deeplearning-ai-c4-week1/mulit_channel_convolution.gif">
+<meta property="og:image" content="/2018/10/15/coursera-deeplearning-ai-c4-week1/multiple_filters.jpg">
+<meta property="og:image" content="/2018/10/15/coursera-deeplearning-ai-c4-week1/summary_of_notation.jpg">
+<meta property="og:image" content="/2018/10/15/coursera-deeplearning-ai-c4-week1/example_convnet.jpg">
+<meta property="og:image" content="/2018/10/15/coursera-deeplearning-ai-c4-week1/maxpool_animation.gif">
+<meta property="og:image" content="/2018/10/15/coursera-deeplearning-ai-c4-week1/neural_network_example.jpg">
+<meta property="og:image" content="/2018/10/15/coursera-deeplearning-ai-c4-week1/lenet_5_parameters.jpg">
+<meta property="og:image" content="/2018/10/15/coursera-deeplearning-ai-c4-week1/putting_it_together.jpg">
+<meta property="og:updated_time" content="2018-10-28T23:46:17.917Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="coursera-deeplearning-ai-c4-week1">
+<meta name="twitter:description" content="课程笔记本周课程从边缘检测讲起，引出卷积的概念，并讲到了卷积中的padding、pooling等操作，要点：  边缘检测 卷积的实现 padding pooling stride  学习目标：  Understand the convolution operation Understand the pooling operation Remember the vocabulary used in">
+<meta name="twitter:image" content="/2018/10/15/coursera-deeplearning-ai-c4-week1/vertical_edge_detection.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: false,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="://vernlium.github.io/2018/10/15/coursera-deeplearning-ai-c4-week1/"/>
+
+
+
+
+
+  <title>coursera-deeplearning-ai-c4-week1 | Vernlium</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Vernlium</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Keep codeing and thinking!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="://vernlium.github.io/2018/10/15/coursera-deeplearning-ai-c4-week1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="张阿楠">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wukong.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Vernlium">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">coursera-deeplearning-ai-c4-week1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-15T07:16:40+08:00">
+                2018-10-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            <!--noindex-->
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/15/coursera-deeplearning-ai-c4-week1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count hc-comment-count" data-xid="2018/10/15/coursera-deeplearning-ai-c4-week1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+              <!--/noindex-->
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="课程笔记"><a href="#课程笔记" class="headerlink" title="课程笔记"></a>课程笔记</h2><p>本周课程从边缘检测讲起，引出卷积的概念，并讲到了卷积中的padding、pooling等操作，要点：</p>
+<ul>
+<li>边缘检测</li>
+<li>卷积的实现</li>
+<li>padding</li>
+<li>pooling</li>
+<li>stride</li>
+</ul>
+<p>学习目标：</p>
+<ul>
+<li>Understand the convolution operation</li>
+<li>Understand the pooling operation</li>
+<li>Remember the vocabulary used in convolutional neural network (padding, stride, filter, …)</li>
+<li>Build a convolutional neural network for image multi-class classification</li>
+</ul>
+<h3 id="Convolutional-Neural-Networks"><a href="#Convolutional-Neural-Networks" class="headerlink" title="Convolutional Neural Networks"></a>Convolutional Neural Networks</h3><h4 id="Computer-Vision"><a href="#Computer-Vision" class="headerlink" title="Computer Vision"></a>Computer Vision</h4><p>计算机视觉的应用：</p>
+<ul>
+<li>Image Classification</li>
+<li>Object detection</li>
+<li>Image Style Transfer</li>
+</ul>
+<h4 id="Edge-Detection-Example"><a href="#Edge-Detection-Example" class="headerlink" title="Edge Detection Example"></a>Edge Detection Example</h4><p>通过特定的filter，可以检测出特定的边缘。比如，下图中的filter可以检测出垂直方向的边缘。</p>
+<img src="/2018/10/15/coursera-deeplearning-ai-c4-week1/vertical_edge_detection.jpg" alt="Vertical Edge Detection" title="Vertical Edge Detection">
+<h4 id="More-Edge-Detection"><a href="#More-Edge-Detection" class="headerlink" title="More Edge Detection"></a>More Edge Detection</h4><img src="/2018/10/15/coursera-deeplearning-ai-c4-week1/vertical_and_horizontal_edge_detection.jpg" alt="Vertical and Horizontal Edge Detection" title="Vertical and Horizontal Edge Detection">
+<p>在深度学习领域，要通过训练学习的方式，学习得到filter来检测不同的边缘。</p>
+<h4 id="Padding"><a href="#Padding" class="headerlink" title="Padding"></a>Padding</h4><p>上面给的filter，会把结果图像的尺寸变小，所以通过padding操作，在输入图像边缘填充的方式，使得原图像变大，以保持输出尺寸和原图像大小一致。</p>
+<p>输出图像的尺寸计算公式为：$ n - f +1 $</p>
+<p>加入padding后，输出图像的尺寸计算公式为：$ n + 2p - f + 1 $</p>
+<p>为了使输出图像尺寸保持不变，即$ n + 2p - f + 1 = n $，所以</p>
+<script type="math/tex; mode=display">p = \frac{ f - 1 }{2}</script><p>有两种padding方式：</p>
+<ul>
+<li><strong>VALID</strong>: 不进行padding，输出图像的尺寸计算公式为：$ n - f +1 $</li>
+<li><strong>SAME</strong>： 进行padding，大小为：<script type="math/tex">p = \frac{ f - 1 }{2}</script></li>
+</ul>
+<blockquote>
+<p>注：深度学习领域，一般情况下f取值为奇数，比如1、3、5、7等。否则会出现不对称填充。</p>
+</blockquote>
+<p>Tensorflow中，VALID padding的实现如下：</p>
+<script type="math/tex; mode=display">\text{padding along height} = P_h = max((\text{output height}-1)*S_h + F_h - H, 0)</script><script type="math/tex; mode=display">\text{padding along width} = P_w = max((\text{output width}-1)*S_w + F_w - W, 0)</script><script type="math/tex; mode=display">\text{padding top} = P_t = Floor(\dfrac{P_h}{2}) \qquad \qquad \text{padding left} = P_l = Floor(\dfrac{P_w}{2})</script><script type="math/tex; mode=display">\text{padding bottom} = P_h - P_t \qquad \qquad \text{padding right} = P_w - P_l</script><p>代码实现为：</p>
+<p>For the ‘SAME’ padding, the output height and width are computed as:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">out_height = ceil(float(in_height) / float(strides[1]))</div><div class="line">out_width  = ceil(float(in_width) / float(strides[2]))</div></pre></td></tr></table></figure>
+<p>and the padding on the top and left are computed as:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">pad_along_height = max((out_height - 1) * strides[1] + filter_height - in_height, 0)</div><div class="line">pad_along_width = max((out_width - 1) * strides[2] + filter_width - in_width, 0)</div><div class="line">pad_top = pad_along_height // 2</div><div class="line">pad_bottom = pad_along_height - pad_top</div><div class="line">pad_left = pad_along_width // 2</div><div class="line">pad_right = pad_along_width - pad_left</div></pre></td></tr></table></figure>
+<p>For the ‘VALID’ padding, the output height and width are computed as:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">out_height = ceil(float(in_height - filter_height + 1) / float(strides[1]))</div><div class="line">out_width  = ceil(float(in_width - filter_width + 1) / float(strides[2]))</div></pre></td></tr></table></figure>
+<p>and the padding values are always zero.</p>
+<h4 id="Strided-Convolutions"><a href="#Strided-Convolutions" class="headerlink" title="Strided Convolutions"></a>Strided Convolutions</h4><p>步长是卷积核进行计算是每次跳跃的长度。</p>
+<img src="/2018/10/15/coursera-deeplearning-ai-c4-week1/stride2.gif" alt="Convolution with stride 2" title="Convolution with stride 2">
+<script type="math/tex; mode=display">
+\text{output width} = \dfrac{W-F_w+2P}{S_w}+1</script><script type="math/tex; mode=display">
+\text{output height} = \dfrac{H-F_h+2P}{S_h}+1</script><img src="/2018/10/15/coursera-deeplearning-ai-c4-week1/summary_of_convolution.jpg" alt="Summary of convolution" title="Summary of convolution">
+<h4 id="Convolutions-Over-Volume"><a href="#Convolutions-Over-Volume" class="headerlink" title="Convolutions Over Volume"></a>Convolutions Over Volume</h4><p>上面讲的卷积是二维的，在正常卷积神经网络中，卷积一般是3维的，也就是多channel的，通过下图可以理解多channel卷积的计算。</p>
+<img src="/2018/10/15/coursera-deeplearning-ai-c4-week1/mulit_channel_convolution.gif" alt="Multi-channel input convolution" title="Multi-channel input convolution">
+<p>上图中，输入是一副图片，3个通道（RGB），filter也对应3个通道，计算后得到一个2维的结果。如果想要结果也是多维的，则需要多个fliter，如下图：</p>
+<img src="/2018/10/15/coursera-deeplearning-ai-c4-week1/multiple_filters.jpg" alt="Multiple filters" title="Multiple filters">
+<h4 id="One-Layer-of-a-Convolutional-Network"><a href="#One-Layer-of-a-Convolutional-Network" class="headerlink" title="One Layer of a Convolutional Network"></a>One Layer of a Convolutional Network</h4><p>卷积层和之前讲到的神经网络的典型计算公式是类似的。</p>
+<p>下图是各种卷积层的概念的表达方式：</p>
+<img src="/2018/10/15/coursera-deeplearning-ai-c4-week1/summary_of_notation.jpg" alt="Summary of notation" title="Summary of notation">
+<h4 id="Simple-Convolutional-Network-Example"><a href="#Simple-Convolutional-Network-Example" class="headerlink" title="Simple Convolutional Network Example"></a>Simple Convolutional Network Example</h4><p>下图是一个典型卷积网络的例子：</p>
+<img src="/2018/10/15/coursera-deeplearning-ai-c4-week1/example_convnet.jpg" alt="Example ConvNet" title="Example ConvNet">
+<p>Types of layer in a convolutional network:</p>
+<ul>
+<li>Convolution</li>
+<li>Pooling</li>
+<li>Fully connected</li>
+</ul>
+<h4 id="Pooling-Layers"><a href="#Pooling-Layers" class="headerlink" title="Pooling Layers"></a>Pooling Layers</h4><img src="/2018/10/15/coursera-deeplearning-ai-c4-week1/maxpool_animation.gif" alt="Maxpooling" title="Maxpooling">
+<p>Max Pooling的一个有趣的特性是：它有一套超参，但是它没有任何参数需要学习。没有任何需要梯度相加算法学习的东西，一旦确定了$ f $和$ s $就确定了计算,而且梯度下降算法不会对其有任何改变。</p>
+<p>上面卷积层计算输出size的公式同样在这里适用。</p>
+<p>还有一种是Average Pooling，就是求filter*filter内的平均值。相比来说，Max Pooling用的更多。</p>
+<p>Pooling层的超参数有如下三个：</p>
+<ul>
+<li>f : filter size</li>
+<li>s : stride</li>
+<li>Max or average pooling</li>
+</ul>
+<p>不需要通过学习即可确定。</p>
+<h4 id="CNN-Example"><a href="#CNN-Example" class="headerlink" title="CNN Example"></a>CNN Example</h4><p>下图是一个卷积神经网络的示例，是基于LeNet-5网络改造的。</p>
+<img src="/2018/10/15/coursera-deeplearning-ai-c4-week1/neural_network_example.jpg" alt="Neural Network Example" title="Neural Network Example">
+<blockquote>
+<p>注： LeNet-5网络是Yann LeCun在1998年设计的用于手写数字识别的卷积神经网络,当年美国大多数银行就是用它来识别支票上面的手写数字的,它是早期卷积神经网络中最有代表性的实验系统之一。可参考：<a href="http://yann.lecun.com/exdb/lenet/" target="_blank" rel="external">http://yann.lecun.com/exdb/lenet/</a><br>LeNet-5的数据集是MNIST，一般也是各种深度学习框架的入门示例，学习起来很好理解，也很简单，作为入门的示例非常好。<br>这个网站<a href="http://scs.ryerson.ca/~aharley/vis/conv/" target="_blank" rel="external">http://scs.ryerson.ca/~aharley/vis/conv/</a>做了一个3D展示LeNet-5网络每一层的效果，看起来很清晰，推荐。</p>
+</blockquote>
+<p>下图是上面的LeNet-5网络的每一层的参数个数表，可以看出，卷积层的参数相比于全连接层是非常少的，这也是卷积层的优势所在。</p>
+<img src="/2018/10/15/coursera-deeplearning-ai-c4-week1/lenet_5_parameters.jpg" alt="LeNet-5 Parameters" title="LeNet-5 Parameters">
+<p>关于超参数组选择的建议：</p>
+<p>不要试着创造你自己的超参数组，而是查看文献，看看其他人使用的超参数，从中选一组适用于其他人的超参数，很可能它也适用于你的应用。</p>
+<p>通常随着神经网络的深入，高度$n_h$和宽度$n_w$会减小。然而通道数量会增加，最后是全连通网络层。另一类常见的神经网络模型是，一个或多个卷积层接着一层池化层，再接着一个或多个卷积层叠加一层池化层，然后叠加几层全连接，也许最后还叠加一个Softmax层。</p>
+<h4 id="Why-Convolutions"><a href="#Why-Convolutions" class="headerlink" title="Why Convolutions?"></a>Why Convolutions?</h4><p>卷积网络有效的原因：</p>
+<ul>
+<li><strong>Parameter sharing</strong>（参数共享）: A feature detector (such as a vertical edge detector) that’s useful in one part of the image is probably useful in another part of the image.</li>
+<li><strong>Sparsity of connections</strong>(稀疏式联系): In each layer, each output value depends only on a small number of inputs.</li>
+</ul>
+<img src="/2018/10/15/coursera-deeplearning-ai-c4-week1/putting_it_together.jpg" alt="Putting it together" title="Putting it together">
+<h2 id="编程练习"><a href="#编程练习" class="headerlink" title="编程练习"></a>编程练习</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/05/coursera-deeplearning-ai-c2-week3/" rel="next" title="coursera-deeplearning-ai-c2-week3">
+                <i class="fa fa-chevron-left"></i> coursera-deeplearning-ai-c2-week3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/22/coursera-deeplearning-ai-c4-week3/" rel="prev" title="coursera-deeplearning-ai-c4-week3">
+                coursera-deeplearning-ai-c4-week3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="hypercomments_widget"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/wukong.png"
+               alt="张阿楠" />
+          <p class="site-author-name" itemprop="name">张阿楠</p>
+           
+              <p class="site-description motion-element" itemprop="description">Keep codeing and thinking!</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">57</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/vernlium" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/ananzhang" target="_blank" title="ZhiHu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      ZhiHu
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#课程笔记"><span class="nav-number">1.</span> <span class="nav-text">课程笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Convolutional-Neural-Networks"><span class="nav-number">1.1.</span> <span class="nav-text">Convolutional Neural Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Computer-Vision"><span class="nav-number">1.1.1.</span> <span class="nav-text">Computer Vision</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Edge-Detection-Example"><span class="nav-number">1.1.2.</span> <span class="nav-text">Edge Detection Example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#More-Edge-Detection"><span class="nav-number">1.1.3.</span> <span class="nav-text">More Edge Detection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Padding"><span class="nav-number">1.1.4.</span> <span class="nav-text">Padding</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Strided-Convolutions"><span class="nav-number">1.1.5.</span> <span class="nav-text">Strided Convolutions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Convolutions-Over-Volume"><span class="nav-number">1.1.6.</span> <span class="nav-text">Convolutions Over Volume</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#One-Layer-of-a-Convolutional-Network"><span class="nav-number">1.1.7.</span> <span class="nav-text">One Layer of a Convolutional Network</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Simple-Convolutional-Network-Example"><span class="nav-number">1.1.8.</span> <span class="nav-text">Simple Convolutional Network Example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pooling-Layers"><span class="nav-number">1.1.9.</span> <span class="nav-text">Pooling Layers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CNN-Example"><span class="nav-number">1.1.10.</span> <span class="nav-text">CNN Example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Why-Convolutions"><span class="nav-number">1.1.11.</span> <span class="nav-text">Why Convolutions?</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编程练习"><span class="nav-number">2.</span> <span class="nav-text">编程练习</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">张阿楠</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+		<script type="text/javascript">
+		_hcwp = window._hcwp || [];
+
+		_hcwp.push({widget:"Bloggerstream", widget_id: 95829, selector:".hc-comment-count", label: "{\%COUNT%\}" });
+
+		
+		_hcwp.push({widget:"Stream", widget_id: 95829, xid: "2018/10/15/coursera-deeplearning-ai-c4-week1/"});
+		
+
+		(function() {
+		if("HC_LOAD_INIT" in window)return;
+		HC_LOAD_INIT = true;
+		var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+		var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+		hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/95829/"+lang+"/widget.js";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hcc, s.nextSibling);
+		})();
+		</script>
+
+	
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
