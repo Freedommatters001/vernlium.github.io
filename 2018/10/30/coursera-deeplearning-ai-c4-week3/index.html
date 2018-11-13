@@ -117,7 +117,7 @@
 <meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/non-max-suppression.png">
 <meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/iou.png">
 <meta property="og:image" content="https://i.creativecommons.org/l/by/4.0/88x31.png">
-<meta property="og:updated_time" content="2018-11-06T00:08:45.803Z">
+<meta property="og:updated_time" content="2018-11-13T00:13:55.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coursera-deeplearning-ai-c4-week3">
 <meta name="twitter:description" content="课程笔记本周课程主要介绍当前计算机视觉领域最热门的领域：目标检测（Object detection），介绍目标检测的相关概念和基础算法，以及常用的一些网络，包括：  目标检测的概念 标记点检测（Landmark detection） 滑动窗口(Sliding windows) 非最大抑制值（non-max suppression）算法 IOU（intersection over union，交并比">
@@ -390,7 +390,19 @@
 <p>对象检测， 如何检测在一张图片里的多个对象，并且能够把它们全部检测出来并且定位它们。 </p>
 <p>对于图像分类 和分类并定位问题，通常只有一个对象。 相比之下，在对象检测问题中，可能会有很多对象。</p>
 <img src="/2018/10/30/coursera-deeplearning-ai-c4-week3/localization_and_detection.jpg" alt="Localization and Detection" title="Localization and Detection">
-<h4 id="Landmark-Detection"><a href="#Landmark-Detection" class="headerlink" title="Landmark Detection"></a>Landmark Detection</h4><h4 id="Object-Detection"><a href="#Object-Detection" class="headerlink" title="Object Detection"></a>Object Detection</h4><h4 id="Convolutional-Implementation-of-Sliding-Windows"><a href="#Convolutional-Implementation-of-Sliding-Windows" class="headerlink" title="Convolutional Implementation of Sliding Windows"></a>Convolutional Implementation of Sliding Windows</h4><h4 id="Bounding-Box-Predictions"><a href="#Bounding-Box-Predictions" class="headerlink" title="Bounding Box Predictions"></a>Bounding Box Predictions</h4><h4 id="Intersection-Over-Union"><a href="#Intersection-Over-Union" class="headerlink" title="Intersection Over Union"></a>Intersection Over Union</h4><h4 id="Non-max-Suppression"><a href="#Non-max-Suppression" class="headerlink" title="Non-max Suppression"></a>Non-max Suppression</h4><h4 id="Anchor-Boxes"><a href="#Anchor-Boxes" class="headerlink" title="Anchor Boxes"></a>Anchor Boxes</h4><h4 id="YOLO-Algorithm"><a href="#YOLO-Algorithm" class="headerlink" title="YOLO Algorithm"></a>YOLO Algorithm</h4><h4 id="Optional-Region-Proposals"><a href="#Optional-Region-Proposals" class="headerlink" title="(Optional) Region Proposals"></a>(Optional) Region Proposals</h4><h2 id="编程练习"><a href="#编程练习" class="headerlink" title="编程练习"></a>编程练习</h2><h3 id="Autonomous-driving-Car-detection"><a href="#Autonomous-driving-Car-detection" class="headerlink" title="Autonomous driving - Car detection"></a>Autonomous driving - Car detection</h3><p>Welcome to your week 3 programming assignment. You will learn about object detection using the very powerful YOLO model. Many of the ideas in this notebook are described in the two YOLO papers: Redmon et al., 2016 (<a href="https://arxiv.org/abs/1506.02640" target="_blank" rel="external">https://arxiv.org/abs/1506.02640</a>) and Redmon and Farhadi, 2016 (<a href="https://arxiv.org/abs/1612.08242" target="_blank" rel="external">https://arxiv.org/abs/1612.08242</a>). </p>
+<h4 id="Landmark-Detection"><a href="#Landmark-Detection" class="headerlink" title="Landmark Detection"></a>Landmark Detection</h4><p>landmark检测是指对图片中的物体的特征点进行检测，比如人脸，标记出人脸上的特征点，如眼角、嘴角、鼻子、下巴等。或者人体特征，如手臂、腿、胸、头等。</p>
+<h4 id="Object-Detection"><a href="#Object-Detection" class="headerlink" title="Object Detection"></a>Object Detection</h4><p>目标检测，在深度学习没有兴起之前的做法是，比如要检测车，先训练一个小网络，检测一副小图片中是否包含车。</p>
+<p>然后在要检测的图片中，通过下图滑动窗口的方式，在大图片中有个小窗口一直滑动，然后使用网络判断小窗口中是否有车，从而找到车的位置。为了检测的更准确，需要大小不同的几个窗口来进行滑动。</p>
+
+<p>这种方法的缺点是，如果窗口多且滑动步长小，虽然检测精确，但是计算量很大；如果窗口少且滑动步长大，则检测精度不够。不能很好的解决目标检测的问题。</p>
+<p>下面通过卷积的方式解决此问题。</p>
+<h4 id="Convolutional-Implementation-of-Sliding-Windows"><a href="#Convolutional-Implementation-of-Sliding-Windows" class="headerlink" title="Convolutional Implementation of Sliding Windows"></a>Convolutional Implementation of Sliding Windows</h4><p>首先讲一下，如何把全连接层转换为卷积层进行计算。为下面的用卷积实现滑动窗口做铺垫。</p>
+<p>下图中，把上面的全连接层替换为下面的卷积层，后面的全连接全部用卷积替换，可以得到同样的计算结果。</p>
+
+<p>最上面一行，一个14*14的窗口，计算出一个结果，中间一行，输入是16*16，可以划分4个14*14的窗口，经过计算后得到4个结果。这样就可以实现类似滑动窗口的效果，而且大部分计算都是共享的，可以节省大部分的计算量。</p>
+
+<p>同样，最后一行的输入更大，可以划分更多的小窗口，得到更多的结果。</p>
+<h4 id="Bounding-Box-Predictions"><a href="#Bounding-Box-Predictions" class="headerlink" title="Bounding Box Predictions"></a>Bounding Box Predictions</h4><h4 id="Intersection-Over-Union"><a href="#Intersection-Over-Union" class="headerlink" title="Intersection Over Union"></a>Intersection Over Union</h4><h4 id="Non-max-Suppression"><a href="#Non-max-Suppression" class="headerlink" title="Non-max Suppression"></a>Non-max Suppression</h4><h4 id="Anchor-Boxes"><a href="#Anchor-Boxes" class="headerlink" title="Anchor Boxes"></a>Anchor Boxes</h4><h4 id="YOLO-Algorithm"><a href="#YOLO-Algorithm" class="headerlink" title="YOLO Algorithm"></a>YOLO Algorithm</h4><h4 id="Optional-Region-Proposals"><a href="#Optional-Region-Proposals" class="headerlink" title="(Optional) Region Proposals"></a>(Optional) Region Proposals</h4><h2 id="编程练习"><a href="#编程练习" class="headerlink" title="编程练习"></a>编程练习</h2><h3 id="Autonomous-driving-Car-detection"><a href="#Autonomous-driving-Car-detection" class="headerlink" title="Autonomous driving - Car detection"></a>Autonomous driving - Car detection</h3><p>Welcome to your week 3 programming assignment. You will learn about object detection using the very powerful YOLO model. Many of the ideas in this notebook are described in the two YOLO papers: Redmon et al., 2016 (<a href="https://arxiv.org/abs/1506.02640" target="_blank" rel="external">https://arxiv.org/abs/1506.02640</a>) and Redmon and Farhadi, 2016 (<a href="https://arxiv.org/abs/1612.08242" target="_blank" rel="external">https://arxiv.org/abs/1612.08242</a>). </p>
 <p><strong>You will learn to</strong>:</p>
 <ul>
 <li>Use object detection on a car detection dataset</li>
@@ -545,8 +557,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/15/coursera-deeplearning-ai-c4-week1/" rel="next" title="coursera-deeplearning-ai-c4-week1">
-                <i class="fa fa-chevron-left"></i> coursera-deeplearning-ai-c4-week1
+              <a href="/2018/10/25/coursera-deeplearning-ai-c4-week2/" rel="next" title="coursera-deeplearning-ai-c4-week2">
+                <i class="fa fa-chevron-left"></i> coursera-deeplearning-ai-c4-week2
               </a>
             
           </div>
@@ -555,8 +567,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/30/coursera-deeplearning-ai-c4-week2/" rel="prev" title="coursera-deeplearning-ai-c4-week2">
-                coursera-deeplearning-ai-c4-week2 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/03/caffe-source-code-analysis-1/" rel="prev" title="caffe_source_code_analysis_1">
+                caffe_source_code_analysis_1 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
