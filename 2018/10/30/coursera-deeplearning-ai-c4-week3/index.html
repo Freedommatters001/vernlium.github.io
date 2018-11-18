@@ -106,6 +106,22 @@
 <meta property="og:description" content="课程笔记本周课程主要介绍当前计算机视觉领域最热门的领域：目标检测（Object detection），介绍目标检测的相关概念和基础算法，以及常用的一些网络，包括：  目标检测的概念 标记点检测（Landmark detection） 滑动窗口(Sliding windows) 非最大抑制值（non-max suppression）算法 IOU（intersection over union，交并比">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/localization_and_detection.jpg">
+<meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/sliding_windows_detection.jpg">
+<meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/turing_fc_layer_into_convolutional_layers.jpg">
+<meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/convolution_implementation_of_sliding_windows.jpg">
+<meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/yolo_algorithm.jpg">
+<meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/specify_the_bounding_boxes.jpg">
+<meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/iou.jpg">
+<meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/non_max_suppression_example.jpg">
+<meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/non_max_suppression_algorithm.jpg">
+<meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/overlapping_objects.jpg">
+<meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/anchor_box_algorithm.jpg">
+<meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/anchor_box_example.jpg">
+<meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/yolo_training.jpg">
+<meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/making_predictions.jpg">
+<meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/outputting_the_non-max_supressed_outputs.jpg">
+<meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/region_proposal.jpg">
+<meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/rcnn_algorithms.jpg">
 <meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/road_video_compressed2.gif">
 <meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/driveai.png">
 <meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/box_label.png">
@@ -117,7 +133,7 @@
 <meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/non-max-suppression.png">
 <meta property="og:image" content="/2018/10/30/coursera-deeplearning-ai-c4-week3/iou.png">
 <meta property="og:image" content="https://i.creativecommons.org/l/by/4.0/88x31.png">
-<meta property="og:updated_time" content="2018-11-13T00:13:55.007Z">
+<meta property="og:updated_time" content="2018-11-18T13:16:44.961Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coursera-deeplearning-ai-c4-week3">
 <meta name="twitter:description" content="课程笔记本周课程主要介绍当前计算机视觉领域最热门的领域：目标检测（Object detection），介绍目标检测的相关概念和基础算法，以及常用的一些网络，包括：  目标检测的概念 标记点检测（Landmark detection） 滑动窗口(Sliding windows) 非最大抑制值（non-max suppression）算法 IOU（intersection over union，交并比">
@@ -393,16 +409,68 @@
 <h4 id="Landmark-Detection"><a href="#Landmark-Detection" class="headerlink" title="Landmark Detection"></a>Landmark Detection</h4><p>landmark检测是指对图片中的物体的特征点进行检测，比如人脸，标记出人脸上的特征点，如眼角、嘴角、鼻子、下巴等。或者人体特征，如手臂、腿、胸、头等。</p>
 <h4 id="Object-Detection"><a href="#Object-Detection" class="headerlink" title="Object Detection"></a>Object Detection</h4><p>目标检测，在深度学习没有兴起之前的做法是，比如要检测车，先训练一个小网络，检测一副小图片中是否包含车。</p>
 <p>然后在要检测的图片中，通过下图滑动窗口的方式，在大图片中有个小窗口一直滑动，然后使用网络判断小窗口中是否有车，从而找到车的位置。为了检测的更准确，需要大小不同的几个窗口来进行滑动。</p>
-
+<img src="/2018/10/30/coursera-deeplearning-ai-c4-week3/sliding_windows_detection.jpg" alt="Sliding Windows Detection" title="Sliding Windows Detection">
 <p>这种方法的缺点是，如果窗口多且滑动步长小，虽然检测精确，但是计算量很大；如果窗口少且滑动步长大，则检测精度不够。不能很好的解决目标检测的问题。</p>
 <p>下面通过卷积的方式解决此问题。</p>
 <h4 id="Convolutional-Implementation-of-Sliding-Windows"><a href="#Convolutional-Implementation-of-Sliding-Windows" class="headerlink" title="Convolutional Implementation of Sliding Windows"></a>Convolutional Implementation of Sliding Windows</h4><p>首先讲一下，如何把全连接层转换为卷积层进行计算。为下面的用卷积实现滑动窗口做铺垫。</p>
 <p>下图中，把上面的全连接层替换为下面的卷积层，后面的全连接全部用卷积替换，可以得到同样的计算结果。</p>
-
+<img src="/2018/10/30/coursera-deeplearning-ai-c4-week3/turing_fc_layer_into_convolutional_layers.jpg" alt="Turning FC layer into convolutional layers" title="Turning FC layer into convolutional layers">
 <p>最上面一行，一个14*14的窗口，计算出一个结果，中间一行，输入是16*16，可以划分4个14*14的窗口，经过计算后得到4个结果。这样就可以实现类似滑动窗口的效果，而且大部分计算都是共享的，可以节省大部分的计算量。</p>
-
+<img src="/2018/10/30/coursera-deeplearning-ai-c4-week3/convolution_implementation_of_sliding_windows.jpg" alt="Convolution implementation of sliding windows" title="Convolution implementation of sliding windows">
 <p>同样，最后一行的输入更大，可以划分更多的小窗口，得到更多的结果。</p>
-<h4 id="Bounding-Box-Predictions"><a href="#Bounding-Box-Predictions" class="headerlink" title="Bounding Box Predictions"></a>Bounding Box Predictions</h4><h4 id="Intersection-Over-Union"><a href="#Intersection-Over-Union" class="headerlink" title="Intersection Over Union"></a>Intersection Over Union</h4><h4 id="Non-max-Suppression"><a href="#Non-max-Suppression" class="headerlink" title="Non-max Suppression"></a>Non-max Suppression</h4><h4 id="Anchor-Boxes"><a href="#Anchor-Boxes" class="headerlink" title="Anchor Boxes"></a>Anchor Boxes</h4><h4 id="YOLO-Algorithm"><a href="#YOLO-Algorithm" class="headerlink" title="YOLO Algorithm"></a>YOLO Algorithm</h4><h4 id="Optional-Region-Proposals"><a href="#Optional-Region-Proposals" class="headerlink" title="(Optional) Region Proposals"></a>(Optional) Region Proposals</h4><h2 id="编程练习"><a href="#编程练习" class="headerlink" title="编程练习"></a>编程练习</h2><h3 id="Autonomous-driving-Car-detection"><a href="#Autonomous-driving-Car-detection" class="headerlink" title="Autonomous driving - Car detection"></a>Autonomous driving - Car detection</h3><p>Welcome to your week 3 programming assignment. You will learn about object detection using the very powerful YOLO model. Many of the ideas in this notebook are described in the two YOLO papers: Redmon et al., 2016 (<a href="https://arxiv.org/abs/1506.02640" target="_blank" rel="external">https://arxiv.org/abs/1506.02640</a>) and Redmon and Farhadi, 2016 (<a href="https://arxiv.org/abs/1612.08242" target="_blank" rel="external">https://arxiv.org/abs/1612.08242</a>). </p>
+<h4 id="Bounding-Box-Predictions（边界框预测）"><a href="#Bounding-Box-Predictions（边界框预测）" class="headerlink" title="Bounding Box Predictions（边界框预测）"></a>Bounding Box Predictions（边界框预测）</h4><p>通过前面讲到的滑动窗口目标检测，有时候无法得到精确的预测，因为窗口的大小和位置是固定，而目标出现的位置比较随机。</p>
+<p>YOLO(You Only Look Once)算法可以解决此问题，而且速度很快。</p>
+<p>yolo算法的做法是，把输入的图像分割为3×3的窗口（这儿为了讲解方便，使用3×3，实际应用中，是19×19或者其他的划分）。每个窗口对应一个label，label的形式如下图所示，$p_c$表示窗口中是否含有目标，然后下面4个值是目标的位置信息，后面3个是对应目标的种类（这儿只检测三种类型的目标，汽车/行人/摩托车）。比如，下图中，9个小窗口，第4个和第6个窗口中包含汽车，则$p_c = 1$，其他窗口不含目标，$p_c = 0$。</p>
+<p>训练集中，每个示例都是一副图片，对应的label和下图中类似。通过卷积和池化等操作，把输入映射到对应的label上。比如下图的示例中，输入是$100×100×3$的图片，对应的label是$3×3×8$的结果。</p>
+<img src="/2018/10/30/coursera-deeplearning-ai-c4-week3/yolo_algorithm.jpg" alt="YOLO algorithm" title="YOLO algorithm">
+<p>算法的优势在于，该神经网络可以精确地输出边界框。在实际操作中，相比这里使用的相对较少的3乘3的网格，可能会使用更精细的网格，可能是19乘19的网格，所以最终会得到19乘19乘8的结果。由于使用了更精细的网格，这会减少同一个网格元中有多个目标物的可能性。值得提醒的是，将目标物分配到网格元中的方式，即先找到目标物的中心点，再根据中心点的位置将它分配到包含该中心点的网格中。所以对于每一个目标物，即使它跨越了多个网格，它也只会被分配给这九个网格元中的一个，或者说这3乘3个网格元中的一个，或者19乘19个网格元中的一个。而使用19乘19的网格的算法，两个目标物的中心，出现在同一个网格元中的概率会稍小。</p>
+<p>所以值得注意的有两点：</p>
+<ul>
+<li>1.这种会直接输出边界框的坐标位置，以及它允许神经网络输出，任意长宽比的边界框，同时输出的坐标位置也更为精确，而不会受限于滑动窗口的步长 </li>
+<li>2.这个算法是通过卷积实现的，不需要在3乘3的网格上执行这个算法9次。这个算法是一整个卷积实现的，只需要用一个卷积网络，所需的计算被大量地共享，这是一个非常有效率的算法。事实上，YOLO算法的一个好处，也是它一直很流行的原因是它是通过卷积实现的，实际上的运行起来非常快，它甚至可以运用在实时的目标识别上。</li>
+</ul>
+<p>值得注意的是，YOLO算法中，目标的位置的bx,by,bh,bw是以每个小网格的右上点为参考点。如下图所示。</p>
+<img src="/2018/10/30/coursera-deeplearning-ai-c4-week3/specify_the_bounding_boxes.jpg" alt="specify_the_bounding_boxes.jpg" title="">
+<h4 id="Intersection-Over-Union（交并比）"><a href="#Intersection-Over-Union（交并比）" class="headerlink" title="Intersection Over Union（交并比）"></a>Intersection Over Union（交并比）</h4><p>交并比（Intersection Over Union，简称IOU）是用来判断目标检测算法是否有效的算法。它既可以用来评价你的目标检测算法，也可以用于，往目标检测算法中加入其他特征部分，来进一步改善它。</p>
+<p>交并比或者说是IoU函数做的是计算两个边界框的交集除以并集的比率。按惯例，或者说计算机视觉领域的原则，如果IoU大于0.5，结果就会被判断为正确的，如果预测的和真实的边界框完美重合了 IoU就会是1。如果你想更严格一些，可以把准确的标准提高，仅当IoU大于等于0.6，或者别的数值。<strong>IoU越高，边界框就越准确</strong>。</p>
+<img src="/2018/10/30/coursera-deeplearning-ai-c4-week3/iou.jpg" alt="IOU" title="IOU">
+<p>IoU创立的初衷，作为一个评估的方法，来判断目标定位算法是否准确。但更普遍地说，IoU是，两个边界框重叠程度的一个度量值。当有两个框时，可以计算交集，计算并集，然后求两个面积的比值。因此这也是一个方法，来衡量两个框的相近程度。</p>
+<p>当讨论非最大值抑制(non-max suppression)时，会用到IoU或者说是交并比。非最大值抑制（non-max suppression） 这个工具可以用来让YOLO的结果变得更理想。</p>
+<h4 id="Non-max-Suppression"><a href="#Non-max-Suppression" class="headerlink" title="Non-max Suppression"></a>Non-max Suppression</h4><p>目前所学到的目标检测的问题之一是，算法或许会对同一目标有多次检测。非极大值抑制是一种确保算法只对每个对象得到一个检测结果的方法。</p>
+<p>非极大值抑制是如何工作的？</p>
+<p>首先，是看一看每个检测结果的相关概率。候选者Pc为一个检测到的概率。首先它取其中最大那个, 如下图中左边的例子是0.9, 意味着 “这是我最自信的检测结果了, 那么让我们标明它, 认为我在这里找到一辆车.” </p>
+<p>做完这一步, 非极大值抑制再看，所有的剩下的方框以及所有和刚输入的那个结果有着着多重叠的, 有着高IOU值的方形区域得到的产出值将被抑制。就是那二个概率为0,6和0.7的方框。这二个和亮蓝色的方框重叠最多。所以这些将要做抑制。</p>
+<img src="/2018/10/30/coursera-deeplearning-ai-c4-week3/non_max_suppression_example.jpg" alt="Non-max suppression example" title="Non-max suppression example">
+<p>非极大值意思是将要输出有着最大可能性的分类判断，而抑制那些非最大可能性的邻近的方框。因此叫做非极大值抑制。</p>
+<p>过一下这个算法的细节。为了运用非极大值抑制： </p>
+<ul>
+<li>首先要做的是丢掉所有预测值Pc小于或等于 某个门限的边界框, 例如0.6.</li>
+<li>接下来, 如果还有剩下的边界框,还没有被去掉或处理的, 将重复地选出有着最大概率最大Pc值的边界框, 将它作为一个预测结果.</li>
+<li>然后，要丢掉其他剩余边界框, 即那些不被认为是预测结果的, 并且之前也没有被去掉的框。因此丢弃任何“剩余的，同上一步的计算有着着多重叠的, 高IOU值的边框”。</li>
+<li>需要重复这个过程, 直到每个边界框不是被输出为预测结果, 就是被丢弃掉, 由于它们有着很大的重复或很高的IOU值。和刚刚检测输出的目标检测来作为你检测到的目标相比。</li>
+</ul>
+<img src="/2018/10/30/coursera-deeplearning-ai-c4-week3/non_max_suppression_algorithm.jpg" alt="Non-max suppression algorithm" title="Non-max suppression algorithm">
+<h4 id="Anchor-Boxes"><a href="#Anchor-Boxes" class="headerlink" title="Anchor Boxes"></a>Anchor Boxes</h4><p>前面的例子中，每个网格都是检测单一目标，但实际应用中，很可能一个网格含有多个目标。下面讲到的Anchor Boxes（锚框）可以解决此问题。</p>
+<p>如下图所示，示例图片中，一个网格包含两个目标物体，通过两个锚框，分别对应两个目标。对应的label的大小是3×3×16，分别对应2个锚框检测的结果。</p>
+<img src="/2018/10/30/coursera-deeplearning-ai-c4-week3/overlapping_objects.jpg" alt="Overlapping Objects" title="Overlapping Objects">
+<p>在此之前，每个目标在训练集中，分配在包含这个目标中心点的网格中。有了锚框算法后，每个目标在训练集中，这个目标分配的网格不仅要包含这个目标中心点，还要和对应的锚框有最高的IOU值。</p>
+<img src="/2018/10/30/coursera-deeplearning-ai-c4-week3/anchor_box_algorithm.jpg" alt="Anchor box algorithm" title="Anchor box algorithm">
+<p>下图是一个示例，对于车这个目标，和锚框2的IOU值更高，所以对应到锚框2的位置，人和锚框1的IOU值更高，对应到锚框1的位置。</p>
+<img src="/2018/10/30/coursera-deeplearning-ai-c4-week3/anchor_box_example.jpg" alt="Anchor box example" title="Anchor box example">
+<p>还有一些细节，有两个锚框，但是万一同一格子裡有三个物件呢？此算法对这个例子没办法处理好，希望这不会发生，不过如果真有其事，此算法并没有好法子处理。对这种情形，会写某种挑选的机制。 还有，万一有两个物件在同一个格子，但是两个都和同一个锚框的形状一样呢？ 同样地，此算法也无法处理好这情况。如果发生这种情况，可以做一些挑选的机制 (tiebreaking)。希望资料集不会出现这种例子，希望不会常发生。 但实际上，这很少发生。特别是当用19×19，而不只是 3×3 格子，在 361 个格子有两个物件的中心点在同一个格子，的确有这机会，但概率很小。 </p>
+<p>最后，怎么选择锚框呢？大家曾经是手动挑选，可能设计五或十个锚框，让他们有各种不同形状，看起来能涵盖想侦测的物件种类。 而更进阶的版本，是利用 K-means 算法 (K-平均)： 把两种想侦测的物件的形状集合起来，然后利用k-平均算法，挑选出一些锚框，最具代表性的、让他们能展现出想侦测的、多种各个类别的物件。 不过这种自动选择锚框的方法比较进阶。如果手动挑选各式各样的形状，能够扩展出想侦测的物件形状，想找高的、 瘦的、胖的宽的… 应该也能表现不错。</p>
+<h4 id="YOLO-Algorithm"><a href="#YOLO-Algorithm" class="headerlink" title="YOLO Algorithm"></a>YOLO Algorithm</h4><p>把上面学到的东西，组合回 YOLO 算法。</p>
+<p>首先是训练。下图中给出了训练集中label的样式。网格划分是3×3，有两个锚框，检测的目标物体是3种类型，那么label的大小是3×3×2×8。</p>
+<img src="/2018/10/30/coursera-deeplearning-ai-c4-week3/yolo_training.jpg" alt="Training" title="Training">
+<p>然后是进行预测，预测的结果同样是3×3×2×8的大小。</p>
+<img src="/2018/10/30/coursera-deeplearning-ai-c4-week3/making_predictions.jpg" alt="Making predictions" title="Making predictions">
+<p>下图是一个预测后的结果，通过去除低概率的预测值，再通过非最大值抑制算法，得到最终的结果。</p>
+<img src="/2018/10/30/coursera-deeplearning-ai-c4-week3/outputting_the_non-max_supressed_outputs.jpg" alt="Outputting the non-max supressed outputs" title="Outputting the non-max supressed outputs">
+<h4 id="Optional-Region-Proposals"><a href="#Optional-Region-Proposals" class="headerlink" title="(Optional) Region Proposals"></a>(Optional) Region Proposals</h4><p>Region Proposal(候选区域)在计算机视觉中也非常流行。R-CNN 算法中用到了 Region Proposal,它的意思是，伴随区域的卷积网络或者伴随区域的CNN。这个算法所做的是，它会尝试选取，仅仅是少许有意义的区域，用来进行目标检测。所以，相较于运行每一个移动窗口，可以用选取少许窗口的方式来代替。所用的运行区域候选的方法，是通过运行所谓的分割算法来实现的。</p>
+<img src="/2018/10/30/coursera-deeplearning-ai-c4-week3/region_proposal.jpg" alt="Region proposal" title="Region proposal">
+<p>下图是R-CNN算法及其进阶版本的介绍。</p>
+<img src="/2018/10/30/coursera-deeplearning-ai-c4-week3/rcnn_algorithms.jpg" alt="R-CNN algorithm" title="R-CNN algorithm">
+<h2 id="编程练习"><a href="#编程练习" class="headerlink" title="编程练习"></a>编程练习</h2><h3 id="Autonomous-driving-Car-detection"><a href="#Autonomous-driving-Car-detection" class="headerlink" title="Autonomous driving - Car detection"></a>Autonomous driving - Car detection</h3><p>Welcome to your week 3 programming assignment. You will learn about object detection using the very powerful YOLO model. Many of the ideas in this notebook are described in the two YOLO papers: Redmon et al., 2016 (<a href="https://arxiv.org/abs/1506.02640" target="_blank" rel="external">https://arxiv.org/abs/1506.02640</a>) and Redmon and Farhadi, 2016 (<a href="https://arxiv.org/abs/1612.08242" target="_blank" rel="external">https://arxiv.org/abs/1612.08242</a>). </p>
 <p><strong>You will learn to</strong>:</p>
 <ul>
 <li>Use object detection on a car detection dataset</li>
@@ -729,7 +797,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#课程笔记"><span class="nav-number">1.</span> <span class="nav-text">课程笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Detection-algorithms"><span class="nav-number">1.1.</span> <span class="nav-text">Detection algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-Localization"><span class="nav-number">1.1.1.</span> <span class="nav-text">Object Localization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Landmark-Detection"><span class="nav-number">1.1.2.</span> <span class="nav-text">Landmark Detection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-Detection"><span class="nav-number">1.1.3.</span> <span class="nav-text">Object Detection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Convolutional-Implementation-of-Sliding-Windows"><span class="nav-number">1.1.4.</span> <span class="nav-text">Convolutional Implementation of Sliding Windows</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bounding-Box-Predictions"><span class="nav-number">1.1.5.</span> <span class="nav-text">Bounding Box Predictions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Intersection-Over-Union"><span class="nav-number">1.1.6.</span> <span class="nav-text">Intersection Over Union</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Non-max-Suppression"><span class="nav-number">1.1.7.</span> <span class="nav-text">Non-max Suppression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Anchor-Boxes"><span class="nav-number">1.1.8.</span> <span class="nav-text">Anchor Boxes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#YOLO-Algorithm"><span class="nav-number">1.1.9.</span> <span class="nav-text">YOLO Algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Optional-Region-Proposals"><span class="nav-number">1.1.10.</span> <span class="nav-text">(Optional) Region Proposals</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编程练习"><span class="nav-number">2.</span> <span class="nav-text">编程练习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Autonomous-driving-Car-detection"><span class="nav-number">2.1.</span> <span class="nav-text">Autonomous driving - Car detection</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Problem-Statement"><span class="nav-number">2.1.1.</span> <span class="nav-text">1 - Problem Statement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-YOLO"><span class="nav-number">2.1.2.</span> <span class="nav-text">2 - YOLO</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-Model-details"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">2.1 - Model details</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-Filtering-with-a-threshold-on-class-scores"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">2.2 - Filtering with a threshold on class scores</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-Non-max-suppression"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">2.3 - Non-max suppression</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-Wrapping-up-the-filtering"><span class="nav-number">2.1.2.4.</span> <span class="nav-text">2.4 Wrapping up the filtering</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-Wrapping-up-the-filtering"><span class="nav-number">2.1.2.5.</span> <span class="nav-text">2.4 Wrapping up the filtering</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#课程笔记"><span class="nav-number">1.</span> <span class="nav-text">课程笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Detection-algorithms"><span class="nav-number">1.1.</span> <span class="nav-text">Detection algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-Localization"><span class="nav-number">1.1.1.</span> <span class="nav-text">Object Localization</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Landmark-Detection"><span class="nav-number">1.1.2.</span> <span class="nav-text">Landmark Detection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Object-Detection"><span class="nav-number">1.1.3.</span> <span class="nav-text">Object Detection</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Convolutional-Implementation-of-Sliding-Windows"><span class="nav-number">1.1.4.</span> <span class="nav-text">Convolutional Implementation of Sliding Windows</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bounding-Box-Predictions（边界框预测）"><span class="nav-number">1.1.5.</span> <span class="nav-text">Bounding Box Predictions（边界框预测）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Intersection-Over-Union（交并比）"><span class="nav-number">1.1.6.</span> <span class="nav-text">Intersection Over Union（交并比）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Non-max-Suppression"><span class="nav-number">1.1.7.</span> <span class="nav-text">Non-max Suppression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Anchor-Boxes"><span class="nav-number">1.1.8.</span> <span class="nav-text">Anchor Boxes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#YOLO-Algorithm"><span class="nav-number">1.1.9.</span> <span class="nav-text">YOLO Algorithm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Optional-Region-Proposals"><span class="nav-number">1.1.10.</span> <span class="nav-text">(Optional) Region Proposals</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编程练习"><span class="nav-number">2.</span> <span class="nav-text">编程练习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Autonomous-driving-Car-detection"><span class="nav-number">2.1.</span> <span class="nav-text">Autonomous driving - Car detection</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Problem-Statement"><span class="nav-number">2.1.1.</span> <span class="nav-text">1 - Problem Statement</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-YOLO"><span class="nav-number">2.1.2.</span> <span class="nav-text">2 - YOLO</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-Model-details"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">2.1 - Model details</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-Filtering-with-a-threshold-on-class-scores"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">2.2 - Filtering with a threshold on class scores</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3-Non-max-suppression"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">2.3 - Non-max suppression</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-Wrapping-up-the-filtering"><span class="nav-number">2.1.2.4.</span> <span class="nav-text">2.4 Wrapping up the filtering</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-4-Wrapping-up-the-filtering"><span class="nav-number">2.1.2.5.</span> <span class="nav-text">2.4 Wrapping up the filtering</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
