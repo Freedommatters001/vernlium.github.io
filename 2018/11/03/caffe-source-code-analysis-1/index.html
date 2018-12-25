@@ -5,7 +5,7 @@
 
 <html class="theme-next pisces" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -81,6 +81,8 @@
 
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
+<link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+
 
   <meta name="keywords" content="Hexo, NexT" />
 
@@ -146,7 +148,7 @@
 
 
 
-  <title>caffe_source_code_analysis_1 | Vernlium</title>
+  <title>caffe_source_code_analysis_1 | Vernlium</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -171,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -430,12 +432,12 @@
 <p>其中：</p>
 <ul>
 <li>vector<shared_ptr<layer<dtype> &gt; &gt; layers_ : 定义了Net的所有层</shared_ptr<layer<dtype></li>
-<li>vector<string> layer<em>names</em> : 每一层的name</string></li>
-<li>map<string, int=""> layer<em>names_index</em> : 层和name之间的对应关系</string,></li>
-<li>vector<bool> layer<em>need_backward</em> : 层是否需要进行后向计算</bool></li>
+<li>vector<string> layer_names_ : 每一层的name</string></li>
+<li>map<string, int=""> layer_names_index_ : 层和name之间的对应关系</string,></li>
+<li>vector<bool> layer_need_backward_ : 层是否需要进行后向计算</bool></li>
 <li>vector<shared_ptr<blob<dtype> &gt; &gt; blobs_ : 保存层之间的中间结果的blob</shared_ptr<blob<dtype></li>
-<li>vector<string> blob<em>names</em> : blob的名字</string></li>
-<li>map<string, int=""> blob<em>names_index</em> ： blob和name之间的对应关系</string,></li>
+<li>vector<string> blob_names_ : blob的名字</string></li>
+<li>map<string, int=""> blob_names_index_ ： blob和name之间的对应关系</string,></li>
 </ul>
 <h5 id="Model-format"><a href="#Model-format" class="headerlink" title="Model format"></a>Model format</h5><p>模型由prototxt文件（plaintext protocol buffer schema）进行定义，学习好的模型通过序列化保存到.caffemodel（binary protocol buffer）二进制文件中</p>
 <p>caffe使用google的Protocol buffer进行定义模型和存储模型，可以使得序列化后的模型文件较小，而且易于扩展。</p>
@@ -491,7 +493,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/15/coursera-deeplearning-ai-c4-week4/" rel="prev" title="coursera-deeplearning-ai-c4-week4">
+              <a href="/2018/11/25/coursera-deeplearning-ai-c4-week4/" rel="prev" title="coursera-deeplearning-ai-c4-week4">
                 coursera-deeplearning-ai-c4-week4 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -572,7 +574,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">58</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -869,7 +871,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 

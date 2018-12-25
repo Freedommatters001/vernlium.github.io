@@ -5,7 +5,7 @@
 
 <html class="theme-next pisces" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -81,6 +81,8 @@
 
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
+<link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+
 
   <meta name="keywords" content="Hexo, NexT" />
 
@@ -129,7 +131,7 @@
 <meta property="og:image" content="/2018/08/12/coursera-deeplearning-ai-c2-week1/1Dgrad_kiank.png">
 <meta property="og:image" content="/2018/08/12/coursera-deeplearning-ai-c2-week1/NDgrad_kiank.png">
 <meta property="og:image" content="/2018/08/12/coursera-deeplearning-ai-c2-week1/dictionary_to_vector.png">
-<meta property="og:updated_time" content="2018-09-30T14:03:58.005Z">
+<meta property="og:updated_time" content="2018-12-23T03:26:48.422Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coursera-deeplearning-ai-c2-week1">
 <meta name="twitter:description" content="本周课程主要讲解了神经网络中的优化的一些方法，要点：  Train/Dev/Test（训练/开发/测试数据集） 偏差和方差 欠拟合和过拟合 Regularization正则化 Dropout随机失活 Normalizing归一化 梯度消失和梯度爆炸 梯度检查  本周课程将从实际应用的角度介绍深度学习，上周课程已经学会了如何实现一个神经网络，本周将学习，实际应用中如何使神经网络高效工作。本周将学习在">
@@ -168,7 +170,7 @@
 
 
 
-  <title>coursera-deeplearning-ai-c2-week1 | Vernlium</title>
+  <title>coursera-deeplearning-ai-c2-week1 | Vernlium</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -193,7 +195,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -449,7 +451,7 @@ J(w,b) = -\frac{1}{m}\sum_{i=1}^{m}[\mathcal{L}(\hat{y}^{(i)}, y^{(i)})] + \frac
 <p>$ L_1 $正则化：</p>
 <script type="math/tex; mode=display">\frac{\lambda}{2m} \parallel w \parallel_1 = \frac{\lambda}{2m} \sum_{i=1}^{m}{|w_j|}</script><p>如果使用$ L_1 $正则化，最终$w$会变的稀疏（sparse），也就是包含很多0. 有些人认为这有助于压缩模型，因为有一部分参数是0，只需较少的内存来存储模型。然而在实践中发现，通过L1正则化让模型变得稀疏，带来的收效甚微。所以在压缩模型的目标上，它的作用不大，在训练网络时，L2正则化使用得频繁得多。 </p>
 <blockquote>
-<p>注：$L<em>1$范数，表示向量中每个元素绝对值的和：$$ \parallel x \parallel_1 =  \sum</em>{i=1}^{m}{|x<em>i|} <script type="math/tex">$L_2$范数,也称为欧几里得距离：</script> \parallel x \parallel_2 =  \sqrt{\sum</em>{i=1}^{m}{x_i^2}} $$<br>L2范数越小，可以使得x的每个元素都很小，接近于0。在回归里面，有人把有它的回归叫“岭回归”（Ridge Regression），有人也叫它<strong>权值衰减（Weight Decay）</strong>。越小的参数说明模型越简单，越简单的模型则越不容易产生过拟合现象。</p>
+<p>注：$L_1$范数，表示向量中每个元素绝对值的和：<script type="math/tex">\parallel x \parallel_1 =  \sum_{i=1}^{m}{|x_i|}</script><br>$L_2$范数,也称为欧几里得距离：<script type="math/tex">\parallel x \parallel_2 =  \sqrt{\sum_{i=1}^{m}{x_i^2}}</script><br>L2范数越小，可以使得x的每个元素都很小，接近于0。在回归里面，有人把有它的回归叫“岭回归”（Ridge Regression），有人也叫它<strong>权值衰减（Weight Decay）</strong>。越小的参数说明模型越简单，越简单的模型则越不容易产生过拟合现象。</p>
 </blockquote>
 <h5 id="神经网络的正则化"><a href="#神经网络的正则化" class="headerlink" title="神经网络的正则化"></a>神经网络的正则化</h5><p>正则化前：</p>
 <script type="math/tex; mode=display">
@@ -761,7 +763,7 @@ W^{[l]} = np.random.rand(shape) * np.sqrt(\frac{2}{n^{[l-1]}})</script><blockquo
 <h4 id="2-L2-Regularization"><a href="#2-L2-Regularization" class="headerlink" title="2 - L2 Regularization"></a>2 - L2 Regularization</h4><p>The standard way to avoid overfitting is called <strong>L2 regularization</strong>. It consists of appropriately modifying your cost function, from:</p>
 <script type="math/tex; mode=display">J = -\frac{1}{m} \sum\limits_{i = 1}^{m} \large{(}\small  y^{(i)}\log\left(a^{[L](i)}\right) + (1-y^{(i)})\log\left(1- a^{[L](i)}\right) \large{)}</script><p>To:</p>
 <script type="math/tex; mode=display">J_{regularized} = \small \underbrace{-\frac{1}{m} \sum\limits_{i = 1}^{m} \large{(}\small y^{(i)}\log\left(a^{[L](i)}\right) + (1-y^{(i)})\log\left(1- a^{[L](i)}\right) \large{)} }_\text{cross-entropy cost} + \underbrace{\frac{1}{m} \frac{\lambda}{2} \sum\limits_l\sum\limits_k\sum\limits_j W_{k,j}^{[l]2} }_\text{L2 regularization cost}</script><p>Let’s modify your cost and observe the consequences.</p>
-<p><strong>Exercise</strong>: Implement <code>compute_cost_with_regularization()</code> which computes the cost given by formula (2). To calculate $\sum\limits<em>k\sum\limits_j W</em>{k,j}^{[l]2}$  , use :<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">np.sum(np.square(Wl))</div></pre></td></tr></table></figure></p>
+<p><strong>Exercise</strong>: Implement <code>compute_cost_with_regularization()</code> which computes the cost given by formula (2). To calculate $\sum\limits_k\sum\limits_j W_{k,j}^{[l]2}$  , use :<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">np.sum(np.square(Wl))</div></pre></td></tr></table></figure></p>
 <p>Note that you have to do this for $W^{[1]}$, $W^{[2]}$ and $W^{[3]}$, then sum the three terms and multiply by $ \frac{1}{m} \frac{\lambda}{2} $.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># GRADED FUNCTION: compute_cost_with_regularization</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">compute_cost_with_regularization</span><span class="params">(A3, Y, parameters, lambd)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    Implement the cost function with L2 regularization. See formula (2) above.</span></div><div class="line"><span class="string">    </span></div><div class="line"><span class="string">    Arguments:</span></div><div class="line"><span class="string">    A3 -- post-activation, output of forward propagation, of shape (output size, number of examples)</span></div><div class="line"><span class="string">    Y -- "true" labels vector, of shape (output size, number of examples)</span></div><div class="line"><span class="string">    parameters -- python dictionary containing parameters of the model</span></div><div class="line"><span class="string">    </span></div><div class="line"><span class="string">    Returns:</span></div><div class="line"><span class="string">    cost - value of the regularized loss function (formula (2))</span></div><div class="line"><span class="string">    """</span></div><div class="line">    m = Y.shape[<span class="number">1</span>]</div><div class="line">    W1 = parameters[<span class="string">"W1"</span>]</div><div class="line">    W2 = parameters[<span class="string">"W2"</span>]</div><div class="line">    W3 = parameters[<span class="string">"W3"</span>]</div><div class="line">    </div><div class="line">    cross_entropy_cost = compute_cost(A3, Y) <span class="comment"># This gives you the cross-entropy part of the cost</span></div><div class="line">    </div><div class="line">    <span class="comment">### START CODE HERE ### (approx. 1 line)</span></div><div class="line">    L2_regularization_cost = lambd / <span class="number">2</span> / m * (np.sum(np.square(W1)) + np.sum(np.square(W2)) + np.sum(np.square(W3)))</div><div class="line">    <span class="comment">### END CODER HERE ###</span></div><div class="line">    </div><div class="line">    cost = cross_entropy_cost + L2_regularization_cost</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> cost</div></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">A3, Y_assess, parameters = compute_cost_with_regularization_test_case()</div><div class="line"></div><div class="line">print(<span class="string">"cost = "</span> + str(compute_cost_with_regularization(A3, Y_assess, parameters, lambd = <span class="number">0.1</span>)))</div></pre></td></tr></table></figure>
@@ -1133,7 +1135,7 @@ difference
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">58</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1430,7 +1432,7 @@ difference
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 

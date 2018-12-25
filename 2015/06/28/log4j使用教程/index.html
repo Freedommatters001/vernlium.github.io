@@ -5,7 +5,7 @@
 
 <html class="theme-next pisces" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -81,6 +81,8 @@
 
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
+<link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
+
 
   <meta name="keywords" content="log4j," />
 
@@ -147,7 +149,7 @@
 
 
 
-  <title>log4j使用教程 | Vernlium</title>
+  <title>log4j使用教程 | Vernlium</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -172,7 +174,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -428,7 +430,7 @@ log4j.appender.file1.layout.ConversionPattern=%d-[TS] %p %t %c - %m%n
 <p>[QC]是log信息的开头，可以为任意字符，一般为项目简称。</p>
 <h3 id="log4j-appender-file1-org-apache-log4j-DailyRollingFileAppender"><a href="#log4j-appender-file1-org-apache-log4j-DailyRollingFileAppender" class="headerlink" title="log4j.appender.file1=org.apache.log4j.DailyRollingFileAppender"></a>log4j.appender.file1=org.apache.log4j.DailyRollingFileAppender</h3><p>定义名为file1的输出端的类型为每天产生一个日志文件。</p>
 <pre><code>log4j.appender.file1.File=D:\\logs\\qc.log
-</code></pre><p>此句为定义名为file1的输出端的文件名为D:\logs\qc.log可以自行修改。</p>
+</code></pre><p>此句为定义名为file1的输出端的文件名为D:\\logs\\qc.log可以自行修改。</p>
 <h2 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h2><h3 id="定义配置文件"><a href="#定义配置文件" class="headerlink" title="定义配置文件"></a>定义配置文件</h3><p>Log4j支持两种配置文件格式，一种是XML格式的文件，一种是Java特性文件log4j.properties（键=值）。项目中一般使用后一种方法。下面将介绍使用log4j.properties文件作为配置文件的方法:</p>
 <p>①、配置根Logger<br>Logger 负责处理日志记录的大部分操作。</p>
 <p>其语法为：</p>
@@ -658,7 +660,7 @@ log4j.appender.appenderName.layout.optionN = valueN
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">58</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -955,7 +957,7 @@ log4j.appender.appenderName.layout.optionN = valueN
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 

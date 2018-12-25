@@ -5,7 +5,7 @@
 
 <html class="theme-next pisces" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -81,8 +81,10 @@
 
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
+<link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
 
-  <meta name="keywords" content="Hexo, NexT" />
+
+  <meta name="keywords" content="deeplearning.ai," />
 
 
 
@@ -99,6 +101,7 @@
 
 
 <meta name="description" content="本周课程主要讲解了神经网络的一些优化算法，要点：  随机梯度下降 Momentum（动量）优化算法 RMSProp优化算法 Adam优化算法  学习目标  Remember different optimization methods such as (Stochastic) Gradient Descent, Momentum, RMSProp and Adam Use random minib">
+<meta name="keywords" content="deeplearning.ai">
 <meta property="og:type" content="article">
 <meta property="og:title" content="coursera-deeplearning-ai-c2-week2">
 <meta property="og:url" content="://vernlium.github.io/2018/09/10/coursera-deeplearning-ai-c2-week2/index.html">
@@ -121,7 +124,7 @@
 <meta property="og:image" content="/2018/09/10/coursera-deeplearning-ai-c2-week2/kiank_minibatch.png">
 <meta property="og:image" content="/2018/09/10/coursera-deeplearning-ai-c2-week2/kiank_shuffle.png">
 <meta property="og:image" content="/2018/09/10/coursera-deeplearning-ai-c2-week2/kiank_partition.png">
-<meta property="og:updated_time" content="2018-10-07T23:44:46.166Z">
+<meta property="og:updated_time" content="2018-12-25T00:07:10.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coursera-deeplearning-ai-c2-week2">
 <meta name="twitter:description" content="本周课程主要讲解了神经网络的一些优化算法，要点：  随机梯度下降 Momentum（动量）优化算法 RMSProp优化算法 Adam优化算法  学习目标  Remember different optimization methods such as (Stochastic) Gradient Descent, Momentum, RMSProp and Adam Use random minib">
@@ -160,7 +163,7 @@
 
 
 
-  <title>coursera-deeplearning-ai-c2-week2 | Vernlium</title>
+  <title>coursera-deeplearning-ai-c2-week2 | Vernlium</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -185,7 +188,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -483,7 +486,7 @@
 </ul>
 <img src="/2018/09/10/coursera-deeplearning-ai-c2-week2/kiank_partition.png" alt="kiank_partition.png" title="">
 <p><strong>Exercise</strong>: Implement <code>random_mini_batches</code>. We coded the shuffling part for you. To help you with the partitioning step, we give you the following code that selects the indexes for the $1^{st}$ and $2^{nd}$ mini-batches:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">first_mini_batch_X = shuffled_X[:, <span class="number">0</span> : mini_batch_size]</div><div class="line">second_mini_batch_X = shuffled_X[:, mini_batch_size : <span class="number">2</span> * mini_batch_size]</div><div class="line">...</div></pre></td></tr></table></figure></p>
-<p>Note that the last mini-batch might end up smaller than <code>mini_batch_size=64</code>. Let $\lfloor s \rfloor$ represents $s$ rounded down to the nearest integer (this is <code>math.floor(s)</code> in Python). If the total number of examples is not a multiple of <code>mini_batch_size=64</code> then there will be $\lfloor \frac{m}{mini_batch_size}\rfloor$ mini-batches with a full 64 examples, and the number of examples in the final mini-batch will be ($m-mini<em>_batch</em>_size \times \lfloor \frac{m}{mini_batch_size}\rfloor$). </p>
+<p>Note that the last mini-batch might end up smaller than <code>mini_batch_size=64</code>. Let $\lfloor s \rfloor$ represents $s$ rounded down to the nearest integer (this is <code>math.floor(s)</code> in Python). If the total number of examples is not a multiple of <code>mini_batch_size=64</code> then there will be $\lfloor \frac{m}{mini_batch_size}\rfloor$ mini-batches with a full 64 examples, and the number of examples in the final mini-batch will be ($m-mini__batch__size \times \lfloor \frac{m}{mini_batch_size}\rfloor$). </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># GRADED FUNCTION: random_mini_batches</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">random_mini_batches</span><span class="params">(X, Y, mini_batch_size = <span class="number">64</span>, seed = <span class="number">0</span>)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    Creates a list of random minibatches from (X, Y)</span></div><div class="line"><span class="string">    </span></div><div class="line"><span class="string">    Arguments:</span></div><div class="line"><span class="string">    X -- input data, of shape (input size, number of examples)</span></div><div class="line"><span class="string">    Y -- true "label" vector (1 for blue dot / 0 for red dot), of shape (1, number of examples)</span></div><div class="line"><span class="string">    mini_batch_size -- size of the mini-batches, integer</span></div><div class="line"><span class="string">    </span></div><div class="line"><span class="string">    Returns:</span></div><div class="line"><span class="string">    mini_batches -- list of synchronous (mini_batch_X, mini_batch_Y)</span></div><div class="line"><span class="string">    """</span></div><div class="line">    </div><div class="line">    np.random.seed(seed)            <span class="comment"># To make your "random" minibatches the same as ours</span></div><div class="line">    m = X.shape[<span class="number">1</span>]                  <span class="comment"># number of training examples</span></div><div class="line">    mini_batches = []</div><div class="line">        </div><div class="line">    <span class="comment"># Step 1: Shuffle (X, Y)</span></div><div class="line">    permutation = list(np.random.permutation(m))</div><div class="line">    shuffled_X = X[:, permutation]</div><div class="line">    shuffled_Y = Y[:, permutation].reshape((<span class="number">1</span>,m))</div><div class="line"></div><div class="line">    <span class="comment"># Step 2: Partition (shuffled_X, shuffled_Y). Minus the end case.</span></div><div class="line">    num_complete_minibatches = math.floor(m/mini_batch_size) <span class="comment"># number of mini batches of size mini_batch_size in your partitionning</span></div><div class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">0</span>, num_complete_minibatches):</div><div class="line">        <span class="comment">### START CODE HERE ### (approx. 2 lines)</span></div><div class="line">        mini_batch_X = shuffled_X[:, k * mini_batch_size : (k+<span class="number">1</span>) * mini_batch_size]</div><div class="line">        mini_batch_Y = shuffled_Y[:, k * mini_batch_size : (k+<span class="number">1</span>) * mini_batch_size]</div><div class="line">        <span class="comment">### END CODE HERE ###</span></div><div class="line">        mini_batch = (mini_batch_X, mini_batch_Y)</div><div class="line">        mini_batches.append(mini_batch)</div><div class="line">    </div><div class="line">    <span class="comment"># Handling the end case (last mini-batch &lt; mini_batch_size)</span></div><div class="line">    <span class="keyword">if</span> m % mini_batch_size != <span class="number">0</span>:</div><div class="line">        <span class="comment">### START CODE HERE ### (approx. 2 lines)</span></div><div class="line">        mini_batch_X = shuffled_X[:, num_complete_minibatches * mini_batch_size : ]</div><div class="line">        mini_batch_Y = shuffled_Y[:, num_complete_minibatches * mini_batch_size : ]</div><div class="line">        <span class="comment">### END CODE HERE ###</span></div><div class="line">        mini_batch = (mini_batch_X, mini_batch_Y)</div><div class="line">        mini_batches.append(mini_batch)</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> mini_batches</div></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">X_assess, Y_assess, mini_batch_size = random_mini_batches_test_case()</div><div class="line">mini_batches = random_mini_batches(X_assess, Y_assess, mini_batch_size)</div><div class="line"></div><div class="line"><span class="keyword">print</span> (<span class="string">"shape of the 1st mini_batch_X: "</span> + str(mini_batches[<span class="number">0</span>][<span class="number">0</span>].shape))</div><div class="line"><span class="keyword">print</span> (<span class="string">"shape of the 2nd mini_batch_X: "</span> + str(mini_batches[<span class="number">1</span>][<span class="number">0</span>].shape))</div><div class="line"><span class="keyword">print</span> (<span class="string">"shape of the 3rd mini_batch_X: "</span> + str(mini_batches[<span class="number">2</span>][<span class="number">0</span>].shape))</div><div class="line"><span class="keyword">print</span> (<span class="string">"shape of the 1st mini_batch_Y: "</span> + str(mini_batches[<span class="number">0</span>][<span class="number">1</span>].shape))</div><div class="line"><span class="keyword">print</span> (<span class="string">"shape of the 2nd mini_batch_Y: "</span> + str(mini_batches[<span class="number">1</span>][<span class="number">1</span>].shape)) </div><div class="line"><span class="keyword">print</span> (<span class="string">"shape of the 3rd mini_batch_Y: "</span> + str(mini_batches[<span class="number">2</span>][<span class="number">1</span>].shape))</div><div class="line"><span class="keyword">print</span> (<span class="string">"mini batch sanity check: "</span> + str(mini_batches[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>:<span class="number">3</span>]))</div></pre></td></tr></table></figure>
 <p><strong>Expected Output</strong>:</p>
@@ -688,6 +691,12 @@ W^{[l]} = W^{[l]} - \alpha \frac{v^{corrected}_{W^{[l]}}}{\sqrt{s^{corrected}_{W
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/deeplearning-ai/" rel="tag"># deeplearning.ai</a>
+          
+        </div>
+      
 
       
       
@@ -788,7 +797,7 @@ W^{[l]} = W^{[l]} - \alpha \frac{v^{corrected}_{W^{[l]}}}{\sqrt{s^{corrected}_{W
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">58</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1085,7 +1094,7 @@ W^{[l]} = W^{[l]} - \alpha \frac{v^{corrected}_{W^{[l]}}}{\sqrt{s^{corrected}_{W
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 

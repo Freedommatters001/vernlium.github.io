@@ -5,7 +5,7 @@
 
 <html class="theme-next pisces" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -81,8 +81,10 @@
 
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
+<link href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css" rel="stylesheet">
 
-  <meta name="keywords" content="Hexo, NexT" />
+
+  <meta name="keywords" content="deeplearning.ai," />
 
 
 
@@ -99,6 +101,7 @@
 
 
 <meta name="description" content="课程笔记本周课程从边缘检测讲起，引出卷积的概念，并讲到了卷积中的padding、pooling等操作，要点：  边缘检测 卷积的实现 padding pooling stride  学习目标：  Understand the convolution operation Understand the pooling operation Remember the vocabulary used in">
+<meta name="keywords" content="deeplearning.ai">
 <meta property="og:type" content="article">
 <meta property="og:title" content="coursera-deeplearning-ai-c4-week1">
 <meta property="og:url" content="://vernlium.github.io/2018/10/15/coursera-deeplearning-ai-c4-week1/index.html">
@@ -126,7 +129,7 @@
 <meta property="og:image" content="/2018/10/15/coursera-deeplearning-ai-c4-week1/max_pool1.png">
 <meta property="og:image" content="/2018/10/15/coursera-deeplearning-ai-c4-week1/a_pool.png">
 <meta property="og:image" content="/2018/10/15/coursera-deeplearning-ai-c4-week1/SIGNS.png">
-<meta property="og:updated_time" content="2018-11-02T14:45:57.938Z">
+<meta property="og:updated_time" content="2018-12-25T00:07:22.300Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coursera-deeplearning-ai-c4-week1">
 <meta name="twitter:description" content="课程笔记本周课程从边缘检测讲起，引出卷积的概念，并讲到了卷积中的padding、pooling等操作，要点：  边缘检测 卷积的实现 padding pooling stride  学习目标：  Understand the convolution operation Understand the pooling operation Remember the vocabulary used in">
@@ -165,7 +168,7 @@
 
 
 
-  <title>coursera-deeplearning-ai-c4-week1 | Vernlium</title>
+  <title>coursera-deeplearning-ai-c4-week1 | Vernlium</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -190,7 +193,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -492,7 +495,7 @@
 </ul>
 <ul>
 <li>$n_H$, $n_W$ and $n_C$ denote respectively the height, width and number of channels of a given layer. If you want to reference a specific layer $l$, you can also write $n_H^{[l]}$, $n_W^{[l]}$, $n_C^{[l]}$. </li>
-<li>$n<em>{H</em>{prev}}$, $n<em>{W</em>{prev}}$ and $n<em>{C</em>{prev}}$ denote respectively the height, width and number of channels of the previous layer. If referencing a specific layer $l$, this could also be denoted $n_H^{[l-1]}$, $n_W^{[l-1]}$, $n_C^{[l-1]}$. </li>
+<li>$n_{H_{prev}}$, $n_{W_{prev}}$ and $n_{C_{prev}}$ denote respectively the height, width and number of channels of the previous layer. If referencing a specific layer $l$, this could also be denoted $n_H^{[l-1]}$, $n_W^{[l-1]}$, $n_C^{[l-1]}$. </li>
 </ul>
 <p>We assume that you are already familiar with <code>numpy</code> and/or have completed the previous courses of the specialization. Let’s get started!</p>
 <h4 id="1-Packages"><a href="#1-Packages" class="headerlink" title="1 - Packages"></a>1 - Packages</h4><p>Let’s first import all the packages that you will need during this assignment. </p>
@@ -587,11 +590,11 @@
 <p>When in an earlier course you implemented a simple (fully connected) neural network, you used backpropagation to compute the derivatives with respect to the cost to update the parameters. Similarly, in convolutional neural networks you can to calculate the derivatives with respect to the cost in order to update the parameters. The backprop equations are not trivial and we did not derive them in lecture, but we briefly presented them below.</p>
 <h5 id="5-1-Convolutional-layer-backward-pass"><a href="#5-1-Convolutional-layer-backward-pass" class="headerlink" title="5.1 - Convolutional layer backward pass"></a>5.1 - Convolutional layer backward pass</h5><p>Let’s start by implementing the backward pass for a CONV layer. </p>
 <h6 id="5-1-1-Computing-dA"><a href="#5-1-1-Computing-dA" class="headerlink" title="5.1.1 - Computing dA"></a>5.1.1 - Computing dA</h6><p>This is the formula for computing $dA$ with respect to the cost for a certain filter $W_c$ and a given training example:</p>
-<script type="math/tex; mode=display">dA += \sum _{h=0} ^{n_H} \sum_{w=0} ^{n_W} W_c \times dZ_{hw}</script><p>Where $W<em>c$  is a filter and $dZ</em>{hw}$ is a scalar corresponding to the gradient of the cost with respect to the output of the conv layer $Z$ at the $h^{th}$ row and wth column (corresponding to the dot product taken at the ith stride left and jth stride down). Note that at each time, we multiply the the same filter $W_c$ by a different dZ when updating $dA$. We do so mainly because when computing the forward propagation, each filter is dotted and summed by a different a_slice. Therefore when computing the backprop for $dA$, we are just adding the gradients of all the a_slices. </p>
+<script type="math/tex; mode=display">dA += \sum _{h=0} ^{n_H} \sum_{w=0} ^{n_W} W_c \times dZ_{hw}</script><p>Where $W_c$  is a filter and $dZ_{hw}$ is a scalar corresponding to the gradient of the cost with respect to the output of the conv layer $Z$ at the $h^{th}$ row and wth column (corresponding to the dot product taken at the ith stride left and jth stride down). Note that at each time, we multiply the the same filter $W_c$ by a different dZ when updating $dA$. We do so mainly because when computing the forward propagation, each filter is dotted and summed by a different a_slice. Therefore when computing the backprop for $dA$, we are just adding the gradients of all the a_slices. </p>
 <p>In code, inside the appropriate for-loops, this formula translates into:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">da_prev_pad[vert_start:vert_end, horiz_start:horiz_end, :] += W[:,:,:,c] * dZ[i, h, w, c]</div></pre></td></tr></table></figure>
 <h5 id="5-1-2-Computing-dW"><a href="#5-1-2-Computing-dW" class="headerlink" title="5.1.2 - Computing dW"></a>5.1.2 - Computing dW</h5><p>This is the formula for computing $dW_c$ ($dW_c$ is the derivative of one filter) with respect to the loss:</p>
-<script type="math/tex; mode=display">dW_c  += \sum _{h=0} ^{n_H} \sum_{w=0} ^ {n_W} a_{slice} \times dZ_{hw}</script><p>Where $ a<em>{slice} $ corresponds to the slice which was used to generate the acitivation $ Z</em>{ij} $. Hence, this ends up giving us the gradient for $ W $ with respect to that slice. Since it is the same $ W $, we will just add up all such gradients to get $ dW $. </p>
+<script type="math/tex; mode=display">dW_c  += \sum _{h=0} ^{n_H} \sum_{w=0} ^ {n_W} a_{slice} \times dZ_{hw}</script><p>Where $ a_{slice} $ corresponds to the slice which was used to generate the acitivation $ Z_{ij} $. Hence, this ends up giving us the gradient for $ W $ with respect to that slice. Since it is the same $ W $, we will just add up all such gradients to get $ dW $. </p>
 <p>In code, inside the appropriate for-loops, this formula translates into:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dW[:,:,:,c] += a_slice * dZ[i, h, w, c]</div></pre></td></tr></table></figure></p>
 <h6 id="5-1-3-Computing-db"><a href="#5-1-3-Computing-db" class="headerlink" title="5.1.3 - Computing db"></a>5.1.3 - Computing db</h6><p>This is the formula for computing $db$ with respect to the cost for a certain filter $W_c$:</p>
 <script type="math/tex; mode=display">db = \sum_h \sum_w dZ_{hw}</script><p>As you have previously seen in basic neural networks, db is computed by summing $dZ$. In this case, you are just summing over all the gradients of the conv output (Z) with respect to the cost. </p>
@@ -765,6 +768,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/deeplearning-ai/" rel="tag"># deeplearning.ai</a>
+          
+        </div>
+      
 
       
       
@@ -865,7 +874,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">58</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1162,7 +1171,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
